@@ -16,27 +16,35 @@ module.exports = (sequelize, DataTypes) => {
   Animal.init({
     name: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     isChecked: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
     age: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     city: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     breed: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     title: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Users',
         key: 'id',
@@ -44,9 +52,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     img: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     type: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
   }, {
     sequelize,

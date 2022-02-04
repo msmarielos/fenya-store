@@ -18,21 +18,27 @@ module.exports = (sequelize, DataTypes) => {
   Item.init({
     title: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     price: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     img: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     rating: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     categoryType_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'CategoryTypes',
         key: 'id',

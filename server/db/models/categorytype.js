@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   CategoryType.init({
     type_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Types',
         key: 'id',
@@ -25,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     category_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Categories',
         key: 'id',

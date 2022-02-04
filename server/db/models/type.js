@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Type.init({
     name: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
   }, {
     sequelize,

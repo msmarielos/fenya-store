@@ -17,15 +17,19 @@ module.exports = (sequelize, DataTypes) => {
   Review.init({
     isChecked: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
     title: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Users',
         key: 'id',
@@ -33,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     item_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Items',
         key: 'id',
@@ -40,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     rating: {
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
   }, {
     sequelize,

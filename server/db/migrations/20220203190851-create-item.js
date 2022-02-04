@@ -9,21 +9,27 @@ module.exports = {
       },
       title: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       price: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       img: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       rating: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       categoryType_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'CategoryTypes',
           key: 'id',

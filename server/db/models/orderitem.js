@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   OrderItem.init({
     order_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Orders',
         key: 'id',
@@ -24,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     item_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'Items',
         key: 'id',

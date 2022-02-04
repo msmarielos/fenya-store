@@ -9,18 +9,23 @@ module.exports = {
       },
       name: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       email: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       password: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       phone: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

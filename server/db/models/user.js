@@ -18,18 +18,23 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     name: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     email: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     password: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
     phone: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
   }, {
     sequelize,

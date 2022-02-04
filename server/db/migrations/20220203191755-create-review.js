@@ -9,15 +9,19 @@ module.exports = {
       },
       isChecked: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       title: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',
@@ -25,6 +29,7 @@ module.exports = {
       },
       item_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Items',
           key: 'id',
@@ -32,6 +37,7 @@ module.exports = {
       },
       rating: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

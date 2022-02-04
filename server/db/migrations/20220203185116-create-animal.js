@@ -9,27 +9,35 @@ module.exports = {
       },
       name: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       isChecked: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       age: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       city: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       breed: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       title: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id',
@@ -37,9 +45,11 @@ module.exports = {
       },
       img: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       type: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
