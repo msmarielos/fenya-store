@@ -1,10 +1,10 @@
-const router = require('express').Router();
+// const router = require('express').Router();
 // const bcrypt = require('bcryptjs');
 // const { User } = require('../db/models');
 
-router.post('/', async (req, res) => {
-  const { name, email, password } = req.body;
-  console.log(req.body);
+// router.post('/', async (req, res) => {
+//   const { name, email, password } = req.body;
+//   console.log(req.body);
 
   //     try {
   //       const findUser = await User.findOne({
