@@ -39,5 +39,5 @@ app.use('/items', itemRouter);
 app.use('/api/reg', registrationRouter);
 
 app.listen(PORT, () => {
-  console.log('The server is up and running on', PORT);
+  console.info('The server is up and running on', PORT);
 });
