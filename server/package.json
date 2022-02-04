@@ -17,9 +17,12 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "hbs": "^4.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
     "morgan": "^1.10.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "prettier": "^2.5.1",
     "sequelize": "^6.15.0",
     "sequelize-cli": "^6.4.1",
     "session-file-store": "^1.5.0"
@@ -29,5 +32,15 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "nodemon": "^2.0.15"
+  },
+  "husky": {
+    "hooks": {
+    "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+  "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "prettier --write"
+    ]
   }
 }
