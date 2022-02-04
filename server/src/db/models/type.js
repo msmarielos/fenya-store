@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Type extends Model {
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ CategoryType }) {
-      Type.hasMany(CategoryType, { foreignKey: "type_id" });
+      Type.hasMany(CategoryType, { foreignKey: 'type_id' });
     }
   }
   Type.init(
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Type",
+      modelName: 'Type',
     }
   );
   return Type;

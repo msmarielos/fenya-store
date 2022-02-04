@@ -1,4 +1,4 @@
-import "./SearchPanel.scss";
+import './SearchPanel.scss';
 
 export default function SearchPanel() {
   return (

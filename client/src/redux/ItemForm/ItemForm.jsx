@@ -1,12 +1,12 @@
-import { useRef } from "react";
-import { useDispatch } from "react-redux";
-import { addItemsAC } from "../../redux/actionCreators/itemsAC";
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItemsAC } from '../../redux/actionCreators/itemsAC';
 
 export function ItemForm() {
   const itemForm = useRef();
   const dispatch = useDispatch();
 
-  const addItem = (event) => {
+  const addItem = event => {
     event.preventDefault();
 
     const data = new FormData(itemForm.current);

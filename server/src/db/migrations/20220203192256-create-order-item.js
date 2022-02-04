@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("OrderItems", {
+    await queryInterface.createTable('OrderItems', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,16 +11,16 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Orders",
-          key: "id",
+          model: 'Orders',
+          key: 'id',
         },
       },
       item_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Items",
-          key: "id",
+          model: 'Items',
+          key: 'id',
         },
       },
       createdAt: {
@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("OrderItems");
+    await queryInterface.dropTable('OrderItems');
   },
 };

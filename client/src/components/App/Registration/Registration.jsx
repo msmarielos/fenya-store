@@ -1,6 +1,6 @@
-import { useRef } from "react";
-import { POST } from "../../../utils/httpMethods";
-import { routesApi } from "../../../utils/routesApi";
+import { useRef } from 'react';
+import { POST } from '../../../utils/httpMethods';
+import { routesApi } from '../../../utils/routesApi';
 
 export function Registration(props) {
   const nameInput = useRef();
@@ -8,7 +8,7 @@ export function Registration(props) {
   const passwordInput = useRef();
   const confirmPasswordInput = useRef();
 
-  const formHandler = (event) => {
+  const formHandler = event => {
     event.preventDefault();
 
     const newReview = {
@@ -20,13 +20,13 @@ export function Registration(props) {
     if (passwordInput === confirmPasswordInput) {
       fetch(routesApi.reg, {
         method: POST,
-        headers: { "Content-Type": "Application/json" },
+        headers: { 'Content-Type': 'Application/json' },
         body: JSON.stringify(newReview),
       })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then(res => res.json())
+        .then(data => console.log(data));
     } else {
-      alert("Пароли не совпадают"); //временно, надо сделать красиво
+      alert('Пароли не совпадают'); //временно, надо сделать красиво
     }
   };
 

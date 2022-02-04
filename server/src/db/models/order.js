@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ User, OrderItem }) {
-      Order.belongsTo(User, { foreignKey: "user_id" });
-      Order.hasMany(OrderItem, { foreignKey: "order_id" });
+      Order.belongsTo(User, { foreignKey: 'user_id' });
+      Order.hasMany(OrderItem, { foreignKey: 'order_id' });
     }
   }
   Order.init(
@@ -18,14 +18,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
-          key: "id",
+          model: 'Users',
+          key: 'id',
         },
       },
     },
     {
       sequelize,
-      modelName: "Order",
+      modelName: 'Order',
     }
   );
   return Order;

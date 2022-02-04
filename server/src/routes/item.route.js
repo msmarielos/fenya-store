@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const { Item } = require("../db/models");
+const router = require('express').Router();
+const { Item } = require('../db/models');
 
-router.get("/cats/food", (req, res) => {
-  Item.findAll().then((items) => res.json(items));
+router.get('/cats/food', (req, res) => {
+  Item.findAll().then(items => res.json(items));
 });
 
 // router.get('/dogs/food', (req, res) => {

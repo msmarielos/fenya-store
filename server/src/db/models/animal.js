@@ -1,4 +1,4 @@
-const { Model } = require("sequelize");
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Animal extends Model {
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ User }) {
-      Animal.belongsTo(User, { foreignKey: "user_id" });
+      Animal.belongsTo(User, { foreignKey: 'user_id' });
     }
   }
   Animal.init(
@@ -45,8 +45,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: "Users",
-          key: "id",
+          model: 'Users',
+          key: 'id',
         },
       },
       img: {
@@ -60,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Animal",
+      modelName: 'Animal',
     }
   );
   return Animal;
