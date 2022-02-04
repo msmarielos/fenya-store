@@ -7,13 +7,14 @@ export default function Cats() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CATEGORY' });
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <h1>Cats</h1>
       <ul>
-        {categories.length && categories.map((item) => <li>{item.name}</li>)}
+        {categories.length > 0 &&
+          categories.map((item) => <li key={item.id}>{item.name}</li>)}
       </ul>
     </>
   );
