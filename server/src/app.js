@@ -12,6 +12,7 @@ const app = express();
 
 const itemRouter = require('./routes/item.route');
 const categoryRouter = require('./routes/category.route');
+const listsRouter = require('./routes/lists.route');
 // const registrationRouter = require('./routes/registration.router');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,6 +38,7 @@ app.use(express.json());
 
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
+app.use('/lists', listsRouter);
 // app.use('/api/reg', registrationRouter);
 
 app.listen(PORT, () => {

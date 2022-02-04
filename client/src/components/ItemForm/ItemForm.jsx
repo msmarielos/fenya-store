@@ -1,10 +1,12 @@
+import { useEffect } from 'react';
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { addItemsAC } from '../../redux/actionCreators/itemsAC';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ItemForm() {
   const itemForm = useRef();
   const dispatch = useDispatch();
+  const types = useSelector(state => state.lists.types);
+  const categories = useSelector(state => state.lists.categories);
 
   const addItem = event => {
     event.preventDefault();
@@ -12,8 +14,11 @@ function ItemForm() {
     const data = new FormData(itemForm.current);
 
     dispatch({ type: 'FETCH_POST_ITEM', payload: data });
-    // dispatch(addItemsAC(data))
   };
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GET_LISTS' });
+  }, [dispatch]);
 
   return (
     <form ref={itemForm} encType="multipart/form-data" onSubmit={addItem}>
@@ -25,17 +30,28 @@ function ItemForm() {
         placeholder="Описание товара"
         required
       />
+      <input
+        type="number"
+        name="amount"
+        placeholder="Количество товара"
+        required
+      />
       <input type="file" name="img" placeholder="Добавьте фото" required />
       <select name="type">
         <option disabled>Выберите вид животного</option>
-        <option value="cat">Кошка</option>
-        <option value="dog">Собака</option>
+        {types.map(type => (
+          <option key={type.id} value={type.id}>
+            {type.name}
+          </option>
+        ))}
       </select>
       <select name="category">
         <option disabled>Выберите категорию товара</option>
-        <option value="food">Корм</option>
-        <option value="toys">Игрушки</option>
-        <option value="clothes">Одежда</option>
+        {categories.map(category => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
       </select>
       <button type="submit">Добавить</button>
     </form>

@@ -6,6 +6,7 @@ import {
   addItemsAC,
   initCategoriesAC,
 } from '../actionCreators/itemsAC';
+import { initListsAC } from '../actionCreators/listsAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -66,6 +67,12 @@ function* getCategoryDogAsync() {
   yield put(initCategoriesAC(categories));
 }
 
+function* getListsAsync() {
+  const lists = yield call(fetchData, { url: process.env.REACT_APP_TYPES_URL });
+
+  yield put(initListsAC(lists));
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_DELETE_ITEM', deleteItemAsync);
@@ -73,4 +80,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_ITEM', postItemAsync);
   yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
   yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
+  yield takeEvery('FETCH_GET_LISTS', getListsAsync);
 }

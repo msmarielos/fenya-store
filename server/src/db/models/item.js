@@ -43,6 +43,10 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
+      amount: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,

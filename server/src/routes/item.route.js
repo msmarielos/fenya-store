@@ -1,48 +1,44 @@
 const router = require('express').Router();
-const { Item } = require('../db/models');
+const multer = require('multer');
+const { Item, CategoryType } = require('../db/models');
+const { storage } = require('../storage');
+const upload = multer({ storage });
 
 router.get('/cats/food', (req, res) => {
   Item.findAll().then(items => res.json(items));
 });
 
-// router.get('/dogs/food', (req, res) => {
-//   Item.findAll()
-//     .then((allItems) => res.json(allItems))
-//     .catch((error) => console.log(error));
-// });
+router.get('/', async (req, res) => {
+  Item.findAll()
+    .then(allItems => res.json(allItems))
+    .catch(error => console.log(error));
+});
 
-// router.post('/', async (req, res) => {
-//   const fileName = `${uuid.v4()}.jpeg`;
-//   img.mv(path.resolve(__dirname, '../..', 'public/images', fileName));
-//   const photoPath = `/images/${fileName}`;
+router.post('/', upload.single('img'), async (req, res) => {
+  const { title, description, price, type, category, amount } = req.body;
+  const { filename } = req.file;
 
-//   await Pet.create({
-//     name,
-//     description,
-//     gender,
-//     age,
-//     photo: photoPath,
-//     species,
-//   });
-//   Item.create(req.body)
-//     .then((newItem) => res.status(201).json(newAnimal))
-//     .catch((error) => res.status(500).json(error));
-// });
+  const categoryType_id = await CategoryType.findOne({
+    where: {
+      type_id: type,
+      category_id: category,
+    },
+  });
 
-// router
-//   .route('/:id')
-//   .put((req, res) => {
-//     const { id } = req.params;
-
-//     Animal.update(req.body, { where: { id }, returning: true })
-//       .then((updatedAnimal) => res.json(updatedAnimal))
-//       .catch((error) => res.status(500).json(error));
-//   })
-//   .delete((req, res) => {
-//     const { id } = req.params;
-//     Animal.destroy({ where: { id } })
-//       .then((data) => (data ? res.json(id) : res.status(404).json(data)))
-//       .catch((error) => res.status(500).json(error));
-//   });
+  try {
+    await Item.create({
+      title,
+      description,
+      price,
+      categoryType_id: categoryType_id.id,
+      rating: 0,
+      img: `storage/${filename}`,
+      amount,
+    });
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false });
+  }
+});
 
 module.exports = router;
