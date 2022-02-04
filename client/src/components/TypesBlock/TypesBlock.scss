@@ -15,7 +15,7 @@
       display: flex;
       border: 1px solid rgb(210, 210, 210);
       padding: 20px;
-      width: 50%;
+      width: calc(49% + 6px);
 
       .type-desc {
         align-self: center;
