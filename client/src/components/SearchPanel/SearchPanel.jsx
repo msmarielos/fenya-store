@@ -9,8 +9,10 @@ export default function SearchPanel() {
             <h1>Fenya Store</h1>
             <p>Интернет зоомагазин</p>
           </div>
-          <input className='search-input' type='text' placeholder='Поиск' />
-          <button>Корзина</button>
+          <form>
+            <input className='search-input' type='text' placeholder='Поиск' />
+            <button>Корзина</button>
+          </form>
         </div>
       </div>
     </>
