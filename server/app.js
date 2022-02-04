@@ -1,10 +1,10 @@
-const path = require("path");
-const express = require("express");
-const morgan = require("morgan");
+const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
 const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
 const FileStore = require("session-file-store")(expressSession);
-const cors = require("cors");
+const cors = require('cors');
 
 const PORT = 4000;
 
@@ -13,6 +13,8 @@ const app = express();
 const itemRouter = require("./routes/item.route")
 
 app.use(express.static(path.join(__dirname, "public")));
+
+const registrationRouter = require('./routes/registration.router');
 
 const sessionConfig = {
   store: new FileStore(),
@@ -27,14 +29,15 @@ const sessionConfig = {
 };
 
 app.use(cors());
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(expressSession(sessionConfig));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/items', itemRouter);
+app.use('/api/reg', registrationRouter);
 
 app.listen(PORT, () => {
-  console.log("The server is up and running on", PORT);
+  console.log('The server is up and running on', PORT);
 });
