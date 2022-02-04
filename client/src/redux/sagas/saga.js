@@ -12,8 +12,10 @@ async function fetchData({ url, method, headers, body }) {
   return await response.json();
 }
 
-function* getItemsAsync() {
-  const items = yield call(fetchData, { url: process.env.REACT_APP_ITEMS_URL });
+function* getItemsAsync(action) {
+  const items = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.type}/${action.payload.category}`,
+  });
 
   yield put(initItemsAC(items));
 }

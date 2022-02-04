@@ -5,21 +5,23 @@ module.exports = {
       [
         {
           name: 'Корм',
+          url: 'food',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'Игрушки',
+          url: 'toys',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'Костюмы',
+          url: 'clothes',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
       ],
-      {}
     );
   },
 

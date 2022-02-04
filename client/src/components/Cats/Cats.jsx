@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function Cats() {
   const dispatch = useDispatch();
@@ -14,7 +15,13 @@ export default function Cats() {
       <h1>Cats</h1>
       <ul>
         {categories.length > 0 &&
-          categories.map((item) => <li key={item.id}>{item.name}</li>)}
+          categories.map((item) => (
+            <li key={item.id}>
+              <Link to={`${window.location.pathname}/${item.url}`}>
+                {item.name}
+              </Link>
+            </li>
+          ))}
       </ul>
     </>
   );
