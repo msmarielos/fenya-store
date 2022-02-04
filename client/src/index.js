@@ -4,6 +4,7 @@ import App from './components/App/App';
 import Cats from './components/Cats/Cats';
 import Dogs from './components/Dogs/Dogs';
 import Main from './components/Main/Main';
+import './index.scss';
 
 ReactDOM.render(
   <BrowserRouter>

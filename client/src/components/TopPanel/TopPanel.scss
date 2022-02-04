@@ -1,0 +1,37 @@
+.top-panel {
+  width: 100vw;
+  background-color: #e84a53;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  height: 60px;
+
+  .right-top-panel {
+    align-self: center;
+  }
+
+  .left-top-panel {
+    align-self: center;
+    display: flex;
+
+    p {
+      margin-right: 25px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .phone-top-panel {
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0;
+  }
+}
