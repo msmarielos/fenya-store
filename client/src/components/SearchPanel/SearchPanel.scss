@@ -1,0 +1,44 @@
+.search-panel {
+  display: flex;
+  justify-content: center;
+  background-color: #000225;
+  height: 120px;
+  color: white;
+
+  .logo {
+    align-self: center;
+  }
+
+  .search-input {
+    width: 70%;
+    align-self: center;
+  }
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  button {
+    align-self: center;
+    height: 50px;
+    width: 135px;
+    border: none;
+    color: white;
+    background-color: #e84a53;
+    border-radius: 5px;
+  }
+
+  input {
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    padding: 0 0 0 15px;
+  }
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+}
