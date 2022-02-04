@@ -10,6 +10,8 @@ const PORT = 4000;
 
 const app = express();
 
+const itemRouter = require("./routes/item.route")
+
 app.use(express.static(path.join(__dirname, "public")));
 
 const sessionConfig = {
@@ -30,6 +32,8 @@ app.use(cookieParser());
 app.use(expressSession(sessionConfig));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use('/items', itemRouter);
 
 app.listen(PORT, () => {
   console.log("The server is up and running on", PORT);
