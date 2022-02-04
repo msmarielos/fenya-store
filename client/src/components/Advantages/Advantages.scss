@@ -1,0 +1,25 @@
+.advantages-block {
+  width: 1200px;
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .advantages-block {
+    justify-content: center;
+  }
+  svg,
+  h5 {
+    align-self: center;
+    justify-self: center;
+  }
+
+  svg {
+    margin-bottom: 10px;
+  }
+}
