@@ -1,14 +1,16 @@
 import React from 'react';
 import BasketCard from '../BasketCard/BasketCard';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import TotalItemCard from '../TotalItemCard/TotalItemCard';
 
 function Basket(props) {
 
-  const dispatch = useDispatch()
+  const { basketItems } = useSelector(state => state.basketReducer);
 
   return (
     <div>
-      <BasketCard key={} />
+      {basketItems.length ? basketItems.map((item) => <BasketCard key={item.id} item={item} />) : 'Нет товаров в корзине'}
+      <TotalItemCard/>
     </div>
   );
 }

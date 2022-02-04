@@ -32,7 +32,16 @@ export const basketReducer = (state = initialState, action) => {
     //   return { ...state, items: action.payload }
 
     case UPDATE_ITEM_BASKET:
-      return { ...state, basketItems: action.payload }
+      return { ...state, basketItems: state.basketItems.map((item) => {
+        if(item.id === action.payload.id){
+          return { ...item, count: item.count + action.payload.count }
+        } return item
+      })  }
+
+    case DELETE_ITEM_BASKET:
+    return { ...state, basketItems: state.basketItems.filter((item) => {
+      return item.id !== action.payload.id
+    }) }
 
     default:
       return state
