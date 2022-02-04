@@ -17,11 +17,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+      url: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
     },
     {
       sequelize,
       modelName: 'Category',
-    }
+    },
   );
   return Category;
 };
