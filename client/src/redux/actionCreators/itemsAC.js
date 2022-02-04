@@ -34,10 +34,9 @@ export const initItemsAC = payload => {
   };
 };
 
-export const initCategoriesAC = (payload) => {
+export const initCategoriesAC = payload => {
   return {
     type: INIT_CATEGORIES,
     payload,
   };
 };
-

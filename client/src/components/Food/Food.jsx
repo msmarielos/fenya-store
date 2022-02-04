@@ -7,7 +7,7 @@ export default function Food() {
   const { pathname } = useLocation();
   const type = pathname.split('/')[1];
 
-  const { items } = useSelector((state) => state.items);
+  const { items } = useSelector(state => state.items);
 
   useEffect(() => {
     dispatch({
@@ -25,7 +25,7 @@ export default function Food() {
         <>
           <h1>Корм для кошек</h1>
           <ul>
-            {items.map((item) => (
+            {items.map(item => (
               <li key={item.id}>{item.title}</li>
             ))}
           </ul>
