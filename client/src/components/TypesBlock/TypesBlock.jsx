@@ -1,4 +1,4 @@
-import './TypesBlock.scss';
+import "./TypesBlock.scss";
 
 export default function TypesBlock() {
   return (

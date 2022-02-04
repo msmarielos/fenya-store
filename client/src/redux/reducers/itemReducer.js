@@ -1,4 +1,4 @@
-import { ADD_ITEM, INIT_ITEMS } from '../actionTypes/itemsAT';
+import { ADD_ITEM, INIT_ITEMS } from "../actionTypes/itemsAT";
 const initialState = { items: [] };
 
 export const itemReducer = (state = initialState, action) => {

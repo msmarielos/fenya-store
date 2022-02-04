@@ -1,4 +1,4 @@
-import './TopPanel.scss';
+import "./TopPanel.scss";
 
 export default function TopPanel() {
   return (

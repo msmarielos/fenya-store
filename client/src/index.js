@@ -1,14 +1,14 @@
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import App from './components/App/App';
-import Cats from './components/Cats/Cats';
-import Dogs from './components/Dogs/Dogs';
-import Main from './components/Main/Main';
-import ItemForm from './components/ItemForm/ItemForm';
-import './index.scss';
-import { store } from './redux/store';
-import Food from './components/Food/Food';
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import App from "./components/App/App";
+import Cats from "./components/Cats/Cats";
+import Dogs from "./components/Dogs/Dogs";
+import Main from "./components/Main/Main";
+import ItemForm from "./components/ItemForm/ItemForm";
+import "./index.scss";
+import { store } from "./redux/store";
+import Food from "./components/Food/Food";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,5 +25,5 @@ ReactDOM.render(
     </BrowserRouter>
     ,
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

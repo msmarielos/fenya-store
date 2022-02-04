@@ -1,4 +1,4 @@
-import './Advantages.scss';
+import "./Advantages.scss";
 
 export default function Advantages() {
   return (

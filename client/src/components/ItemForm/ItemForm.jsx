@@ -1,17 +1,17 @@
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { addItemsAC } from '../../redux/actionCreators/itemsAC';
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addItemsAC } from "../../redux/actionCreators/itemsAC";
 
 function ItemForm() {
   const itemForm = useRef();
   const dispatch = useDispatch();
 
-  const addItem = event => {
+  const addItem = (event) => {
     event.preventDefault();
 
     const data = new FormData(itemForm.current);
 
-    dispatch({ type: 'FETCH_POST_ITEM', payload: data });
+    dispatch({ type: "FETCH_POST_ITEM", payload: data });
     // dispatch(addItemsAC(data))
   };
 

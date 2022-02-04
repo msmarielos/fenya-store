@@ -1,4 +1,4 @@
-import './CarouselBlock.scss';
+import "./CarouselBlock.scss";
 
 export default function CarouselBlock() {
   return (

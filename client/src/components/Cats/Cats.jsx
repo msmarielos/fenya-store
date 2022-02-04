@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Cats() {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CATEGORY_CATS' });
+    dispatch({ type: "FETCH_GET_CATEGORY_CATS" });
   }, [dispatch]);
 
   return (

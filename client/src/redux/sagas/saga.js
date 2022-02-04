@@ -1,11 +1,11 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from "redux-saga/effects";
 import {
   initItemsAC,
   deleteItemsAC,
   updateItemsAC,
   addItemsAC,
   initCategoriesAC,
-} from '../actionCreators/itemsAC';
+} from "../actionCreators/itemsAC";
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -23,8 +23,8 @@ function* getItemsAsync(action) {
 function* deleteItemAsync(action) {
   const id = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
-    headers: { 'Content-Type': 'Application/json' },
-    method: 'DELETE',
+    headers: { "Content-Type": "Application/json" },
+    method: "DELETE",
   });
 
   yield put(deleteItemsAC(id));
@@ -33,8 +33,8 @@ function* deleteItemAsync(action) {
 function* putItemAsync(action) {
   const updatedItem = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.id}`,
-    headers: { 'Content-Type': 'Application/json' },
-    method: 'PUT',
+    headers: { "Content-Type": "Application/json" },
+    method: "PUT",
     body: JSON.stringify(action.payload),
   });
 
@@ -44,8 +44,8 @@ function* putItemAsync(action) {
 function* postItemAsync(action) {
   const newItem = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}`,
-    headers: { 'Content-Type': 'Application/json' },
-    method: 'POST',
+    headers: { "Content-Type": "Application/json" },
+    method: "POST",
     body: JSON.stringify(action.payload),
   });
 
@@ -67,10 +67,10 @@ function* getCategoryDogAsync() {
 }
 
 export function* globalWatcher() {
-  yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
-  yield takeEvery('FETCH_DELETE_ITEM', deleteItemAsync);
-  yield takeEvery('FETCH_PUT_ITEM', putItemAsync);
-  yield takeEvery('FETCH_POST_ITEM', postItemAsync);
-  yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
-  yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
+  yield takeEvery("FETCH_GET_ITEMS", getItemsAsync);
+  yield takeEvery("FETCH_DELETE_ITEM", deleteItemAsync);
+  yield takeEvery("FETCH_PUT_ITEM", putItemAsync);
+  yield takeEvery("FETCH_POST_ITEM", postItemAsync);
+  yield takeEvery("FETCH_GET_CATEGORY_CATS", getCategoryCatAsync);
+  yield takeEvery("FETCH_GET_CATEGORY_DOGS", getCategoryDogAsync);
 }

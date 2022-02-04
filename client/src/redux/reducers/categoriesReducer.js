@@ -1,4 +1,4 @@
-import { INIT_CATEGORIES } from '../actionTypes/itemsAT';
+import { INIT_CATEGORIES } from "../actionTypes/itemsAT";
 
 const initialState = { categories: [] };
 
