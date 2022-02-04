@@ -11,10 +11,9 @@ const PORT = 4000;
 const app = express();
 
 const itemRouter = require("./routes/item.route")
+const registrationRouter = require('./routes/registration.router');
 
 app.use(express.static(path.join(__dirname, "public")));
-
-const registrationRouter = require('./routes/registration.router');
 
 const sessionConfig = {
   store: new FileStore(),
