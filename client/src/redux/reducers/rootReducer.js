@@ -1,6 +1,8 @@
-import { combineReducers } from "redux";
-import { itemReducer } from "../reducers/itemReducer"
+import { combineReducers } from 'redux';
+import { itemReducer } from '../reducers/itemReducer';
+import { categoriesReducer } from './categoriesReducer';
 
 export const rootReducer = combineReducers({
-  items: itemReducer
-})
+  items: itemReducer,
+  categories: categoriesReducer,
+});

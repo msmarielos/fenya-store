@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { initItemsAC, deleteItemsAC, updateItemsAC, addItemsAC } from '../actionCreators/itemsAC'
+import { initItemsAC, deleteItemsAC, updateItemsAC, addItemsAC, initCategoriesAC } from '../actionCreators/itemsAC'
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -30,9 +30,15 @@ function* postItemAsync(action) {
   yield put(addItemsAC(newItem));
 }
 
+function* getCategoryAsync() {
+  const categories = yield call(fetchData, {url: `${process.env.REACT_APP_CATEGORIES_URL}` })
+  yield put(initCategoriesAC(categories));
+}
+
 export function* globalWatcher() {
   yield takeEvery("FETCH_GET_ITEMS", getItemsAsync);
   yield takeEvery("FETCH_DELETE_ITEM", deleteItemAsync);
   yield takeEvery("FETCH_PUT_ITEM", putItemAsync);
   yield takeEvery("FETCH_POST_ITEM", postItemAsync);
+  yield takeEvery("FETCH_GET_CATEGORY", getCategoryAsync);
 }
