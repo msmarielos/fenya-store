@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -15,30 +13,33 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(Review, { foreignKey: 'user_id' });
     }
   }
-  User.init({
-    name: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+  User.init(
+    {
+      name: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      phone: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
     },
-    email: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    isAdmin: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    phone: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+    {
+      sequelize,
+      modelName: 'User',
+    }
+  );
   return User;
 };

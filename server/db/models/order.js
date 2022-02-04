@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
@@ -14,18 +12,21 @@ module.exports = (sequelize, DataTypes) => {
       Order.hasMany(OrderItem, { foreignKey: 'order_id' });
     }
   }
-  Order.init({
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Users',
-        key: 'id',
+  Order.init(
+    {
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
     },
-  }, {
-    sequelize,
-    modelName: 'Order',
-  });
+    {
+      sequelize,
+      modelName: 'Order',
+    }
+  );
   return Order;
 };

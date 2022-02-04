@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Type extends Model {
@@ -13,14 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       Type.hasMany(CategoryType, { foreignKey: 'type_id' });
     }
   }
-  Type.init({
-    name: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+  Type.init(
+    {
+      name: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
     },
-  }, {
-    sequelize,
-    modelName: 'Type',
-  });
+    {
+      sequelize,
+      modelName: 'Type',
+    }
+  );
   return Type;
 };
