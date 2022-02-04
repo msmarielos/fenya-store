@@ -48,9 +48,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     },
-   {
-    sequelize,
-    modelName: 'Item',
-  });
+    {
+      sequelize,
+      modelName: 'Item',
+    }
+  );
   return Item;
 };

@@ -1,5 +1,11 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
-import { initItemsAC, deleteItemsAC, updateItemsAC, addItemsAC, initCategoriesAC } from '../actionCreators/itemsAC'
+import { call, put, takeEvery } from 'redux-saga/effects';
+import {
+  initItemsAC,
+  deleteItemsAC,
+  updateItemsAC,
+  addItemsAC,
+  initCategoriesAC,
+} from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 
 async function fetchData({ url, method, headers, body }) {
@@ -74,5 +80,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_ITEM', postItemAsync);
   yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
   yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
-  yield takeEvery("FETCH_GET_LISTS", getListsAsync);
+  yield takeEvery('FETCH_GET_LISTS', getListsAsync);
 }

@@ -12,7 +12,7 @@ const app = express();
 
 const itemRouter = require('./routes/item.route');
 const categoryRouter = require('./routes/category.route');
-const listsRouter = require("./routes/lists.route");
+const listsRouter = require('./routes/lists.route');
 // const registrationRouter = require('./routes/registration.router');
 
 app.use(express.static(path.join(__dirname, 'public')));

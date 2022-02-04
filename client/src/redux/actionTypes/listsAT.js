@@ -1,1 +1,1 @@
-export const INIT_LISTS = 'INIT_LISTS'
+export const INIT_LISTS = 'INIT_LISTS';
