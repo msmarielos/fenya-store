@@ -12,6 +12,7 @@ module.exports = {
         categoryType_id: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
+        amount: 1
       },
       {
         title:
@@ -24,6 +25,7 @@ module.exports = {
         categoryType_id: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
+        amount: 1
       },
       {
         title:
@@ -36,6 +38,7 @@ module.exports = {
         categoryType_id: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
+        amount: 1
       },
     ]);
   },

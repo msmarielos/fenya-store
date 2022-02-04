@@ -15,7 +15,7 @@ const categoryRouter = require('./routes/category.route');
 const listsRouter = require('./routes/lists.route');
 // const registrationRouter = require('./routes/registration.router');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 const sessionConfig = {
   store: new FileStore(),
