@@ -6,7 +6,7 @@ import './normalize.css';
 
 function App() {
   return (
-    <div className='root-container'>
+    <div className="root-container">
       <TopPanel />
       <SearchPanel />
       <Navigation />

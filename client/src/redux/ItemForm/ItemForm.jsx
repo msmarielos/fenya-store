@@ -1,27 +1,31 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItemsAC } from "../../redux/actionCreators/itemsAC";
+import { addItemsAC } from '../../redux/actionCreators/itemsAC';
 
 export function ItemForm() {
-
   const itemForm = useRef();
   const dispatch = useDispatch();
 
-  const addItem = (event) => {
+  const addItem = event => {
     event.preventDefault();
 
-    const data = new FormData(itemForm.current)
+    const data = new FormData(itemForm.current);
 
     // dispatch({ type: 'FETCH_POST_ITEM', payload: data })
-    dispatch(addItemsAC(data))
-  }
+    dispatch(addItemsAC(data));
+  };
 
   return (
     <form ref={itemForm} encType="multipart/form-data" onSubmit={addItem}>
-      <input type="text" name="title" placeholder="Название товара" required/>
-      <input type="number" name="price" placeholder="Цена товара" required/>
-      <input type="text" name="description" placeholder="Описание товара" required/>
-      <input type="file" name="img" placeholder="Добавьте фото" required/>
+      <input type="text" name="title" placeholder="Название товара" required />
+      <input type="number" name="price" placeholder="Цена товара" required />
+      <input
+        type="text"
+        name="description"
+        placeholder="Описание товара"
+        required
+      />
+      <input type="file" name="img" placeholder="Добавьте фото" required />
       <select name="type">
         <option disabled>Выберите вид животного</option>
         <option value="cat">Кошка</option>
@@ -35,5 +39,5 @@ export function ItemForm() {
       </select>
       <button type="submit">Добавить</button>
     </form>
-  )
+  );
 }

@@ -1,24 +1,24 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const cookieParser = require("cookie-parser");
-const expressSession = require("express-session");
-const FileStore = require("session-file-store")(expressSession);
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const FileStore = require('session-file-store')(expressSession);
 const cors = require('cors');
 
 const PORT = 4000;
 
 const app = express();
 
-const itemRouter = require("./routes/item.route")
+const itemRouter = require('./routes/item.route');
 const registrationRouter = require('./routes/registration.router');
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const sessionConfig = {
   store: new FileStore(),
-  name: "user_sid",
-  secret: process.env.SESSION_SECRET ?? "test",
+  name: 'user_sid',
+  secret: process.env.SESSION_SECRET ?? 'test',
   resave: false,
   saveUninitialized: false,
   cookie: {

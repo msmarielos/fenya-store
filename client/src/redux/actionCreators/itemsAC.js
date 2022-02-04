@@ -1,29 +1,34 @@
-import { ADD_ITEM, UPDATE_ITEM, DELETE_ITEM, INIT_ITEMS } from '../actionTypes/itemsAT'
+import {
+  ADD_ITEM,
+  UPDATE_ITEM,
+  DELETE_ITEM,
+  INIT_ITEMS,
+} from '../actionTypes/itemsAT';
 
-export const addItemsAC = (payload) => {
+export const addItemsAC = payload => {
   return {
     type: ADD_ITEM,
-    payload
-  }
-}
+    payload,
+  };
+};
 
-export const updateItemsAC = (payload) => {
+export const updateItemsAC = payload => {
   return {
     type: UPDATE_ITEM,
-    payload
-  }
-}
+    payload,
+  };
+};
 
-export const deleteItemsAC = (payload) => {
+export const deleteItemsAC = payload => {
   return {
     type: DELETE_ITEM,
-    payload
-  }
-}
+    payload,
+  };
+};
 
-export const initItemsAC = (payload) => {
+export const initItemsAC = payload => {
   return {
     type: INIT_ITEMS,
-    payload
-  }
-}
+    payload,
+  };
+};

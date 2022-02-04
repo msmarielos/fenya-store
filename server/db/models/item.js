@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Item extends Model {
@@ -15,38 +13,41 @@ module.exports = (sequelize, DataTypes) => {
       Item.belongsTo(CategoryType, { foreignKey: 'categoryType_id' });
     }
   }
-  Item.init({
-    title: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    img: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    categoryType_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'CategoryTypes',
-        key: 'id',
+  Item.init(
+    {
+      title: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      img: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      rating: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      categoryType_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'CategoryTypes',
+          key: 'id',
+        },
       },
     },
-  }, {
-    sequelize,
-    modelName: 'Item',
-  });
+    {
+      sequelize,
+      modelName: 'Item',
+    }
+  );
   return Item;
 };
