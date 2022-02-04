@@ -3,6 +3,7 @@ import {
   UPDATE_ITEM,
   DELETE_ITEM,
   INIT_ITEMS,
+  INIT_CATEGORIES,
 } from '../actionTypes/itemsAT';
 
 export const addItemsAC = payload => {
@@ -32,3 +33,11 @@ export const initItemsAC = payload => {
     payload,
   };
 };
+
+export const initCategoriesAC = (payload) => {
+  return {
+    type: INIT_CATEGORIES,
+    payload,
+  };
+};
+
