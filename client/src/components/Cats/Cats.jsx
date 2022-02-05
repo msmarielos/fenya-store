@@ -1,28 +1,36 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './Cats.scss';
 
 export default function Cats() {
   const dispatch = useDispatch();
   const { categories } = useSelector(state => state.categories);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CATEGORY_CATS' });
+    dispatch({
+      type: 'FETCH_GET_CATEGORY',
+      payload: window.location.pathname,
+    });
   }, [dispatch]);
 
   return (
-    <>
-      <h1>Cats</h1>
-      <ul>
+    <div className="cat-categories-list">
+      <h1>Товары для кошек и котят</h1>
+      <div className="categories">
         {categories.length > 0 &&
           categories.map(item => (
-            <li key={item.id}>
+            <div className="category" key={item.id}>
+              <Link to={`${window.location.pathname}/${item.url}`}>
+                <img src={item.img} alt="" />
+              </Link>
+
               <Link to={`${window.location.pathname}/${item.url}`}>
                 {item.name}
               </Link>
-            </li>
+            </div>
           ))}
-      </ul>
-    </>
+      </div>
+    </div>
   );
 }

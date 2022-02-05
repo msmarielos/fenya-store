@@ -1,5 +1,11 @@
-import { ADD_ITEM, INIT_ITEMS } from '../actionTypes/itemsAT';
-const initialState = { items: [] };
+import {
+  ADD_ITEM,
+  INIT_CURRENT_ITEM,
+  INIT_ITEMS,
+  SORT_ITEMS_ASC,
+  SORT_ITEMS_DESC,
+} from '../actionTypes/itemsAT';
+const initialState = { items: [], currentItem: {} };
 
 export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,6 +19,24 @@ export const itemReducer = (state = initialState, action) => {
 
     case INIT_ITEMS:
       return { ...state, items: action.payload };
+
+    case INIT_CURRENT_ITEM:
+      return {
+        ...state,
+        currentItem: action.payload,
+      };
+
+    case SORT_ITEMS_ASC:
+      return {
+        ...state,
+        items: state.items.sort((a, b) => (a.price > b.price ? -1 : 1)),
+      };
+
+    case SORT_ITEMS_DESC:
+      return {
+        ...state,
+        items: state.items.sort((a, b) => (a.price > b.price ? 1 : -1)),
+      };
 
     default:
       return state;

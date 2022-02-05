@@ -1,9 +1,11 @@
 .search-panel {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: #000225;
   width: 100vw;
-  height: 120px;
+  height: 130px;
   color: white;
 
   .logo {
@@ -12,6 +14,15 @@
 
   .search-input {
     align-self: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    h1 {
+      font-weight: bold;
+    }
   }
 
   h1,
@@ -53,4 +64,5 @@
   display: flex;
   justify-content: space-between;
   width: 1200px;
+  margin-top: 30px;
 }

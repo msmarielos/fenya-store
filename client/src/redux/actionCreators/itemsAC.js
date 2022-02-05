@@ -4,6 +4,9 @@ import {
   DELETE_ITEM,
   INIT_ITEMS,
   INIT_CATEGORIES,
+  INIT_CURRENT_ITEM,
+  SORT_ITEMS_ASC,
+  SORT_ITEMS_DESC,
 } from '../actionTypes/itemsAT';
 
 export const addItemsAC = payload => {
@@ -34,9 +37,30 @@ export const initItemsAC = payload => {
   };
 };
 
+export const initCurrentItemAC = payload => {
+  return {
+    type: INIT_CURRENT_ITEM,
+    payload,
+  };
+};
+
 export const initCategoriesAC = payload => {
   return {
     type: INIT_CATEGORIES,
+    payload,
+  };
+};
+
+export const sortAscAC = payload => {
+  return {
+    type: SORT_ITEMS_ASC,
+    payload,
+  };
+};
+
+export const sortDescAC = payload => {
+  return {
+    type: SORT_ITEMS_DESC,
     payload,
   };
 };

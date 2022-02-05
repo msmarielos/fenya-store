@@ -1,5 +1,12 @@
 nav {
   a {
     align-self: center;
+    margin-bottom: 15px;
+    margin-right: 50px;
+  }
+
+  .container {
+    height: 60px;
+    justify-content: flex-end;
   }
 }
