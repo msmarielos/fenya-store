@@ -33,7 +33,7 @@ export default function Food() {
     <>
       {type === 'cats' ? <h1>Корм для кошек</h1> : <h1>Корм для собак</h1>}
       <div className="sort-block">
-        <p>Отсортировать</p>
+        <p>Отсортировать по цене:</p>
         <span onClick={sortAsc}>По возрастанию</span>
         <span onClick={sortDesc}>По убыванию</span>
       </div>
