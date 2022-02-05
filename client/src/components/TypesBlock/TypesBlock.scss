@@ -36,8 +36,7 @@
     margin-bottom: 20px;
   }
 
-  button {
-    align-self: center;
+  .regular-btn {
     height: 50px;
     width: 135px;
     border: none;
@@ -47,7 +46,7 @@
     transition: 0.2s;
   }
 
-  button:hover {
-    background-color: #b4383e;
+  a {
+    align-self: center;
   }
 }

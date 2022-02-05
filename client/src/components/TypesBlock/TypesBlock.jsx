@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './TypesBlock.scss';
 
 export default function TypesBlock() {
@@ -10,14 +11,18 @@ export default function TypesBlock() {
             <img src="/img/cat.png" alt="" />
             <div className="type-desc">
               <h3>Кошка или котенок</h3>
-              <button>Подробнее</button>
+              <Link to="/cats">
+                <button className="regular-btn">Подробнее</button>
+              </Link>
             </div>
           </div>
           <div className="dog-block">
             <img src="/img/corgi.png" alt="" />
             <div className="type-desc">
               <h3>Собака или щенок</h3>
-              <button>Подробнее</button>
+              <Link to="/dogs">
+                <button className="regular-btn">Подробнее</button>
+              </Link>
             </div>
           </div>
         </div>
