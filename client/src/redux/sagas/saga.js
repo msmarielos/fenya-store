@@ -7,10 +7,21 @@ import {
   initCategoriesAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
+import { createUserAC } from '../actionCreators/userAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
   return await response.json();
+}
+
+function* postUserAsync(action) {
+  const user = yield call(fetchData, {
+    url: process.env.REACT_APP_REG,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(createUserAC(user));
 }
 
 function* getItemsAsync(action) {
@@ -80,4 +91,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
   yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
+  yield takeEvery('FETCH_CREATE_USER', postUserAsync);
 }
