@@ -13,7 +13,8 @@
       justify-content: space-around;
       height: 200px;
       display: flex;
-      border: 1px solid rgb(210, 210, 210);
+      border: 1px solid rgb(238, 238, 238);
+      border-radius: 3px;
       padding: 20px;
       width: calc(49% + 6px);
 
@@ -36,8 +37,7 @@
     margin-bottom: 20px;
   }
 
-  button {
-    align-self: center;
+  .regular-btn {
     height: 50px;
     width: 135px;
     border: none;
@@ -47,7 +47,7 @@
     transition: 0.2s;
   }
 
-  button:hover {
-    background-color: #b4383e;
+  a {
+    align-self: center;
   }
 }

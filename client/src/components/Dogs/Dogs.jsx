@@ -6,7 +6,7 @@ export default function Dogs() {
   const { categories } = useSelector(state => state.categories);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CATEGORY_DOGS' });
+    dispatch({ type: 'FETCH_GET_CATEGORY' });
   }, [dispatch]);
 
   return (
