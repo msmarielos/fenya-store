@@ -11,7 +11,7 @@ export default function Dogs() {
 
   return (
     <>
-      <h1>Dogs</h1>
+      <h1>Собаки</h1>
       <ul>
         {categories.length > 0 &&
           categories.map(item => <li key={item.id}>{item.name}</li>)}

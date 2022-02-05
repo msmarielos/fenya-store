@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './Cats.scss';
 
 export default function Cats() {
   const dispatch = useDispatch();
@@ -14,18 +15,22 @@ export default function Cats() {
   }, [dispatch]);
 
   return (
-    <>
-      <h1>Cats</h1>
-      <ul>
+    <div className="cat-categories-list">
+      <h1>Кошки</h1>
+      <div className="categories">
         {categories.length > 0 &&
           categories.map(item => (
-            <li key={item.id}>
+            <div className="category" key={item.id}>
+              <Link to={`${window.location.pathname}/${item.url}`}>
+                <img src={item.img} alt="" />
+              </Link>
+
               <Link to={`${window.location.pathname}/${item.url}`}>
                 {item.name}
               </Link>
-            </li>
+            </div>
           ))}
-      </ul>
-    </>
+      </div>
+    </div>
   );
 }
