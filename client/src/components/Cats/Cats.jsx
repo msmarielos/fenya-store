@@ -16,7 +16,7 @@ export default function Cats() {
 
   return (
     <div className="cat-categories-list">
-      <h1>Кошки</h1>
+      <h1>Товары для кошек и котят</h1>
       <div className="categories">
         {categories.length > 0 &&
           categories.map(item => (

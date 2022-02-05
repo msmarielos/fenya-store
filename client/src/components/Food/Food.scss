@@ -1,0 +1,22 @@
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+
+  .item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    margin-top: 20px;
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      width: 150px;
+    }
+  }
+}
+

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import './Food.scss';
 
 export default function Food() {
   const dispatch = useDispatch();
@@ -21,22 +22,19 @@ export default function Food() {
 
   return (
     <>
-      {type === 'cats' ? (
-        <>
-          <h1>Корм для кошек</h1>
-          <ul>
-            {items.map(item => (
-              <li key={item.id}>
-                <Link to={`${window.location.pathname}/${item.id}`}>
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <h1>Корм для собак</h1>
-      )}
+      {type === 'cats' ? <h1>Корм для кошек</h1> : <h1>Корм для собак</h1>}
+      <div className="items-list">
+        {items.map(item => (
+          <div className="item-card" key={item.id}>
+            <Link to={`${window.location.pathname}/${item.id}`}>
+              <img src={item.img} alt="" />
+            </Link>
+            <Link to={`${window.location.pathname}/${item.id}`}>
+              {item.title}
+            </Link>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

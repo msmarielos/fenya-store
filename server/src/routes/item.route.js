@@ -5,7 +5,15 @@ const { storage } = require('../storage');
 const upload = multer({ storage });
 
 router.get('/cats/food', (req, res) => {
-  Item.findAll().then(items => res.json(items));
+  Item.findAll({ where: { categoryType_id: 1 } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/dogs/food', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 4 } }).then(items =>
+    res.json(items)
+  );
 });
 
 router.get('/:itemId', (req, res) => {

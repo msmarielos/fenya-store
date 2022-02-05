@@ -23,6 +23,8 @@ ReactDOM.render(
           <Route path="cats/food" element={<Food />} />
           <Route path="cats/food/:foodId" element={<Item />} />
           <Route path="dogs" element={<Dogs />} />
+          <Route path="dogs/food" element={<Food />} />
+          <Route path="dogs/food/:foodId" element={<Item />} />
           <Route path="items" element={<ItemForm />} />
           <Route path="basket" element={<Basket />} />
         </Route>
