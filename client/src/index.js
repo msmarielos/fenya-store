@@ -11,6 +11,7 @@ import './index.scss';
 import { store } from './redux/store';
 import Food from './components/Food/Food';
 import Item from './components/Item/Item';
+import OrderForm from './components/OrderForm/OrderForm';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,6 +26,7 @@ ReactDOM.render(
           <Route path="dogs" element={<Dogs />} />
           <Route path="items" element={<ItemForm />} />
           <Route path="basket" element={<Basket />} />
+          <Route path="orderform" element={<OrderForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

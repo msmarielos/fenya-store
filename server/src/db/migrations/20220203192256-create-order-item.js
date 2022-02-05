@@ -23,6 +23,10 @@ module.exports = {
           key: 'id',
         },
       },
+      count: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
