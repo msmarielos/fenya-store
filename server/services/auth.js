@@ -14,7 +14,7 @@ async function login(data) {
       throw new Error('Email неверный');
     }
     const isSamePassword = await bcrypt.compare(password, user.password);
-    if (!isSamePassword) throw new Error('Пароль не некорректный');
+    if (!isSamePassword) throw new Error('Пароль  неверный');
     return user;
   } catch (e) {
     throw e;

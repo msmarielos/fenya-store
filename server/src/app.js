@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const FileStore = require('session-file-store')(expressSession);
 const cors = require('cors');
+require('dotenv-safe').config();
 
 const PORT = 4000;
 
@@ -42,5 +43,5 @@ app.use('/lists', listsRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(PORT, () => {
-  console.log('The server is up and running on', PORT);
+  console.info('The server is up and running on', PORT);
 });

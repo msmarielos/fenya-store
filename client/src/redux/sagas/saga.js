@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
   deleteItemsAC,
@@ -15,8 +16,9 @@ async function fetchData({ url, method, headers, body }) {
 }
 
 function* postUserAsync(action) {
+  console.log(process.env.REACT_APP_REG);
   const user = yield call(fetchData, {
-    url: process.env.REACT_APP_REG,
+    url: routesApi.reg,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),

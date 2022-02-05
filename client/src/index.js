@@ -9,6 +9,7 @@ import ItemForm from './components/ItemForm/ItemForm';
 import './index.scss';
 import { store } from './redux/store';
 import Food from './components/Food/Food';
+import { Registration } from './components/App/Registration/Registration';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
+          <Route path="/reg" element={<Registration />} />
           <Route path="cats" element={<Cats />} />
           <Route path="cats/food" element={<Food />} />
           <Route path="dogs" element={<Dogs />} />

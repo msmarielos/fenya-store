@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const authController = require('../../controllers/auth');
-// isAuth = require('../../middlewares/isAuth');
+// const isAuth = require('../../middlewares/isAuth');
 
 router.post('/reg', authController.signUp);
 router.post('/login', authController.signIn);
+// router.get('/profile', isAuth, authController.getUserInfo);
 
 module.exports = router;

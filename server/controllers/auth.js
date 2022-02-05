@@ -1,4 +1,5 @@
 const authService = require('../services/auth');
+const userService = require('../services/user');
 
 async function signUp(req, res) {
   try {
