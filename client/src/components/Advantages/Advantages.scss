@@ -2,24 +2,32 @@
   width: 1200px;
 
   h2 {
+    margin-top: 50px;
     margin-bottom: 30px;
+    text-align: center;
   }
 
   .col {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .advantages-block {
     justify-content: center;
   }
-  svg,
+
   h5 {
     align-self: center;
     justify-self: center;
   }
 
-  svg {
+  img {
     margin-bottom: 10px;
+    transition: 0.2s;
+  }
+
+  img:hover {
+    transform: scale(120%);
   }
 }
