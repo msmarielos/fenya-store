@@ -1,6 +1,7 @@
 module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Items', [
+      // корма для кошек
       {
         title:
           'Корм GO! беззерновой для котят и кошек с чувствительным пищеварением, со свежей уткой',
@@ -41,6 +42,19 @@ module.exports = {
         amount: 1,
       },
       {
+        title:
+          'Корм GO! беззерновой для котят и кошек с чувствительным пищеварением с форелью и лососем',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 3500,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/70/87/14/511379_400x400.jpg',
+        rating: 0,
+        categoryType_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
         title: 'Papillon игрушка для кошек Светоотражающая мышка с погремушкой',
         description:
           'Всевозможные удочки-дразнилки, игрушки в виде животных, игрушки с погремушками и бубенчиками. Игрушки мягкие и твердые, шуршащие и звенящие, маленькие и побольше.',
@@ -66,6 +80,18 @@ module.exports = {
         amount: 1,
       },
       {
+        title: 'Корм Royal Canin для бывающих на улице кошек',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 2200,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/f4/1d/a1/312566_400x400.jpg',
+        rating: 0,
+        categoryType_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
         title: 'Антицарапки голубь сизый с валерианой',
         description:
           'Игрушка набита синтепухом. В нее добавлена кошачья мята и валериана, что увеличит вероятность проявления интереса к ней вашей кошки, так как одни кошки больше реагируют на кошачью мяту, а другие - на валериану.',
@@ -73,6 +99,18 @@ module.exports = {
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/27/bc/c1/549433_400x400.jpg',
         rating: 0,
         categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title: 'Корм Royal Canin для кастрированных кошек и котов: 1-7 лет',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 2200,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/4f/68/b7/312598_400x400.jpg',
+        rating: 0,
+        categoryType_id: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
         amount: 1,
@@ -90,6 +128,18 @@ module.exports = {
         amount: 1,
       },
       {
+        title: 'Корм Royal Canin для комфортного пищеварения кошек от 1 года',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 2200,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/3f/52/00/382816_400x400.jpg',
+        rating: 0,
+        categoryType_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
         title: 'Catit Senses 2.0 Трек игровой малый',
         description:
           'Игровой малый трек - интерактивная игрушка, позволяющая составить более 100 конфигураций.',
@@ -97,6 +147,19 @@ module.exports = {
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/15/77/37/549548_400x400.jpg',
         rating: 0,
         categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Go! Консервы беззерновые с тушеной курицей, индейкой и мясом утки',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 220,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/db/9a/d6/425696_400x400.jpg',
+        rating: 0,
+        categoryType_id: 4,
         createdAt: new Date(),
         updatedAt: new Date(),
         amount: 1,
@@ -149,6 +212,18 @@ module.exports = {
         amount: 1,
       },
       {
+        title: 'Go! Консервы беззерновые с индейкой, для собак',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 380,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/c4/19/7d/425689_400x400.jpg',
+        rating: 0,
+        categoryType_id: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
         title: 'Petstages игрушка для кошек "Трек 3 этажа"',
         description:
           'Игровой трек с мячиками идеально подходит для одной или нескольких кошек. Яркий мячик катается по кругу, что очень привлекает внимание кошки. Оторваться невозможно! Как ни стараешься, всё равно не поймаешь, но и не потеряешь.',
@@ -161,6 +236,18 @@ module.exports = {
         amount: 1,
       },
       {
+        title: 'Корм GO! для щенков и собак, со свежим лососем и овсянкой',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 4600,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/5e/cc/36/511383_400x400.jpg',
+        rating: 0,
+        categoryType_id: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
         title: 'Ferribiella аксессуары игрушка "Джунгли зовут"',
         description:
           'Не можете отучить щенка грызть обувь? Легальная альтернатива домашнему хулиганству - безопасна и полезна во время активного роста прорезывания зубов.',
@@ -168,6 +255,19 @@ module.exports = {
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/fc/e0/06/416731_400x400.jpg',
         rating: 0,
         categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Корм NOW FRESH беззерновой "Контроль веса" для собак, с индейкой, уткой и овощами',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 220,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/b4/48/2b/511386_400x400.jpg',
+        rating: 0,
+        categoryType_id: 4,
         createdAt: new Date(),
         updatedAt: new Date(),
         amount: 1,
@@ -205,6 +305,19 @@ module.exports = {
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/de/6d/49/498190_400x400.jpg',
         rating: 0,
         categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Корм NOW FRESH беззерновой "Контроль веса" для собак крупных пород с индейкой, уткой и овощами',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 380,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/45/f2/10/539989_400x400.jpg',
+        rating: 0,
+        categoryType_id: 4,
         createdAt: new Date(),
         updatedAt: new Date(),
         amount: 1,
@@ -264,6 +377,18 @@ module.exports = {
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/9f/3e/43/510566_400x400.jpg',
         rating: 0,
         categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title: 'Корм GO! для щенков и собак, со свежим лососем и овсянкой',
+        description:
+          'Некоторые кошки определенно мясоеды, что говорит об их хищной природе. Этот беззерновой рецепт богат белками, обеспечивает полноценное и сбалансированное питание, чтобы помочь вашей кошке оставаться здоровой и сохранять отличную физическую форму.',
+        price: 4600,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/5e/cc/36/511383_400x400.jpg',
+        rating: 0,
+        categoryType_id: 4,
         createdAt: new Date(),
         updatedAt: new Date(),
         amount: 1,
