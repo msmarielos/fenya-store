@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { sortAscAC, sortDescAC } from '../../redux/actionCreators/itemsAC';
 import './Food.scss';
 
 export default function Food() {
@@ -20,9 +21,23 @@ export default function Food() {
     });
   }, [dispatch, pathname]);
 
+  const sortAsc = () => {
+    dispatch(sortAscAC());
+  };
+
+  const sortDesc = () => {
+    dispatch(sortDescAC());
+  };
+
   return (
     <>
       {type === 'cats' ? <h1>Корм для кошек</h1> : <h1>Корм для собак</h1>}
+      <div className="sort-block">
+        <p>Отсортировать</p>
+        <span onClick={sortAsc}>По возрастанию</span>
+        <span onClick={sortDesc}>По убыванию</span>
+      </div>
+
       <div className="items-list">
         {items.map(item => (
           <div className="item-card" key={item.id}>
@@ -32,6 +47,7 @@ export default function Food() {
             <Link to={`${window.location.pathname}/${item.id}`}>
               {item.title}
             </Link>
+            <p className="price">{item.price} p.</p>
           </div>
         ))}
       </div>

@@ -17,6 +17,7 @@
       border-radius: 3px;
       padding: 20px;
       width: calc(49% + 6px);
+      transition: 0.4s;
 
       .type-desc {
         align-self: center;
@@ -52,4 +53,11 @@
   a {
     align-self: center;
   }
+}
+
+.dog-block:hover,
+.cat-block:hover {
+  -webkit-box-shadow: 4px 6px 10px -5px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 6px 10px -5px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 6px 10px -5px rgba(34, 60, 80, 0.2);
 }

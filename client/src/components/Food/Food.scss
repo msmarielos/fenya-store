@@ -10,6 +10,10 @@
     width: 25%;
     margin-top: 20px;
 
+    .price {
+      font-weight: bold;
+    }
+
     a {
       text-decoration: none;
     }
@@ -20,3 +24,19 @@
   }
 }
 
+.sort-block {
+  display: flex;
+
+  span,
+  p {
+    margin: 0 20px 0 0;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  span:hover {
+    color: #e84a53;
+  }
+}
