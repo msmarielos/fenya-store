@@ -40,6 +40,136 @@ module.exports = {
         updatedAt: new Date(),
         amount: 1,
       },
+      {
+        title:
+          'Papillon игрушка для кошек Светоотражающая мышка с погремушкой',
+        description:
+          'Всевозможные удочки-дразнилки, игрушки в виде животных, игрушки с погремушками и бубенчиками. Игрушки мягкие и твердые, шуршащие и звенящие, маленькие и побольше.',
+        price: 90,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/26/f0/87/308722_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Papillon игрушка для кошек "Мячик" с бубенчиком, зеленый, нейлон, 5 см',
+        description:
+          'Всевозможные удочки-дразнилки, игрушки в виде животных, игрушки с погремушками и бубенчиками. Игрушки мягкие и твердые, шуршащие и звенящие, маленькие и побольше.',
+        price: 100,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/d8/e3/6f/308723_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Антицарапки голубь сизый с валерианой',
+        description:
+          'Игрушка набита синтепухом. В нее добавлена кошачья мята и валериана, что увеличит вероятность проявления интереса к ней вашей кошки, так как одни кошки больше реагируют на кошачью мяту, а другие - на валериану.',
+        price: 170,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/27/bc/c1/549433_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Petsiki Динамическая когтеточка "Яйцо"',
+        description:
+          'Динамическая когтеточка "Яйцо" позволяет точить когти и играть одновременно. Благодаря принципу неваляшки клубок всегда возвращается в исходное положение, а безопасный джутовый канат помогает бережно точить когти. Вытянутая форма когтеточки позволяет удобно точить когти на задних лапах.',
+        price: 500,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/4d/f4/c4/514442_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Catit Senses 2.0 Трек игровой малый',
+        description:
+          'Игровой малый трек - интерактивная игрушка, позволяющая составить более 100 конфигураций.',
+        price: 1400,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/15/77/37/549548_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Triol занимательная игрушка для кошек "Пират"',
+        description:
+          'Игрушка стимулирует охотничьи навыки кошек и призывает их к активному выслеживанию добычи. Просто поставьте этот маяк перед животным и наблюдайте за тем, как кошка будет стараться поймать маленькую "рыбку" на конце маятника, используя всевозможные способы.',
+        price: 1000,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/39/8e/3a/528677_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Triol Marvel игровой туннель для кошек "Marvel" Человек-паук',
+        description:
+          'Мягкий, просторный, шуршащий и очень теплый, такой туннель станет не только прекрасным аксессуаром для активной игры, но и отличным местом для отдыха после интенсивных "кардионагрузок".',
+        price: 1000,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/2d/4a/44/507845_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Trixie игрушка "Обезьяна" с кошачьей мятой',
+        description:
+          'Игрушка "Обезьяна" для кошек, размер: 12 см',
+        price: 300,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/68/02/74/558408_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Papillon игрушка для кошек "НЛО", 20х25 см, бирюзовая, плюш',
+        description:
+          'Игрушки мягкие и твердые, шуршащие и звенящие, маленькие и побольше. Также в ассортименте производителя Papillon представлены канаты для перетягивания, латексные игрушки для прорезывания зубов, плюшевые косточки, мышки из натурального меха и многое другое.',
+        price: 1100,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/95/1c/3a/308725_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Petstages игрушка для кошек "Трек 3 этажа"',
+        description:
+          'Игровой трек с мячиками идеально подходит для одной или нескольких кошек. Яркий мячик катается по кругу, что очень привлекает внимание кошки. Оторваться невозможно! Как ни стараешься, всё равно не поймаешь, но и не потеряешь.',
+        price: 1350,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/23/d6/3f/499342_400x400.jpg',
+        rating: 0,
+        categoryType_id: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
     ]);
   },
 
