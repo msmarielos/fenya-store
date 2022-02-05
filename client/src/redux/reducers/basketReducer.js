@@ -20,16 +20,6 @@ const initialState = { basketItems: [
 
 export const basketReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case ADD_ITEM_BASKET:
-
-    //   const newItem = action.payload
-
-    //   return {
-    //     ...state, items: state.items ? [...state.items, newItem] : [newItem]
-    //   }
-
-    // case INIT_ITEMS_BASKET:
-    //   return { ...state, items: action.payload }
 
     case UPDATE_ITEM_BASKET:
       return { ...state, basketItems: state.basketItems.map((item) => {

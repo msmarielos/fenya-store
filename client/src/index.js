@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route path="cats/food" element={<Food />} />
           <Route path="dogs" element={<Dogs />} />
           <Route path="items" element={<ItemForm />} />
-          <Route path="/basket" element={<Basket />} />
+          <Route path="basket" element={<Basket />} />
         </Route>
       </Routes>
     </BrowserRouter>

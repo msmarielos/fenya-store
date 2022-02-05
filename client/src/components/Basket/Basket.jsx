@@ -5,7 +5,7 @@ import TotalItemCard from '../TotalItemCard/TotalItemCard';
 
 function Basket(props) {
 
-  const { basketItems } = useSelector(state => state.basketReducer);
+  const { basketItems } = useSelector(state => state.basketItems);
 
   return (
     <div>
