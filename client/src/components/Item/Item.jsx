@@ -23,7 +23,10 @@ export default function Item() {
           <span>{'>'}</span>
           <Link to={`/${breadcrumbs[1]}`}>{breadcrumbs[1]}</Link>
           <span>{'>'}</span>
-          <Link className='current-url' to={`/${breadcrumbs[1]}/${breadcrumbs[2]}`}>
+          <Link
+            className="current-url"
+            to={`/${breadcrumbs[1]}/${breadcrumbs[2]}`}
+          >
             {breadcrumbs[2]}
           </Link>
         </div>
