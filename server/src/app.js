@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const FileStore = require('session-file-store')(expressSession);
 const cors = require('cors');
+require('dotenv-safe').config();
 
 const PORT = 4000;
 
@@ -13,7 +14,7 @@ const app = express();
 const itemRouter = require('./routes/item.route');
 const categoryRouter = require('./routes/category.route');
 const listsRouter = require('./routes/lists.route');
-// const registrationRouter = require('./routes/registration.router');
+const authRouter = require('./routes/auth.router');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -39,8 +40,8 @@ app.use(express.json());
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
-// app.use('/api/reg', registrationRouter);
+app.use('/api/auth', authRouter);
 
 app.listen(PORT, () => {
-  console.log('The server is up and running on', PORT);
+  console.info('The server is up and running on', PORT);
 });

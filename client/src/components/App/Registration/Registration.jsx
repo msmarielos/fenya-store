@@ -1,30 +1,27 @@
 import { useRef } from 'react';
-import { POST } from '../../../utils/httpMethods';
-import { routesApi } from '../../../utils/routesApi';
+import { useDispatch } from 'react-redux';
 
 export function Registration(props) {
   const nameInput = useRef();
   const emailInput = useRef();
+  const phoneInput = useRef();
   const passwordInput = useRef();
   const confirmPasswordInput = useRef();
+
+  const dispatch = useDispatch();
 
   const formHandler = event => {
     event.preventDefault();
 
-    const newReview = {
+    const newUser = {
       name: nameInput.current.value,
       email: emailInput.current.value,
+      phone: phoneInput.current.value,
       password: passwordInput.current.value,
     };
 
-    if (passwordInput === confirmPasswordInput) {
-      fetch(routesApi.reg, {
-        method: POST,
-        headers: { 'Content-Type': 'Application/json' },
-        body: JSON.stringify(newReview),
-      })
-        .then(res => res.json())
-        .then(data => console.log(data));
+    if (passwordInput.current.value === confirmPasswordInput.current.value) {
+      dispatch({ type: 'FETCH_CREATE_USER', payload: newUser });
     } else {
       alert('Пароли не совпадают'); //временно, надо сделать красиво
     }
@@ -39,6 +36,10 @@ export function Registration(props) {
       <div>
         <input ref={emailInput} id="email" type="email" required />
         <label htmlFor="email">Email</label>
+      </div>
+      <div>
+        <input ref={phoneInput} id="phone" type="text" required />
+        <label htmlFor="phone">Телефон</label>
       </div>
       <div>
         <input
