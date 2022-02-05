@@ -1,5 +1,6 @@
 import './SearchPanel.scss';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
 
 export default function SearchPanel() {
   return (
@@ -7,7 +8,9 @@ export default function SearchPanel() {
       <div className="search-panel">
         <div className="search-container">
           <div className="logo">
-            <Link to={'/'}><h1>Fenya Store</h1></Link>
+            <Link to={'/'}>
+              <h1>Fenya Store</h1>
+            </Link>
             <p>Интернет зоомагазин</p>
           </div>
           <form>
@@ -15,6 +18,7 @@ export default function SearchPanel() {
             <button className="regular-btn">Корзина</button>
           </form>
         </div>
+        <Navigation />
       </div>
     </>
   );
