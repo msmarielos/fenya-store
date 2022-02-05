@@ -8,6 +8,11 @@ router.get('/cats/food', (req, res) => {
   Item.findAll().then(items => res.json(items));
 });
 
+router.get('/:itemId', (req, res) => {
+  const id = req.params.itemId;
+  Item.findOne({ where: { id } }).then(item => res.json(item));
+});
+
 router.get('/', async (req, res) => {
   Item.findAll()
     .then(allItems => res.json(allItems))

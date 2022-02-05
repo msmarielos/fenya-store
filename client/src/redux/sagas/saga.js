@@ -5,6 +5,7 @@ import {
   updateItemsAC,
   addItemsAC,
   initCategoriesAC,
+  initCurrentItemAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 
@@ -19,6 +20,14 @@ function* getItemsAsync(action) {
   });
 
   yield put(initItemsAC(items));
+}
+
+function* getCurrentItemAsync(action) {
+  const item = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
+  });
+
+  yield put(initCurrentItemAC(item));
 }
 
 function* deleteItemAsync(action) {
@@ -74,6 +83,7 @@ function* getListsAsync() {
 
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
+  yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
   yield takeEvery('FETCH_DELETE_ITEM', deleteItemAsync);
   yield takeEvery('FETCH_PUT_ITEM', putItemAsync);
   yield takeEvery('FETCH_POST_ITEM', postItemAsync);
