@@ -170,6 +170,136 @@ module.exports = {
         updatedAt: new Date(),
         amount: 1,
       },
+      {
+        title:
+          'Ferribiella аксессуары игрушка "Джунгли зовут"',
+        description:
+          'Не можете отучить щенка грызть обувь? Легальная альтернатива домашнему хулиганству - безопасна и полезна во время активного роста прорезывания зубов.',
+        price: 900,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/fc/e0/06/416731_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Ferribiella аксессуары игрушка "Развяжи шнурок" латексная для собак',
+        description:
+          'Не можете отучить щенка грызть обувь? Легальная альтернатива домашнему хулиганству - безопасна и полезна во время активного роста прорезывания зубов.',
+        price: 900,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/bb/5a/b5/417559_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Papillon игрушка для собак "Зов Джунглей", 9 см, латекс',
+        description:
+          'Игрушки мягкие и твердые, шуршащие и звенящие, маленькие и побольше. Также в ассортименте производителя Papillon представлены канаты для перетягивания, латексные игрушки для прорезывания зубов, плюшевые косточки, мышки из натурального меха и многое другое.',
+        price: 390,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/33/6d/96/23746_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'GiGwi барсук, игрушка с двумя пищалками',
+        description:
+          'Игрушки мягкие и твердые, шуршащие и звенящие, маленькие и побольше. Также в ассортименте производителя Papillon представлены канаты для перетягивания, латексные игрушки для прорезывания зубов, плюшевые косточки, мышки из натурального меха и многое другое.',
+        price: 530,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/de/6d/49/498190_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Triol бутылка "Жучковское", виниловая игрушка с пищалкой для собак',
+        description:
+          'Порадуйте себя и своего питомца оригинальной виниловой игрушкой. Бутылка "Жучковского" утолит жажду вашего питомца грызть, а также сбережёт обувь и мебель.',
+        price: 300,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/8a/b1/8b/497890_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Trixie игрушка "Бургер", плюш, 13 см',
+        description:
+          'Игрушка для собак "Бургер", со звуком, размер: 13 см.',
+        price: 590,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/7c/24/d1/558336_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Triol игрушка "Спящий барашек" для собак, мягкая шуршащая',
+        description:
+          'Забавная игрушка с шуршалкой "Спящий барашек" обязательно понравится вашему питомцу. Такую игрушку удобно носить в зубах и вытаскивать из укромных уголков, а шуршащий наполнитель заинтересует собаку любого возраста.',
+        price: 330,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/4e/5b/17/561494_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Игрушка для животных «Пицца Розетта»',
+        description:
+          'Яркие и сочные принты привлекут внимание питомца и займут его на продолжительное время. Внутри игрушки находится натуральная кошачья мята для еще большего развлечения и удовольствия!',
+        price: 200,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/bf/76/a4/553876_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'Yami-Yami игрушка для собак "Веселая Морковка"',
+        description:
+          'Отличная игрушка с пищалкой для веселых игр с питомцем.',
+        price: 150,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/9f/3e/43/510566_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
+      {
+        title:
+          'MPets игрушка Ёжик длинный серый мягкая',
+        description:
+          'Игрушка мягкая MPets Ежик длинный для собак. Подходит для игры дома, а также для активных игр на улице.',
+        price: 500,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/41/5f/bb/559195_400x400.jpg',
+        rating: 0,
+        categoryType_id: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 1,
+      },
     ]);
   },
 
