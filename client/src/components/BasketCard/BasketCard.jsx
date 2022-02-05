@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import { updateItemsBasketAC, deleteItemsBasketAC } from '../../redux/actionCreators/basketAC';
 
@@ -36,6 +37,19 @@ function BasketCard({ item }) {
       <p></p>
       <p>{item.price} ₽</p>
     </>
+=======
+
+function BasketCard(props) {
+  return (
+    <div>
+      <img src='https://steamuserimages-a.akamaihd.net/ugc/456362427316098080/3C28639018563A1AE744375C0B37C84C6FCCE500/' alt='картика'/>
+      <button>+</button>
+      <button>-</button>
+      <button>Удалить</button>
+      <p></p>
+      <p>руб</p>
+    </div>
+>>>>>>> 9131a14132b99d0549f1af743ad769cd8a7d34cc
   );
 }
 

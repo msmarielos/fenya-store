@@ -10,3 +10,4 @@ export const rootReducer = combineReducers({
   lists: listsReducer,
   basketItems: basketReducer
 });
+

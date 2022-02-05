@@ -11,6 +11,7 @@ function Basket(props) {
     <div>
       {basketItems.length ? basketItems.map((item) => <BasketCard key={item.id} item={item} />) : 'Нет товаров в корзине'}
       <TotalItemCard/>
+
     </div>
   );
 }

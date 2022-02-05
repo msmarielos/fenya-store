@@ -33,6 +33,7 @@ export const basketReducer = (state = initialState, action) => {
       return item.id !== action.payload.id
     }) }
 
+
     default:
       return state
   }
