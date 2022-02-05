@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Food() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function Food() {
         category: pathname.split('/')[2],
       },
     });
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   return (
     <>
@@ -26,7 +26,11 @@ export default function Food() {
           <h1>Корм для кошек</h1>
           <ul>
             {items.map(item => (
-              <li key={item.id}>{item.title}</li>
+              <li key={item.id}>
+                <Link to={`${window.location.pathname}/${item.id}`}>
+                  {item.title}
+                </Link>
+              </li>
             ))}
           </ul>
         </>

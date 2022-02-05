@@ -9,6 +9,7 @@ import ItemForm from './components/ItemForm/ItemForm';
 import './index.scss';
 import { store } from './redux/store';
 import Food from './components/Food/Food';
+import Item from './components/Item/Item';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,6 +19,7 @@ ReactDOM.render(
           <Route index element={<Main />} />
           <Route path="cats" element={<Cats />} />
           <Route path="cats/food" element={<Food />} />
+          <Route path="cats/food/:foodid" element={<Item />} />
           <Route path="dogs" element={<Dogs />} />
           <Route path="items" element={<ItemForm />} />
         </Route>
