@@ -44,10 +44,9 @@ function* putItemAsync(action) {
 
 function* postItemAsync(action) {
   const newItem = yield call(fetchData, {
-    url: `${process.env.REACT_APP_ITEMS_URL}`,
-    headers: { 'Content-Type': 'Application/json' },
+    url: process.env.REACT_APP_ITEMS_URL,
     method: 'POST',
-    body: JSON.stringify(action.payload),
+    body: action.payload,
   });
 
   yield put(addItemsAC(newItem));
