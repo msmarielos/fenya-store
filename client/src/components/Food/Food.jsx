@@ -16,7 +16,7 @@ export default function Food() {
       type: 'FETCH_GET_ITEMS',
       payload: {
         type: pathname.split('/')[1],
-        category: pathname.split('/')[2],
+        category: pathname.split('/')[2] ?? 'all',
       },
     });
   }, [dispatch, pathname]);
@@ -31,7 +31,9 @@ export default function Food() {
 
   return (
     <>
-      {type === 'cats' ? <h1>Корм для кошек</h1> : <h1>Корм для собак</h1>}
+      {type === 'cats' && <h1>Корм для кошек</h1>}
+      {type === 'dogs' && <h1>Корм для собак</h1>}
+      {type === 'food' && <h1>Корм для животных</h1>}
       <div className="sort-block">
         <p>Отсортировать по цене:</p>
         <span onClick={sortDesc}>По возрастанию</span>

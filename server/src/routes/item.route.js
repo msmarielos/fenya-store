@@ -4,6 +4,10 @@ const { Item, CategoryType } = require('../db/models');
 const { storage } = require('../storage');
 const upload = multer({ storage });
 
+router.get('/food/all', (req, res) => {
+  Item.findAll().then(items => res.json(items));
+});
+
 router.get('/cats/food', (req, res) => {
   Item.findAll({ where: { categoryType_id: 1 } }).then(items =>
     res.json(items)
