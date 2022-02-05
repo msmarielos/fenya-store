@@ -61,16 +61,9 @@ function* postItemAsync(action) {
   yield put(addItemsAC(newItem));
 }
 
-function* getCategoryCatAsync() {
+function* getCategoryAsync(action) {
   const categories = yield call(fetchData, {
-    url: `${process.env.REACT_APP_CATEGORIES_URL}/cats`,
-  });
-  yield put(initCategoriesAC(categories));
-}
-
-function* getCategoryDogAsync() {
-  const categories = yield call(fetchData, {
-    url: `${process.env.REACT_APP_CATEGORIES_URL}/dogs`,
+    url: `${process.env.REACT_APP_CATEGORIES_URL}${action.payload}`,
   });
   yield put(initCategoriesAC(categories));
 }
@@ -87,7 +80,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_DELETE_ITEM', deleteItemAsync);
   yield takeEvery('FETCH_PUT_ITEM', putItemAsync);
   yield takeEvery('FETCH_POST_ITEM', postItemAsync);
-  yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
-  yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
+  yield takeEvery('FETCH_GET_CATEGORY', getCategoryAsync);
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
 }

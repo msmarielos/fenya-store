@@ -7,7 +7,10 @@ export default function Cats() {
   const { categories } = useSelector(state => state.categories);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CATEGORY_CATS' });
+    dispatch({
+      type: 'FETCH_GET_CATEGORY',
+      payload: window.location.pathname,
+    });
   }, [dispatch]);
 
   return (
