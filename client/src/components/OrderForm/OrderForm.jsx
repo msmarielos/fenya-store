@@ -16,8 +16,6 @@ function OrderForm(props) {
   const order = (event) => {
     event.preventDefault();
 
-    console.log(orderItem, 'orderItem')
-
     dispatch({ type: 'FETCH_POST_ORDER_ITEMS', payload: orderItem });
   };
 
