@@ -9,6 +9,9 @@ import {
   initCategoriesAC,
   initCurrentItemAC,
   initListItemsAC,
+  successResponseAC,
+  errorResponseAC,
+  pendingResponseAC
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
@@ -67,35 +70,55 @@ function* getCurrentItemAsync(action) {
 }
 
 function* deleteItemAsync(action) {
-  const id = yield call(fetchData, {
+  yield put(pendingResponseAC());
+
+  const response = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
     headers: { 'Content-Type': 'Application/json' },
     method: 'DELETE',
   });
 
-  yield put(deleteItemsAC(id));
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(deleteItemsAC(action.payload));
+  } else {
+    yield put(errorResponseAC());
+  }
 }
 
 function* putItemAsync(action) {
-  const updatedItem = yield call(fetchData, {
+  yield put(pendingResponseAC());
+  const response = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.id}`,
     method: 'PUT',
     body: action.payload.item,
   });
 
-  console.log(updatedItem);
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(addItemsAC(response.item));
+  } else {
+    yield put(errorResponseAC());
+  }
 
-  yield put(updateItemsAC(updatedItem));
+  yield put(updateItemsAC(response.item));
 }
 
 function* postItemAsync(action) {
-  const newItem = yield call(fetchData, {
+  yield put(pendingResponseAC());
+  const response = yield call(fetchData, {
     url: process.env.REACT_APP_ITEMS_URL,
     method: 'POST',
     body: action.payload,
   });
 
-  yield put(addItemsAC(newItem));
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(addItemsAC(response.item));
+  } else {
+    yield put(errorResponseAC());
+  }
+
 }
 
 function* getCategoryAsync(action) {

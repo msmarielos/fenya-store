@@ -7,8 +7,11 @@ import {
   INIT_ITEM_LIST,
   DELETE_ITEM,
   UPDATE_ITEM,
+  ITEM_RESPONSE_SUCCESS,
+  ITEM_RESPONSE_PENDING,
+  ITEM_RESPONSE_ERROR
 } from '../actionTypes/itemsAT';
-const initialState = { items: [], currentItem: {}, itemslist: [] };
+const initialState = { items: [], currentItem: {}, itemResponseSuccess: null, itemResponsePending: null, itemResponseError: null };
 
 export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,13 +27,22 @@ export const itemReducer = (state = initialState, action) => {
       return { ...state, items: action.payload };
 
     case INIT_ITEM_LIST:
-      return { ...state, itemslist: action.payload };
+      return { ...state, items: action.payload };
 
     case DELETE_ITEM:
       return {
         ...state,
-        itemslist: state.itemslist.filter(item => item.id !== action.payload),
+        items: state.items.filter(item => item.id !== Number(action.payload)),
       };
+    
+    case ITEM_RESPONSE_SUCCESS:
+      return {...state, itemResponseSuccess: true, itemResponseError: false, itemResponsePending: null };
+
+    case ITEM_RESPONSE_ERROR:
+      return {...state, itemResponseError: true, itemResponseSuccess: false, itemResponsePending: null };
+
+    case ITEM_RESPONSE_PENDING:
+      return { ...state, itemResponseError: null, itemResponseSuccess: null, itemResponsePending: true };
 
     case INIT_CURRENT_ITEM:
       return {
