@@ -23,7 +23,7 @@ export function Registration(props) {
     if (passwordInput.current.value === confirmPasswordInput.current.value) {
       dispatch({ type: 'FETCH_CREATE_USER', payload: newUser });
     } else {
-      alert('Пароли не совпадают'); //временно, надо сделать красиво
+      alert('Пароли не совпадают');
     }
   };
 

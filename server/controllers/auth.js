@@ -4,11 +4,11 @@ const userService = require('../services/user');
 async function signUp(req, res) {
   try {
     const user = await userService.createUser(req.body);
-    const tokens = await authService.createToken(user);
+    const token = await authService.createToken(user);
     res.status(201).json({
       success: true,
       message: 'Регистрация прошла успешно',
-      tokens,
+      token,
     });
   } catch (e) {
     res.status(400).json({
@@ -26,7 +26,7 @@ async function signIn(req, res) {
       success: true,
       message: 'Авторизация прошла успешно',
       token,
-      user,
+      // user,
     });
   } catch (e) {
     res.status(404).json({

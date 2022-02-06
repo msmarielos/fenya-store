@@ -14,6 +14,7 @@ import { Registration } from './components/App/Registration/Registration';
 import Item from './components/Item/Item';
 import Toys from './components/Toys/Toys';
 import Clothes from './components/Clothes/Clothes';
+import Login from './components/App/Login/Login';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
           <Route path="/reg" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
           <Route path="cats" element={<Cats />} />
           <Route path="cats/food" element={<Food />} />
           <Route path="cats/toys" element={<Toys />} />
