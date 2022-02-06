@@ -87,6 +87,15 @@ function* getListsAsync() {
   yield put(initListsAC(lists));
 }
 
+function* postOrderItemsAsync(action) {
+  const newItem = yield call(fetchData, {
+    url: process.env.REACT_APP_ORDER_URL,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'POST',
+    body: JSON.stringify(action.payload),
+  });
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -95,5 +104,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_ITEM', postItemAsync);
   yield takeEvery('FETCH_GET_CATEGORY', getCategoryAsync);
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
+  yield takeEvery('FETCH_POST_ORDER_ITEMS', postOrderItemsAsync);
   yield takeEvery('FETCH_CREATE_USER', postUserAsync);
 }

@@ -12,6 +12,7 @@ import { store } from './redux/store';
 import Food from './components/Food/Food';
 import { Registration } from './components/App/Registration/Registration';
 import Item from './components/Item/Item';
+import OrderForm from './components/OrderForm/OrderForm';
 import Toys from './components/Toys/Toys';
 import Clothes from './components/Clothes/Clothes';
 
@@ -37,6 +38,7 @@ ReactDOM.render(
           <Route path="food" element={<Food />} />
           <Route path="items" element={<ItemForm />} />
           <Route path="basket" element={<Basket />} />
+          <Route path="basket/orderform" element={<OrderForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

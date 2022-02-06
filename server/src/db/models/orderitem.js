@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
+      count: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,

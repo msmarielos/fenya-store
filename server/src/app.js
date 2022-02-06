@@ -14,6 +14,8 @@ const app = express();
 const itemRouter = require('./routes/item.route');
 const categoryRouter = require('./routes/category.route');
 const listsRouter = require('./routes/lists.route');
+const orderRouter = require('./routes/order.router');
+// const registrationRouter = require('./routes/registration.router');
 const authRouter = require('./routes/auth.router');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -40,6 +42,8 @@ app.use(express.json());
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
+app.use('/order', orderRouter);
+// app.use('/api/reg', registrationRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(PORT, () => {
