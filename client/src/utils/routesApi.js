@@ -1,4 +1,6 @@
+const api = `http://localhost:${process.env.REACT_APP_APIPORT}`;
+
 export const routesApi = {
-  reg: 'http://localhost:4000/api/auth/reg',
-  login: 'http://localhost:4000/api/auth/login',
+  reg: `${api}/api/auth/reg`,
+  login: `${api}/api/auth/login`,
 };
