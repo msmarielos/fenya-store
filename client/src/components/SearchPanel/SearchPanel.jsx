@@ -15,7 +15,9 @@ export default function SearchPanel() {
           </div>
           <form>
             <input className="search-input" type="text" placeholder="Поиск" />
-            <button className="regular-btn">Корзина</button>
+            <Link to="/basket">
+              <button className="regular-btn basket-btn">Корзина</button>
+            </Link>
           </form>
         </div>
         <Navigation />
