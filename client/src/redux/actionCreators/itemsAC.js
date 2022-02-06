@@ -7,6 +7,7 @@ import {
   INIT_CURRENT_ITEM,
   SORT_ITEMS_ASC,
   SORT_ITEMS_DESC,
+  INIT_ITEM_LIST,
 } from '../actionTypes/itemsAT';
 
 export const addItemsAC = payload => {
@@ -61,6 +62,13 @@ export const sortAscAC = payload => {
 export const sortDescAC = payload => {
   return {
     type: SORT_ITEMS_DESC,
+    payload,
+  };
+};
+
+export const initListItemsAC = payload => {
+  return {
+    type: INIT_ITEM_LIST,
     payload,
   };
 };

@@ -7,6 +7,7 @@ import {
   addItemsAC,
   initCategoriesAC,
   initCurrentItemAC,
+  initListItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { createUserAC } from '../actionCreators/userAC';
@@ -35,6 +36,14 @@ function* getItemsAsync(action) {
   yield put(initItemsAC(items));
 }
 
+function* getListItemsAsync(action) {
+  const items = yield call(fetchData, {
+    url: process.env.REACT_APP_ITEMS_URL,
+  });
+
+  yield put(initListItemsAC(items));
+}
+
 function* getCurrentItemAsync(action) {
   const item = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
@@ -56,10 +65,11 @@ function* deleteItemAsync(action) {
 function* putItemAsync(action) {
   const updatedItem = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.id}`,
-    headers: { 'Content-Type': 'Application/json' },
     method: 'PUT',
-    body: JSON.stringify(action.payload),
+    body: action.payload.item,
   });
+
+  console.log(updatedItem);
 
   yield put(updateItemsAC(updatedItem));
 }
@@ -106,4 +116,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
   yield takeEvery('FETCH_POST_ORDER_ITEMS', postOrderItemsAsync);
   yield takeEvery('FETCH_CREATE_USER', postUserAsync);
+  yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
 }
