@@ -4,7 +4,7 @@ import './AdminNav.scss';
 export default function AdminNav() {
   return (
     <>
-      <nav>
+      <nav className="admin-nav">
         <div className="container">
           <Link to="/items/add">Добавить товар</Link>
           <Link to="/items">Все товары</Link>
