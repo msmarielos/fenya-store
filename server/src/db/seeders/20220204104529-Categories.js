@@ -4,18 +4,21 @@ module.exports = {
       {
         name: 'Корм',
         url: 'food',
+        img: '/img/pet-food.png',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Игрушки',
         url: 'toys',
+        img: '/img/pet-toy.png',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Костюмы',
         url: 'clothes',
+        img: '/img/clothes.png',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

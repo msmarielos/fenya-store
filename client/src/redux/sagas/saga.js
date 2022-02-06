@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
   deleteItemsAC,
@@ -8,10 +9,22 @@ import {
   initCurrentItemAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
+import { createUserAC } from '../actionCreators/userAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
   return await response.json();
+}
+
+function* postUserAsync(action) {
+  console.log(process.env.REACT_APP_REG);
+  const user = yield call(fetchData, {
+    url: routesApi.reg,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(createUserAC(user));
 }
 
 function* getItemsAsync(action) {
@@ -93,4 +106,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_CATEGORY', getCategoryAsync);
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
   yield takeEvery('FETCH_POST_ORDER_ITEMS', postOrderItemsAsync);
+  yield takeEvery('FETCH_CREATE_USER', postUserAsync);
 }

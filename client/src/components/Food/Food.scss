@@ -1,0 +1,42 @@
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+
+  .item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    margin-top: 20px;
+
+    .price {
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      width: 150px;
+    }
+  }
+}
+
+.sort-block {
+  display: flex;
+
+  span,
+  p {
+    margin: 0 20px 0 0;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  span:hover {
+    color: #e84a53;
+  }
+}

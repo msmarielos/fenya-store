@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       Category.hasMany(CategoryType, { foreignKey: 'category_id' });
     }
   }
+
   Category.init(
     {
       name: {
@@ -18,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       url: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      img: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
