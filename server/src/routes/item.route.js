@@ -31,6 +31,13 @@ router.get('/', async (req, res) => {
     .catch(error => console.log(error));
 });
 
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  Item.destroy({ where: { id } })
+    .then((data) => (data ? res.json(id) : res.status(404).json(data)))
+    .catch((error) => res.status(500).json(error));
+});
+
 router.post('/', upload.single('img'), async (req, res) => {
   const { title, description, price, type, category, amount } = req.body;
   const { filename } = req.file;

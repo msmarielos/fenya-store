@@ -4,7 +4,8 @@ import {
   INIT_ITEMS,
   SORT_ITEMS_ASC,
   SORT_ITEMS_DESC,
-  INIT_ITEM_LIST
+  INIT_ITEM_LIST,
+  DELETE_ITEM
 } from '../actionTypes/itemsAT';
 const initialState = { items: [], currentItem: {}, itemslist: [] };
 
@@ -23,6 +24,9 @@ export const itemReducer = (state = initialState, action) => {
 
     case INIT_ITEM_LIST:
       return { ...state, itemslist: action.payload };
+
+    case DELETE_ITEM:
+      return { ...state, itemslist: state.itemslist.filter(item => item.id !== action.payload) }
 
     case INIT_CURRENT_ITEM:
       return {
