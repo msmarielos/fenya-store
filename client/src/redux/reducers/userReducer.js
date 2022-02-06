@@ -1,4 +1,4 @@
-import { CREATE_USER } from '../actionTypes/userAT';
+import { CREATE_USER, LOGIN_USER } from '../actionTypes/userAT';
 
 const initialState = { user: [] };
 
@@ -15,6 +15,9 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: state.user ? [...state.user, newUser] : [newUser],
       };
+
+    case LOGIN_USER:
+      return { ...state, user: state.user };
 
     default:
       return state;

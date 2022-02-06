@@ -15,6 +15,7 @@ import Item from './components/Item/Item';
 import OrderForm from './components/OrderForm/OrderForm';
 import Toys from './components/Toys/Toys';
 import Clothes from './components/Clothes/Clothes';
+import Login from './components/App/Login/Login';
 import AdminNav from './components/AdminNav/AdminNav';
 import ItemList from './components/ItemList/ItemList';
 import ItemEditForm from './components/ItemEditForm/ItemEditForm';
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
           <Route path="/reg" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
           <Route path="cats" element={<Cats />} />
           <Route path="cats/food" element={<Food />} />
           <Route path="cats/toys" element={<Toys />} />
