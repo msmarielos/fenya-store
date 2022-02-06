@@ -94,7 +94,6 @@ function* postOrderItemsAsync(action) {
     method: 'POST',
     body: JSON.stringify(action.payload),
   });
-  
 }
 
 export function* globalWatcher() {

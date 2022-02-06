@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {  Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function TotalItemCard(props) {
   const { basketItems } = useSelector(state => state.basketItems);
@@ -11,7 +11,9 @@ function TotalItemCard(props) {
     <>
       <button>Войти</button>
       <p>Товаров на сумму: {total} ₽</p>
-      <button><Link to='/basket/orderform'>Оформить заказ {total} </Link></button>
+      <button>
+        <Link to="/basket/orderform">Оформить заказ {total} </Link>
+      </button>
     </>
   );
 }

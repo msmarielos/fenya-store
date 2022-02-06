@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     user_id: 1,
   });
   try {
-    order.forEach(async (el) => {
+    order.forEach(async el => {
       await OrderItem.create({
         order_id: newOrder.id,
         item_id: el.id,
