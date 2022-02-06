@@ -1,5 +1,6 @@
+/* eslint-disable no-return-await */
 const bcrypt = require('bcryptjs');
-const { User } = require('../src/db/models');
+const { User } = require('../db/models');
 
 async function createUser(data) {
   const { name, email, phone, password } = data;
