@@ -1,4 +1,6 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { routesApi } from '../../../utils/routesApi';
 
 function Login(props) {
   const emailInput = useRef();
@@ -13,6 +15,8 @@ function Login(props) {
       email: emailInput.current.value,
       password: passwordInput.current.value,
     };
+
+    dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
   };
 
   return (
