@@ -16,6 +16,7 @@ import OrderForm from './components/OrderForm/OrderForm';
 import Toys from './components/Toys/Toys';
 import Clothes from './components/Clothes/Clothes';
 import AdminNav from './components/AdminNav/AdminNav'
+import ItemList from './components/ItemList/ItemList'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -38,6 +39,7 @@ ReactDOM.render(
 
           <Route path="food" element={<Food />} />
           <Route path="items/add" element={<ItemForm />} />
+          <Route path="items" element={<ItemList />} />
           <Route path="admin" element={<AdminNav />} />
           <Route path="basket" element={<Basket />} />
           <Route path="basket/orderform" element={<OrderForm />} />
