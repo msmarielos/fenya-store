@@ -11,8 +11,8 @@ export default function Navigation() {
           <Link to="/dogs">Собаки</Link>
           <Link to="/food">Корма</Link>
           <Link to="/toys">Игрушки</Link>
-          <Link to="/dogs">Одежда</Link>
-          <Link to="/dogs">О нас</Link>
+          <Link to="/clothes">Одежда</Link>
+          <Link to="/about">О нас</Link>
         </div>
       </nav>
     </>

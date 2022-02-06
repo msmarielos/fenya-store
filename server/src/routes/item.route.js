@@ -29,6 +29,18 @@ router.get('/toys/all', (req, res) => {
   Item.findAll({ where: { categoryType_id: [5, 2] } }).then((items) => res.json(items));
 });
 
+router.get('/dogs/clothes', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 3 } }).then((items) => res.json(items));
+});
+
+router.get('/cats/clothes', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 6 } }).then((items) => res.json(items));
+});
+
+router.get('/clothes/all', (req, res) => {
+  Item.findAll({ where: { categoryType_id: [3, 6] } }).then((items) => res.json(items));
+});
+
 router.get('/:itemId', (req, res) => {
   const id = req.params.itemId;
   Item.findOne({ where: { id } }).then((item) => res.json(item));

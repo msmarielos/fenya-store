@@ -32,6 +32,7 @@ ReactDOM.render(
           <Route path="cats/clothes" element={<Clothes />} />
           <Route path="cats/food/:id" element={<Item />} />
           <Route path="cats/toys/:id" element={<Item />} />
+          <Route path="cats/clothes/:id" element={<Item />} />
 
           <Route path="dogs" element={<Dogs />} />
           <Route path="dogs/food" element={<Food />} />
@@ -39,11 +40,14 @@ ReactDOM.render(
           <Route path="dogs/clothes" element={<Clothes />} />
           <Route path="dogs/toys/:id" element={<Item />} />
           <Route path="dogs/food/:id" element={<Item />} />
+          <Route path="dogs/clothes/:id" element={<Item />} />
 
           <Route path="food" element={<Food />} />
-          <Route path="food/:id" element={<Item />} />
           <Route path="toys" element={<Toys />} />
+          <Route path="clothes" element={<Clothes />} />
+          <Route path="food/:id" element={<Item />} />
           <Route path="toys/:id" element={<Item />} />
+          <Route path="clothes/:id" element={<Item />} />
 
           <Route path="items/add" element={<ItemForm />} />
           <Route path="items" element={<ItemList />} />
