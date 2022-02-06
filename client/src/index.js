@@ -12,6 +12,7 @@ import { store } from './redux/store';
 import { Registration } from './components/App/Registration/Registration';
 import Item from './components/Item/Item';
 import OrderForm from './components/OrderForm/OrderForm';
+import Login from './components/App/Login/Login';
 
 import AdminNav from './components/AdminNav/AdminNav';
 import ItemList from './components/ItemList/ItemList';
@@ -25,7 +26,8 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
           <Route path="reg" element={<Registration />} />
-
+          <Route path="/login" element={<Login />} />
+          
           <Route path="cats" element={<Cats />} />
           <Route path="dogs" element={<Dogs />} />
 
