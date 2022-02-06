@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { error, info } from '../../utils/toast';
 
 function ItemForm() {
   const itemForm = useRef();
   const dispatch = useDispatch();
   const types = useSelector(state => state.lists.types);
   const categories = useSelector(state => state.lists.categories);
+  const itemResponseSuccess = useSelector(
+    state => state.items.itemResponseSuccess
+  );
+  const itemResponseError = useSelector(state => state.items.itemResponseError);
 
   const addItem = event => {
     event.preventDefault();
@@ -19,6 +24,20 @@ function ItemForm() {
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_LISTS' });
   }, [dispatch]);
+
+  const notInitialRender = useRef(false);
+
+  useEffect(() => {
+    if (notInitialRender.current) {
+      if (itemResponseSuccess) {
+        info('Товар добавлен!');
+      } else if (itemResponseError) {
+        error('Ошибка!');
+      }
+    } else {
+      notInitialRender.current = true;
+    }
+  }, [itemResponseSuccess, itemResponseError]);
 
   return (
     <form ref={itemForm} encType="multipart/form-data" onSubmit={addItem}>
