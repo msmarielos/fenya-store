@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-export function Registration(props) {
+export function Registration() {
+  const navigate = useNavigate();
+
   const nameInput = useRef();
   const emailInput = useRef();
   const phoneInput = useRef();
@@ -22,6 +25,7 @@ export function Registration(props) {
 
     if (passwordInput.current.value === confirmPasswordInput.current.value) {
       dispatch({ type: 'FETCH_CREATE_USER', payload: newUser });
+      navigate('/login');
     } else {
       alert('Пароли не совпадают');
     }
