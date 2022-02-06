@@ -73,8 +73,8 @@ router.get('/', async (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Item.destroy({ where: { id } })
-    .then(data => (data ? res.json(id) : res.status(404).json(data)))
-    .catch(error => res.status(500).json(error));
+    .then(data => (data ? res.json({ success: true }) : res.status(404).json(data)))
+    .catch(error => res.status(500).json({ success: false, message: error }));
 });
 
 router.post('/', upload.single('img'), async (req, res) => {
@@ -89,36 +89,42 @@ router.post('/', upload.single('img'), async (req, res) => {
   });
 
   try {
-    await Item.create({
+    const item = await Item.create({
       title,
       description,
       price,
       categoryType_id: categoryType_id.id,
       rating: 0,
-      img: `storage/${filename}`,
+      img: `http://localhost:4000/storage/${filename}`,
       amount,
     });
-    res.json({ success: true });
+    res.json({ success: true, item });
   } catch (error) {
     res.status(500).json({ success: false });
   }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', upload.none(), async (req, res) => {
   const itemId = req.params.id;
   const { title, description, price, amount } = req.body;
 
-  Item.update(
+  const item = await Item.findByPk(itemId);
+
+  try {
+  await item.update(
     {
       title,
       description,
       price,
       amount,
     },
-    { where: { itemId }, returning: true }
   )
-    .then(updatedItem => res.json(updatedItem))
-    .catch(error => res.status(500).json(error));
+
+  item.save()
+  res.json({success: true, item})
+  } catch (error) {
+    res.status(500).json({ success: false });
+  }
 });
 
 module.exports = router;
