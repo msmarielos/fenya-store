@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-export function Registration(props) {
+export function Registration() {
+  const navigate = useNavigate();
+
   const nameInput = useRef();
   const emailInput = useRef();
   const phoneInput = useRef();
@@ -22,45 +25,65 @@ export function Registration(props) {
 
     if (passwordInput.current.value === confirmPasswordInput.current.value) {
       dispatch({ type: 'FETCH_CREATE_USER', payload: newUser });
+      navigate('/login');
     } else {
       alert('Пароли не совпадают');
     }
   };
 
   return (
-    <form onSubmit={formHandler}>
-      <div>
-        <input ref={nameInput} id="name" type="text" required autoFocus />
-        <label htmlFor="name">Имя</label>
-      </div>
-      <div>
-        <input ref={emailInput} id="email" type="email" required />
-        <label htmlFor="email">Email</label>
-      </div>
-      <div>
-        <input ref={phoneInput} id="phone" type="text" required />
-        <label htmlFor="phone">Телефон</label>
-      </div>
-      <div>
-        <input
-          ref={passwordInput}
-          id="password"
-          type="password"
-          required
-          minLength="2"
-        />
-        <label htmlFor="password">Пароль</label>
-      </div>
-      <div>
-        <input
-          ref={confirmPasswordInput}
-          id="password"
-          type="password"
-          required
-        />
-        <label htmlFor="password">Повторите пароль</label>
-      </div>
-      <button>Зарегистрироваться</button>
-    </form>
+    <>
+      <h1>Зарегистрироваться</h1>
+      <form onSubmit={formHandler} className="login-form">
+        <div>
+          <input
+            ref={nameInput}
+            id="name"
+            type="text"
+            placeholder="Логин"
+            required
+            autoFocus
+          />
+        </div>
+        <div>
+          <input
+            ref={emailInput}
+            id="email"
+            type="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div>
+          <input
+            ref={phoneInput}
+            id="phone"
+            type="text"
+            placeholder="Телефон"
+            required
+          />
+        </div>
+        <div>
+          <input
+            ref={passwordInput}
+            id="password"
+            type="password"
+            placeholder="Пароль"
+            required
+            minLength="2"
+          />
+        </div>
+        <div>
+          <input
+            ref={confirmPasswordInput}
+            id="password"
+            type="password"
+            placeholder="Повторите пароль"
+            required
+          />
+        </div>
+        <button className="regular-btn login-btn">Зарегистрироваться</button>
+      </form>
+    </>
   );
 }

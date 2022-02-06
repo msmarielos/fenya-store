@@ -11,6 +11,7 @@ import {
   initListItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
+import { initAnimalsAC } from '../actionCreators/animalAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -119,6 +120,14 @@ function* postOrderItemsAsync(action) {
   });
 }
 
+function* getAnimalsAsync(action) {
+  const animals = yield call(fetchData, {
+    url: process.env.REACT_APP_ANIMALS_URL,
+  });
+
+  yield put(initAnimalsAC(animals));
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -131,4 +140,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_CREATE_USER', postUserAsync);
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
+  yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
 }
