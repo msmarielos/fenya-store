@@ -6,6 +6,8 @@ import {
   updateItemsAC,
   addItemsAC,
   initCategoriesAC,
+  initCurrentItemAC,
+  initListItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { createUserAC, loginUserAC } from '../actionCreators/userAC';
@@ -47,6 +49,22 @@ function* getItemsAsync(action) {
   yield put(initItemsAC(items));
 }
 
+function* getListItemsAsync(action) {
+  const items = yield call(fetchData, {
+    url: process.env.REACT_APP_ITEMS_URL,
+  });
+
+  yield put(initListItemsAC(items));
+}
+
+function* getCurrentItemAsync(action) {
+  const item = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
+  });
+
+  yield put(initCurrentItemAC(item));
+}
+
 function* deleteItemAsync(action) {
   const id = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
@@ -60,10 +78,11 @@ function* deleteItemAsync(action) {
 function* putItemAsync(action) {
   const updatedItem = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.id}`,
-    headers: { 'Content-Type': 'Application/json' },
     method: 'PUT',
-    body: JSON.stringify(action.payload),
+    body: action.payload.item,
   });
+
+  console.log(updatedItem);
 
   yield put(updateItemsAC(updatedItem));
 }
@@ -97,6 +116,15 @@ function* getListsAsync() {
   yield put(initListsAC(lists));
 }
 
+function* postOrderItemsAsync(action) {
+  const newItem = yield call(fetchData, {
+    url: process.env.REACT_APP_ORDER_URL,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'POST',
+    body: JSON.stringify(action.payload),
+  });
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_DELETE_ITEM', deleteItemAsync);
@@ -105,6 +133,8 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
   yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
+  yield takeEvery('FETCH_POST_ORDER_ITEMS', postOrderItemsAsync);
   yield takeEvery('FETCH_CREATE_USER', postUserAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
+  yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
 }

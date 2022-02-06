@@ -23,6 +23,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      amount: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       rating: {
         type: Sequelize.INTEGER,
         allowNull: false,

@@ -2,10 +2,10 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const expressSession = require('express-session');
-const FileStore = require('session-file-store')(expressSession);
 const cors = require('cors');
-require('dotenv-safe').config();
+require('dotenv-safe').config({
+  allowEmptyValues: true,
+});
 
 const PORT = 4000;
 
@@ -14,32 +14,23 @@ const app = express();
 const itemRouter = require('./routes/item.route');
 const categoryRouter = require('./routes/category.route');
 const listsRouter = require('./routes/lists.route');
+const orderRouter = require('./routes/order.router');
+// const registrationRouter = require('./routes/registration.router');
 const authRouter = require('./routes/auth.router');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-const sessionConfig = {
-  store: new FileStore(),
-  name: 'user_sid',
-  secret: process.env.SESSION_SECRET ?? 'test',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 12,
-    httpOnly: true,
-  },
-};
-
 app.use(cors());
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(expressSession(sessionConfig));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
+app.use('/order', orderRouter);
+// app.use('/api/reg', registrationRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(PORT, () => {
