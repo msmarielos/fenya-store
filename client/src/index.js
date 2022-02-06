@@ -25,8 +25,8 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
-          <Route path="reg" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="registration" element={<Registration />} />
+          <Route path="login" element={<Login />} />
 
           <Route path="cats" element={<Cats />} />
           <Route path="dogs" element={<Dogs />} />
