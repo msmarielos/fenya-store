@@ -642,6 +642,137 @@ module.exports = {
         updatedAt: new Date(),
         amount: 20,
       },
+
+      {
+        title: 'Tappi одежда комбинезон "Фронроу" без подкладки, серый',
+        description:
+          'Универсальный комбинезон из мембранной ткани с трикотажными манжетами и отстегивающимся капюшоном',
+        price: 1640,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/73/ab/3f/536968_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'Lelap жилетка "Грандэ" для собак, черная',
+        description:
+          'Стильные утепленные жилетки с эксклюзивными дизайнерскими принтами.',
+        price: 1955,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/3e/02/95/552458_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'Tappi одежда бандана "Баден", розовая',
+        description:
+          'Удиви всех своим фирменным стилем вместе с аксессуарами Tappi! ',
+        price: 250,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/1d/9a/69/536894_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'Yami-Yami одежда рубашка для собак, бежевая',
+        description:
+          'Красочная и комфортная рубашка для питомца на каждый день!',
+        price: 670,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/1c/72/a1/547788_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'OSSO футболка для собак «Сафари»',
+        description:
+          'Футболка для любой маленькой собачки  всегда актуальна в гардеробе жарким и пыльным летом',
+        price: 240,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/d7/e1/2a/554583_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'Yami-Yami одежда куртка для собак, желтая',
+        description:
+          'Cтильные и яркие курточки для настоящих модников, идеальное решение для прогулок.',
+        price: 927,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/ab/28/18/547759_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'Ferribiella одежда жилет из экокожи "Харли" (бежевый)',
+        description:
+          'Настоящий итальянский шик и удобство - жилет роскошных цветов из-экокожи.',
+        price: 927,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/6f/99/2b/353385_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title: 'Pinkaholic козырек с совами, голубой',
+        description:
+          'Стильный козырек для вашего питомца придаст ему оригинальности',
+        price: 623,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/bc/77/2d/343725_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+
+      {
+        title:
+          'Yami-Yami одежда комбинезон для йорк-терьера, с рисунком "камуфляж',
+        description:
+          'Дождевик с водотталкивающей пропиткой позволит вашему питомцу оставаться сухим и чистым во время прогулок в дождливую погоду.',
+        price: 840,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/7e/73/de/516043_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
+      {
+        title:
+          'Yami-Yami одежда комбинезон для собак, на флисовой подкладке, коричнево-розовый',
+        description:
+          'Комбинезон Yami-Yami на флисовой подкладке надежно защитит Вашего питомца от холода и сильного ветра. ',
+        price: 1336,
+        img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/be/e6/bb/559122_400x400.jpg',
+        rating: 0,
+        categoryType_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        amount: 20,
+      },
     ]);
   },
 
