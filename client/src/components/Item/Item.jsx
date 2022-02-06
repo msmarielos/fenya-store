@@ -12,8 +12,8 @@ export default function Item() {
   const { currentItem } = useSelector(state => state.items);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.foodId });
-  }, [dispatch, params.foodId]);
+    dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
+  }, [dispatch, params.id]);
 
   return (
     <>

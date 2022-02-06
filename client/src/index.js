@@ -30,18 +30,25 @@ ReactDOM.render(
           <Route path="cats/food" element={<Food />} />
           <Route path="cats/toys" element={<Toys />} />
           <Route path="cats/clothes" element={<Clothes />} />
-          <Route path="cats/food/:foodId" element={<Item />} />
+          <Route path="cats/food/:id" element={<Item />} />
+          <Route path="cats/toys/:id" element={<Item />} />
 
           <Route path="dogs" element={<Dogs />} />
           <Route path="dogs/food" element={<Food />} />
           <Route path="dogs/toys" element={<Toys />} />
           <Route path="dogs/clothes" element={<Clothes />} />
-          <Route path="dogs/food/:foodId" element={<Item />} />
+          <Route path="dogs/toys/:id" element={<Item />} />
+          <Route path="dogs/food/:id" element={<Item />} />
 
           <Route path="food" element={<Food />} />
+          <Route path="food/:id" element={<Item />} />
+          <Route path="toys" element={<Toys />} />
+          <Route path="toys/:id" element={<Item />} />
+
           <Route path="items/add" element={<ItemForm />} />
           <Route path="items" element={<ItemList />} />
           <Route path="items/:id" element={<ItemEditForm />} />
+
           <Route path="admin" element={<AdminNav />} />
           <Route path="basket" element={<Basket />} />
           <Route path="basket/orderform" element={<OrderForm />} />
