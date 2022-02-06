@@ -49,7 +49,6 @@ ReactDOM.render(
         </Route>
       </Routes>
     </BrowserRouter>
-    ,
   </Provider>,
   document.getElementById('root')
 );
