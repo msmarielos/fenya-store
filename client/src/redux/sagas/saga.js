@@ -65,10 +65,11 @@ function* deleteItemAsync(action) {
 function* putItemAsync(action) {
   const updatedItem = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.id}`,
-    headers: { 'Content-Type': 'Application/json' },
     method: 'PUT',
-    body: JSON.stringify(action.payload),
+    body: action.payload.item,
   });
+
+  console.log(updatedItem)
 
   yield put(updateItemsAC(updatedItem));
 }

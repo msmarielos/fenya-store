@@ -20,24 +20,36 @@ function ItemEditForm() {
 
     const editedItem = new FormData(editForm.current);
 
-    dispatch({ type: 'FETCH_PUT_ITEM', payload: editedItem })
+    dispatch({ type: 'FETCH_PUT_ITEM', payload: {
+      item: editedItem,
+      id: id,
+    }, 
+  })
   }
 
   return (
     <div>
       <form onSubmit={editItem} ref={editForm} encType="multipart/form-data">
-      <textarea type="text" name="title" defaultValue={currentItem.title} />
-      <input type="number" name="price" defaultValue={currentItem.price} />
-      <input
+      <label>Название:
+        <textarea type="text" name="title" defaultValue={currentItem.title} />
+      </label>
+      <label>Цена:
+        <input type="number" name="price" defaultValue={currentItem.price} />
+      </label>
+      <label>Описание:
+        <input
         type="text"
         name="description"
         defaultValue={currentItem.description}
-      />
+        />
+      </label>
+      <label>Количество:
       <input
         type="number"
         name="amount"
         defaultValue={currentItem.amount}
       />
+      </label>
         <button type='submit'>
           Сохранить
         </button>

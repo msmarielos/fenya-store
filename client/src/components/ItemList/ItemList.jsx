@@ -13,7 +13,6 @@ function ItemList() {
 
   const deleteFetch = (event) => {
     const id = event.target.dataset.id;
-    console.log(id)
     dispatch({ type: 'FETCH_DELETE_ITEM', payload: id })
   }
 
