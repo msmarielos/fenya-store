@@ -121,7 +121,9 @@ function* postOrderItemsAsync(action) {
 }
 
 function* getAnimalsAsync(action) {
-  const animals = yield call(fetchData, { url: process.env.REACT_APP_ANIMALS_URL });
+  const animals = yield call(fetchData, {
+    url: process.env.REACT_APP_ANIMALS_URL,
+  });
 
   yield put(initAnimalsAC(animals));
 }

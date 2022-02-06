@@ -10,12 +10,12 @@ const initialState = {
 
 export const animalReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case INIT_ANIMAL:
       return {
-        ...state, animals: action.payload 
+        ...state,
+        animals: action.payload,
       };
-    
+
     case ADD_ANIMAL:
       const newAnimal = {
         id: action.payload.id,
@@ -29,10 +29,11 @@ export const animalReducer = (state = initialState, action) => {
         user_id: action.payload.user_id,
         img: action.payload.img,
         type: action.payload.type,
-      }
+      };
 
       return {
-        ...state, animals: state.animals ? [...state.animals, newAnimal] : [newAnimal]
+        ...state,
+        animals: state.animals ? [...state.animals, newAnimal] : [newAnimal],
       };
 
     // case UPDATE_ANIMAL:
