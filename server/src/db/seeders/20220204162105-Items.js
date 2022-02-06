@@ -491,8 +491,7 @@ module.exports = {
       },
       {
         title: 'Yami-Yami ошейник синтетический светоотражающий',
-        description:
-          'Отличный ошейник для Вашего питомца.',
+        description: 'Отличный ошейник для Вашего питомца.',
         price: 150,
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/76/92/43/532403_400x400.jpg',
         rating: 0,
@@ -503,8 +502,7 @@ module.exports = {
       },
       {
         title: 'Yami-Yami ошейник со светоотражающим кантом',
-        description:
-          'Отличный ошейник для Вашего питомца.',
+        description: 'Отличный ошейник для Вашего питомца.',
         price: 350,
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/d2/04/e5/126846_400x400.jpg',
         rating: 0,
@@ -563,8 +561,7 @@ module.exports = {
       },
       {
         title: 'Hunter hunter LED Поводок Manoa Glow, желтый',
-        description:
-          'Поводок LED светодиодный. Зарядка через USB.',
+        description: 'Поводок LED светодиодный. Зарядка через USB.',
         price: 2300,
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/b0/e2/b0/497499_400x400.jpg',
         rating: 0,
@@ -575,8 +572,7 @@ module.exports = {
       },
       {
         title: 'Petsee GPS-ошейник, чёрный',
-        description:
-          'Поводок LED светодиодный. Зарядка через USB.',
+        description: 'Поводок LED светодиодный. Зарядка через USB.',
         price: 3500,
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/84/92/3c/520729_400x400.jpg',
         rating: 0,
@@ -586,7 +582,8 @@ module.exports = {
         amount: 20,
       },
       {
-        title: 'Ferribiella аксессуары cветящийся тонкий силиконовый ошейник, розовый',
+        title:
+          'Ferribiella аксессуары cветящийся тонкий силиконовый ошейник, розовый',
         description:
           'Плоские ошейники ярких неоновых расцветок помогут вам разглядеть заигравшегося в траве питомца.',
         price: 910,
@@ -622,9 +619,9 @@ module.exports = {
         amount: 20,
       },
       {
-        title: 'Yami-Yami двухслойный кожаный поводок "Брайт" с карабином, красный',
-        description:
-          'Двухслойный кожаный поводок "Брайт" с карабином.',
+        title:
+          'Yami-Yami двухслойный кожаный поводок "Брайт" с карабином, красный',
+        description: 'Двухслойный кожаный поводок "Брайт" с карабином.',
         price: 490,
         img: 'https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/ae/3e/f4/496746_400x400.jpg',
         rating: 0,
