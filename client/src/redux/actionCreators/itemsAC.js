@@ -10,7 +10,7 @@ import {
   INIT_ITEM_LIST,
   ITEM_RESPONSE_SUCCESS,
   ITEM_RESPONSE_PENDING,
-  ITEM_RESPONSE_ERROR
+  ITEM_RESPONSE_ERROR,
 } from '../actionTypes/itemsAT';
 
 export const addItemsAC = payload => {

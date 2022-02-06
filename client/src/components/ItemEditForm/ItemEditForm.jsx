@@ -10,7 +10,9 @@ function ItemEditForm() {
   const editForm = useRef();
 
   const currentItem = useSelector(state => state.items.currentItem);
-  const itemResponseSuccess = useSelector(state => state.items.itemResponseSuccess);
+  const itemResponseSuccess = useSelector(
+    state => state.items.itemResponseSuccess
+  );
   const itemResponseError = useSelector(state => state.items.itemResponseError);
 
   useEffect(() => {
@@ -31,19 +33,19 @@ function ItemEditForm() {
     });
   };
 
-  const notInitialRender = useRef(false)
+  const notInitialRender = useRef(false);
 
   useEffect(() => {
     if (notInitialRender.current) {
-      if (itemResponseSuccess) { 
-        info('Информация отредактирована!') 
-      } else if (itemResponseError) { 
-        error('Ошибка!') 
+      if (itemResponseSuccess) {
+        info('Информация отредактирована!');
+      } else if (itemResponseError) {
+        error('Ошибка!');
       }
     } else {
-      notInitialRender.current = true
+      notInitialRender.current = true;
     }
-  }, [itemResponseSuccess, itemResponseError])
+  }, [itemResponseSuccess, itemResponseError]);
 
   return (
     <div>

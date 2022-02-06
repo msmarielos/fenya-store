@@ -9,9 +9,15 @@ import {
   UPDATE_ITEM,
   ITEM_RESPONSE_SUCCESS,
   ITEM_RESPONSE_PENDING,
-  ITEM_RESPONSE_ERROR
+  ITEM_RESPONSE_ERROR,
 } from '../actionTypes/itemsAT';
-const initialState = { items: [], currentItem: {}, itemResponseSuccess: null, itemResponsePending: null, itemResponseError: null };
+const initialState = {
+  items: [],
+  currentItem: {},
+  itemResponseSuccess: null,
+  itemResponsePending: null,
+  itemResponseError: null,
+};
 
 export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -34,15 +40,30 @@ export const itemReducer = (state = initialState, action) => {
         ...state,
         items: state.items.filter(item => item.id !== Number(action.payload)),
       };
-    
+
     case ITEM_RESPONSE_SUCCESS:
-      return {...state, itemResponseSuccess: true, itemResponseError: false, itemResponsePending: null };
+      return {
+        ...state,
+        itemResponseSuccess: true,
+        itemResponseError: false,
+        itemResponsePending: null,
+      };
 
     case ITEM_RESPONSE_ERROR:
-      return {...state, itemResponseError: true, itemResponseSuccess: false, itemResponsePending: null };
+      return {
+        ...state,
+        itemResponseError: true,
+        itemResponseSuccess: false,
+        itemResponsePending: null,
+      };
 
     case ITEM_RESPONSE_PENDING:
-      return { ...state, itemResponseError: null, itemResponseSuccess: null, itemResponsePending: true };
+      return {
+        ...state,
+        itemResponseError: null,
+        itemResponseSuccess: null,
+        itemResponsePending: true,
+      };
 
     case INIT_CURRENT_ITEM:
       return {

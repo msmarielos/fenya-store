@@ -11,7 +11,7 @@ import {
   initListItemsAC,
   successResponseAC,
   errorResponseAC,
-  pendingResponseAC
+  pendingResponseAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
@@ -118,7 +118,6 @@ function* postItemAsync(action) {
   } else {
     yield put(errorResponseAC());
   }
-
 }
 
 function* getCategoryAsync(action) {

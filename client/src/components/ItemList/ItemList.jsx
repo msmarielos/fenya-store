@@ -6,7 +6,9 @@ import { error, info } from '../../utils/toast';
 
 function ItemList() {
   const items = useSelector(state => state.items.items);
-  const itemResponseSuccess = useSelector(state => state.items.itemResponseSuccess);
+  const itemResponseSuccess = useSelector(
+    state => state.items.itemResponseSuccess
+  );
   const itemResponseError = useSelector(state => state.items.itemResponseError);
 
   const dispatch = useDispatch();
@@ -20,33 +22,33 @@ function ItemList() {
     dispatch({ type: 'FETCH_DELETE_ITEM', payload: id });
   };
 
-  const notInitialRender = useRef(false)
+  const notInitialRender = useRef(false);
 
   useEffect(() => {
     if (notInitialRender.current) {
-      if (itemResponseSuccess) { 
-        info('Товар удален!') 
-      } else if (itemResponseError) { 
-        error('Ошибка!') 
+      if (itemResponseSuccess) {
+        info('Товар удален!');
+      } else if (itemResponseError) {
+        error('Ошибка!');
       }
     } else {
-      notInitialRender.current = true
+      notInitialRender.current = true;
     }
-  }, [itemResponseSuccess, itemResponseError])
+  }, [itemResponseSuccess, itemResponseError]);
 
   return (
-      <ul>
-        {items?.length &&
-          items.map(item => (
-            <li key={item.id}>
-              {item.title}
-              <Link to={`/items/${item.id}`}>Редактировать</Link>
-              <button key={item.id} data-id={item.id} onClick={deleteFetch}>
-                Удалить
-              </button>
-            </li>
-          ))}
-      </ul>
+    <ul>
+      {items?.length &&
+        items.map(item => (
+          <li key={item.id}>
+            {item.title}
+            <Link to={`/items/${item.id}`}>Редактировать</Link>
+            <button key={item.id} data-id={item.id} onClick={deleteFetch}>
+              Удалить
+            </button>
+          </li>
+        ))}
+    </ul>
   );
 }
 

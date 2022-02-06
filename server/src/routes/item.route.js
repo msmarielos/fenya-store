@@ -73,7 +73,9 @@ router.get('/', async (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Item.destroy({ where: { id } })
-    .then(data => (data ? res.json({ success: true }) : res.status(404).json(data)))
+    .then(data =>
+      data ? res.json({ success: true }) : res.status(404).json(data)
+    )
     .catch(error => res.status(500).json({ success: false, message: error }));
 });
 
@@ -111,17 +113,15 @@ router.put('/:id', upload.none(), async (req, res) => {
   const item = await Item.findByPk(itemId);
 
   try {
-  await item.update(
-    {
+    await item.update({
       title,
       description,
       price,
       amount,
-    },
-  )
+    });
 
-  item.save()
-  res.json({success: true, item})
+    item.save();
+    res.json({ success: true, item });
   } catch (error) {
     res.status(500).json({ success: false });
   }
