@@ -15,9 +15,9 @@ import Item from './components/Item/Item';
 import OrderForm from './components/OrderForm/OrderForm';
 import Toys from './components/Toys/Toys';
 import Clothes from './components/Clothes/Clothes';
-import AdminNav from './components/AdminNav/AdminNav'
-import ItemList from './components/ItemList/ItemList'
-import ItemEditForm from './components/ItemEditForm/ItemEditForm'
+import AdminNav from './components/AdminNav/AdminNav';
+import ItemList from './components/ItemList/ItemList';
+import ItemEditForm from './components/ItemEditForm/ItemEditForm';
 
 ReactDOM.render(
   <Provider store={store}>

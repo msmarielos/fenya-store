@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 require('dotenv-safe').config({
-  allowEmptyValues: true
+  allowEmptyValues: true,
 });
 
 const PORT = 4000;

@@ -69,7 +69,7 @@ function* putItemAsync(action) {
     body: action.payload.item,
   });
 
-  console.log(updatedItem)
+  console.log(updatedItem);
 
   yield put(updateItemsAC(updatedItem));
 }

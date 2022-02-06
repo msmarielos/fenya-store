@@ -34,8 +34,8 @@ router.get('/', async (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Item.destroy({ where: { id } })
-    .then((data) => (data ? res.json(id) : res.status(404).json(data)))
-    .catch((error) => res.status(500).json(error));
+    .then(data => (data ? res.json(id) : res.status(404).json(data)))
+    .catch(error => res.status(500).json(error));
 });
 
 router.post('/', upload.single('img'), async (req, res) => {
@@ -65,14 +65,16 @@ router.post('/', upload.single('img'), async (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
   const itemId = req.params.id;
   const { title, description, price, amount } = req.body;
 
-  Item.update({ title, description, price, amount }, { where: { itemId }, returning: true })
-      .then((updatedItem) => res.json(updatedItem))
-      .catch((error) => res.status(500).json(error));
+  Item.update(
+    { title, description, price, amount },
+    { where: { itemId }, returning: true }
+  )
+    .then(updatedItem => res.json(updatedItem))
+    .catch(error => res.status(500).json(error));
 });
-
 
 module.exports = router;
