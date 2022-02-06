@@ -10,8 +10,8 @@ export default function Navigation() {
     { url: '/toys', title: 'Игрушки' },
     { url: '/clothes', title: 'Одежда' },
     { url: '/about', title: 'О нас' },
-    { url: '/login', title: 'Войти' },
-    { url: '/registration', title: 'Зарегистрироваться' },
+    { url: '/login', title: 'Вход' },
+    { url: '/registration', title: 'Регистрация' },
   ];
   return (
     <>
