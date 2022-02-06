@@ -17,14 +17,7 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case LOGIN_USER:
-      const user = {
-        email: action.payload.email,
-      };
-
-      return {
-        ...state,
-        user: state.user ? [...state.user, user] : [user],
-      };
+      return { ...state, user: state.user };
 
     default:
       return state;

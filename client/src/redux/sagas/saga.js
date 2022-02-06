@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
   deleteItemsAC,
@@ -7,10 +8,35 @@ import {
   initCategoriesAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
+import { createUserAC, loginUserAC } from '../actionCreators/userAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
   return await response.json();
+}
+
+function* postUserAsync(action) {
+  const newUser = yield call(fetchData, {
+    url: routesApi.reg,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(createUserAC(newUser));
+}
+
+function* loginUserAsync(action) {
+  const user = yield call(fetchData, {
+    url: routesApi.login,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer',
+    },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(loginUserAC(user));
+  localStorage.setItem('token', JSON.stringify(user.token.accessToken));
 }
 
 function* getItemsAsync(action) {
@@ -79,4 +105,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_CATEGORY_CATS', getCategoryCatAsync);
   yield takeEvery('FETCH_GET_CATEGORY_DOGS', getCategoryDogAsync);
   yield takeEvery('FETCH_GET_LISTS', getListsAsync);
+  yield takeEvery('FETCH_CREATE_USER', postUserAsync);
+  yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
 }
