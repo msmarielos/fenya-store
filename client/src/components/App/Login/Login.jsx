@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { routesApi } from '../../../utils/routesApi';
+import './Login.scss';
 
 function Login(props) {
   const emailInput = useRef();
@@ -20,17 +21,28 @@ function Login(props) {
   };
 
   return (
-    <form onSubmit={formHandler}>
-      <div>
-        <input ref={emailInput} id="email" type="email" required />
-        <label htmlFor="email">Email</label>
-      </div>
-      <div>
-        <input ref={passwordInput} id="password" type="password" required />
-        <label htmlFor="password">Пароль</label>
-      </div>
-      <button>Войти</button>
-    </form>
+    <>
+      <h1>Войти в личный кабинет</h1>
+      <form onSubmit={formHandler} className="login-form">
+        <input
+          ref={emailInput}
+          id="email"
+          type="email"
+          placeholder="Логин"
+          required
+        />
+
+        <input
+          ref={passwordInput}
+          id="password"
+          type="password"
+          placeholder="Пароль"
+          required
+        />
+
+        <button className="regular-btn login-btn">Войти</button>
+      </form>
+    </>
   );
 }
 
