@@ -9,16 +9,14 @@ import ItemForm from './components/ItemForm/ItemForm';
 import Basket from './components/Basket/Basket';
 import './index.scss';
 import { store } from './redux/store';
-import Food from './components/Food/Food';
 import { Registration } from './components/App/Registration/Registration';
 import Item from './components/Item/Item';
 import OrderForm from './components/OrderForm/OrderForm';
-import Toys from './components/Toys/Toys';
-import Clothes from './components/Clothes/Clothes';
-import Login from './components/App/Login/Login';
+
 import AdminNav from './components/AdminNav/AdminNav';
 import ItemList from './components/ItemList/ItemList';
 import ItemEditForm from './components/ItemEditForm/ItemEditForm';
+import Category from './components/Category/Category';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -26,24 +24,23 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
-          <Route path="/reg" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="reg" element={<Registration />} />
+
           <Route path="cats" element={<Cats />} />
-          <Route path="cats/food" element={<Food />} />
-          <Route path="cats/toys" element={<Toys />} />
-          <Route path="cats/clothes" element={<Clothes />} />
-          <Route path="cats/food/:foodId" element={<Item />} />
-
           <Route path="dogs" element={<Dogs />} />
-          <Route path="dogs/food" element={<Food />} />
-          <Route path="dogs/toys" element={<Toys />} />
-          <Route path="dogs/clothes" element={<Clothes />} />
-          <Route path="dogs/food/:foodId" element={<Item />} />
 
-          <Route path="food" element={<Food />} />
+          <Route path=":category" element={<Category />} />
+          <Route path="cats/:category" element={<Category />} />
+          <Route path="dogs/:category" element={<Category />} />
+
+          <Route path=":category/:id" element={<Item />} />
+          <Route path="cats/:category/:id" element={<Item />} />
+          <Route path="dogs/:category/:id" element={<Item />} />
+
           <Route path="items/add" element={<ItemForm />} />
           <Route path="items" element={<ItemList />} />
           <Route path="items/:id" element={<ItemEditForm />} />
+
           <Route path="admin" element={<AdminNav />} />
           <Route path="basket" element={<Basket />} />
           <Route path="basket/orderform" element={<OrderForm />} />

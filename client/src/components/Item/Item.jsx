@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './Item.scss';
 
 export default function Item() {
@@ -12,8 +12,8 @@ export default function Item() {
   const { currentItem } = useSelector(state => state.items);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.foodId });
-  }, [dispatch, params.foodId]);
+    dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
+  }, [dispatch, params.id]);
 
   return (
     <>

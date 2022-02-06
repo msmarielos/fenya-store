@@ -2,10 +2,13 @@ const router = require('express').Router();
 const multer = require('multer');
 const { Item, CategoryType } = require('../db/models');
 const { storage } = require('../storage');
+
 const upload = multer({ storage });
 
 router.get('/food/all', (req, res) => {
-  Item.findAll().then(items => res.json(items));
+  Item.findAll({ where: { categoryType_id: [1, 4] } }).then(items =>
+    res.json(items)
+  );
 });
 
 router.get('/cats/food', (req, res) => {
@@ -16,6 +19,42 @@ router.get('/cats/food', (req, res) => {
 
 router.get('/dogs/food', (req, res) => {
   Item.findAll({ where: { categoryType_id: 4 } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/dogs/toys', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 5 } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/cats/toys', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 2 } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/toys/all', (req, res) => {
+  Item.findAll({ where: { categoryType_id: [5, 2] } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/dogs/clothes', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 3 } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/cats/clothes', (req, res) => {
+  Item.findAll({ where: { categoryType_id: 6 } }).then(items =>
+    res.json(items)
+  );
+});
+
+router.get('/clothes/all', (req, res) => {
+  Item.findAll({ where: { categoryType_id: [3, 6] } }).then(items =>
     res.json(items)
   );
 });
@@ -70,7 +109,12 @@ router.put('/:id', (req, res) => {
   const { title, description, price, amount } = req.body;
 
   Item.update(
-    { title, description, price, amount },
+    {
+      title,
+      description,
+      price,
+      amount,
+    },
     { where: { itemId }, returning: true }
   )
     .then(updatedItem => res.json(updatedItem))
