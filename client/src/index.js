@@ -23,29 +23,18 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Main />} />
-          <Route path="/reg" element={<Registration />} />
+          <Route path="reg" element={<Registration />} />
+
           <Route path="cats" element={<Cats />} />
-          <Route path="cats/food" element={<Category />} />
-          <Route path="cats/toys" element={<Category />} />
-          <Route path="cats/clothes" element={<Category />} />
-          <Route path="cats/food/:id" element={<Item />} />
-          <Route path="cats/toys/:id" element={<Item />} />
-          <Route path="cats/clothes/:id" element={<Item />} />
-
           <Route path="dogs" element={<Dogs />} />
-          <Route path="dogs/food" element={<Category />} />
-          <Route path="dogs/toys" element={<Category />} />
-          <Route path="dogs/clothes" element={<Category />} />
-          <Route path="dogs/toys/:id" element={<Item />} />
-          <Route path="dogs/food/:id" element={<Item />} />
-          <Route path="dogs/clothes/:id" element={<Item />} />
 
-          <Route path="food" element={<Category />} />
-          <Route path="toys" element={<Category />} />
-          <Route path="clothes" element={<Category />} />
-          <Route path="food/:id" element={<Item />} />
-          <Route path="toys/:id" element={<Item />} />
-          <Route path="clothes/:id" element={<Item />} />
+          <Route path=":category" element={<Category />} />
+          <Route path="cats/:category" element={<Category />} />
+          <Route path="dogs/:category" element={<Category />} />
+
+          <Route path=":category/:id" element={<Item />} />
+          <Route path="cats/:category/:id" element={<Item />} />
+          <Route path="dogs/:category/:id" element={<Item />} />
 
           <Route path="items/add" element={<ItemForm />} />
           <Route path="items" element={<ItemList />} />

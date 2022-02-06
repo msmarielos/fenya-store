@@ -6,9 +6,8 @@ import './Category.scss';
 
 export default function Category() {
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
-  const type = pathname.split('/')[1];
 
+  const { pathname } = useLocation();
   const { items } = useSelector(state => state.items);
 
   useEffect(() => {
@@ -34,9 +33,9 @@ export default function Category() {
       {pathname === '/cats/toys' && <h1>Игрушки для кошек</h1>}
       {pathname === '/cats/food' && <h1>Еда для кошек</h1>}
       {pathname === '/cats/clothes' && <h1>Одежда и аксессуары для кошек</h1>}
-      {pathname === '/dog/toys' && <h1>Игрушки для собак</h1>}
-      {pathname === '/dog/food' && <h1>Еда для собак</h1>}
-      {pathname === '/dog/clothes' && <h1>Одежда и аксессуары для собак</h1>}
+      {pathname === '/dogs/toys' && <h1>Игрушки для собак</h1>}
+      {pathname === '/dogs/food' && <h1>Еда для собак</h1>}
+      {pathname === '/dogs/clothes' && <h1>Одежда и аксессуары для собак</h1>}
       {pathname === '/toys' && <h1>Игрушки для животных</h1>}
       {pathname === '/food' && <h1>Еда для животных</h1>}
       {pathname === '/clothes' && <h1>Одежда и аксессуары для животных</h1>}
