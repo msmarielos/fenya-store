@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js --ignore ./sessions",
+    "debug": "nodemon --inspect=0.0.0.0:9229 src/app.js",
     "format": "prettier --write \"src/**/*.{js,jsx,json,css,scss,md}\""
   },
   "keywords": [],
