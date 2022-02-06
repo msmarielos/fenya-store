@@ -22,6 +22,20 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Повоки',
+        url: 'leashes',
+        img: '/img/clothes.png',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Ошейники',
+        url: 'collars',
+        img: '/img/clothes.png',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

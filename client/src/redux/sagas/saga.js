@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import { createUserAC, loginUserAC } from '../actionCreators/userAC';
 import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
@@ -10,7 +11,6 @@ import {
   initListItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
-import { createUserAC } from '../actionCreators/userAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -18,14 +18,27 @@ async function fetchData({ url, method, headers, body }) {
 }
 
 function* postUserAsync(action) {
-  console.log(process.env.REACT_APP_REG);
-  const user = yield call(fetchData, {
+  const newUser = yield call(fetchData, {
     url: routesApi.reg,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
   });
-  yield put(createUserAC(user));
+  yield put(createUserAC(newUser));
+}
+
+function* loginUserAsync(action) {
+  const user = yield call(fetchData, {
+    url: routesApi.login,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer',
+    },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(loginUserAC(user));
+  localStorage.setItem('token', JSON.stringify(user.token.accessToken));
 }
 
 function* getItemsAsync(action) {
@@ -117,4 +130,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_ORDER_ITEMS', postOrderItemsAsync);
   yield takeEvery('FETCH_CREATE_USER', postUserAsync);
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
+  yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
 }
