@@ -6,7 +6,7 @@ export const orderReducer = (state = initialState, action) => {
     case INIT_ORDERS:
       return { ...state, orders: action.payload };
 
-      case DELETE_ORDER:
+    case DELETE_ORDER:
       return {
         ...state,
         orders: state.orders.filter(item => item.id !== Number(action.payload)),

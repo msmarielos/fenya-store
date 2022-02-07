@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   // const currentUser = User.findOne();
   const allOrders = await OrderItem.findAll(
     {
@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
     },
     { raw: true }
   );
- 
+
   try {
     const allOrders = await OrderItem.findAll(
       {

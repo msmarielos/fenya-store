@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function OrderList() {
-
   const orders = useSelector(state => state.orders.orders);
   const dispatch = useDispatch();
 
@@ -22,9 +21,7 @@ export default function OrderList() {
           <li key={order.id}>
             {order.Item.title}
             {order.Order.id}
-            <button data-id={order.id}>
-              Принять в работу
-            </button>
+            <button data-id={order.id}>Принять в работу</button>
             <button data-id={order.id} onClick={deleteFetch}>
               Удалить
             </button>
