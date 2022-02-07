@@ -1,7 +1,6 @@
 import React from 'react';
 
 function BulletinBoardCard({ animal }) {
-
   return (
     <div>
       <h4>{animal.title}</h4>
@@ -22,9 +21,6 @@ function BulletinBoardCard({ animal }) {
         <p>Телефон: {animal.User.phone}</p>
         <p>Дата размещения: {animal.updatedAt}</p>
       </div>
-
-
-
     </div>
   );
 }

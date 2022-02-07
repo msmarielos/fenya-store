@@ -47,7 +47,7 @@ ReactDOM.render(
           <Route path="admin" element={<AdminNav />} />
           <Route path="basket" element={<Basket />} />
           <Route path="basket/orderform" element={<OrderForm />} />
-          <Route path="board" element={<BulletinBoard/>} />
+          <Route path="board" element={<BulletinBoard />} />
         </Route>
       </Routes>
     </BrowserRouter>
