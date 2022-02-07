@@ -49,7 +49,6 @@ function BasketCard({ item }) {
       <button onClick={() => incrementItem(item.id)}>+</button>
       <br />
       <button onClick={() => deleteItem(item.id)}>Удалить</button>
-      <p></p>
       <p>{item.price} ₽</p>
     </>
   );
