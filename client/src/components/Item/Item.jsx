@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import ReviewsList from '../ReviewsList/ReviewsList';
 import './Item.scss';
 
 export default function Item() {
@@ -50,6 +51,7 @@ export default function Item() {
         <h3>Описание товара</h3>
         <div className="item-description">{currentItem.description}</div>
         <h3>Отзывы</h3>
+        <ReviewsList />
       </div>
     </>
   );

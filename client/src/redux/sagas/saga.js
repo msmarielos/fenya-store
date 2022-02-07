@@ -150,6 +150,14 @@ function* getAnimalsAsync(action) {
   yield put(initAnimalsAC(animals));
 }
 
+function* getReviewsAsync(action) {
+  const reviews = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
+  });
+
+  yield put(initAnimalsAC(reviews));
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -163,4 +171,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
   yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
+  yield takeEvery('FETCH_GET_REVIEWS', getReviewsAsync);
 }
