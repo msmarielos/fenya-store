@@ -7,7 +7,6 @@ function BulletinBoard(props) {
   
   const { animals } = useSelector(state => state.animals);
   const dispatch = useDispatch();
-  console.log(animals)
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_ANIMALS' });
