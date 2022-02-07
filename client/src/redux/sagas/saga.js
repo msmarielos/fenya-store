@@ -178,7 +178,7 @@ function* postReviewAsync(action) {
 
   yield put(createReviewAC(newReview));
 }
-  
+
 function* deleteOrderAsync(action) {
   yield put(pendingResponseAC());
 
