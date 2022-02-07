@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import ReactStars from 'react-rating-stars-component';
 import './Item.scss';
 
 export default function Item() {
@@ -37,6 +38,14 @@ export default function Item() {
           </div>
           <div className="item-short-description">
             <h3>{currentItem.title}</h3>
+            <ReactStars
+              count={5}
+              isHalf={true}
+              value={currentItem.rating}
+              edit={false}
+              size={24}
+              activeColor="#ffd700"
+            />
             <p className="item-price">{currentItem.price} p.</p>
             <p className="in-stock">В наличии</p>
             <input
