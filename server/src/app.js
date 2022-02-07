@@ -16,6 +16,7 @@ const categoryRouter = require('./routes/category.route');
 const listsRouter = require('./routes/lists.route');
 const orderRouter = require('./routes/order.router');
 const authRouter = require('./routes/auth.router');
+const reviewRouter = require('./routes/reviews.route');
 const animalRouter = require('./routes/animal.route');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -31,6 +32,7 @@ app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
 app.use('/order', orderRouter);
 app.use('/api/auth', authRouter);
+app.use('/reviews', reviewRouter);
 app.use('/animals', animalRouter);
 
 app.listen(PORT, () => {

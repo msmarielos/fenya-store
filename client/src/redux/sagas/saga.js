@@ -15,6 +15,7 @@ import {
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
+import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 
 async function fetchData({ url, method, headers, body }) {
@@ -159,6 +160,25 @@ function* getAnimalsAsync(action) {
   yield put(initAnimalsAC(animals));
 }
 
+function* getReviewsAsync(action) {
+  const reviews = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
+  });
+
+  yield put(initReviewsAC(reviews));
+}
+
+function* postReviewAsync(action) {
+  const newReview = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload.item_id}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  });
+
+  yield put(createReviewAC(newReview));
+}
+
 function* deleteOrderAsync(action) {
   yield put(pendingResponseAC());
 
@@ -189,6 +209,8 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
   yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
+  yield takeEvery('FETCH_GET_REVIEWS', getReviewsAsync);
+  yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
   yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
 }

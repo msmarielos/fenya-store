@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import ReviewsList from '../ReviewsList/ReviewsList';
+
 import './Item.scss';
 
 export default function Item() {
@@ -36,6 +38,15 @@ export default function Item() {
           </div>
           <div className="item-short-description">
             <h3>{currentItem.title}</h3>
+            {currentItem.rating ? (
+              <p>
+                <strong>Рейтинг</strong>:{' '}
+                {currentItem.rating > 5 ? 5 : currentItem.rating}/5
+              </p>
+            ) : (
+              <p>Недостаточно оценок для формирования рейтинга</p>
+            )}
+
             <p className="item-price">{currentItem.price} p.</p>
             <p className="in-stock">В наличии</p>
             <input
@@ -50,6 +61,7 @@ export default function Item() {
         <h3>Описание товара</h3>
         <div className="item-description">{currentItem.description}</div>
         <h3>Отзывы</h3>
+        <ReviewsList />
       </div>
     </>
   );
