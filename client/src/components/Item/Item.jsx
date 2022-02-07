@@ -17,9 +17,9 @@ export default function Item() {
   const { currentItem } = useSelector(state => state.items);
 
   const addBacket = () => {
-    const newItem = {...currentItem, count: +inputItem.current.value};
+    const newItem = { ...currentItem, count: +inputItem.current.value };
     dispatch(addItemsBasketAC(newItem));
-  }
+  };
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
@@ -64,7 +64,9 @@ export default function Item() {
               ref={inputItem}
               required
             />
-            <button onClick={() => addBacket()} className="regular-btn">Добавить в корзину</button>
+            <button onClick={() => addBacket()} className="regular-btn">
+              Добавить в корзину
+            </button>
           </div>
         </div>
         <h3>Описание товара</h3>

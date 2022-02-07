@@ -6,7 +6,7 @@ import TotalItemCard from '../TotalItemCard/TotalItemCard';
 function Basket(props) {
   const { basketItems } = useSelector(state => state.basketItems);
 
-  console.log(basketItems, 'basketItems')
+  console.log(basketItems, 'basketItems');
 
   return (
     <div>
