@@ -159,6 +159,15 @@ function* getReviewsAsync(action) {
   yield put(initReviewsAC(reviews));
 }
 
+function* postReviewAsync(action) {
+  yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload.item_id}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  });
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -173,4 +182,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
   yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
   yield takeEvery('FETCH_GET_REVIEWS', getReviewsAsync);
+  yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
 }

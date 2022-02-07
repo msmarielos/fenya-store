@@ -38,14 +38,7 @@ export default function Item() {
           </div>
           <div className="item-short-description">
             <h3>{currentItem.title}</h3>
-            <ReactStars
-              count={5}
-              isHalf={true}
-              value={currentItem.rating}
-              edit={false}
-              size={24}
-              activeColor="#ffd700"
-            />
+            <p><strong>Рейтинг</strong>: {currentItem.rating}/5</p>
             <p className="item-price">{currentItem.price} p.</p>
             <p className="in-stock">В наличии</p>
             <input

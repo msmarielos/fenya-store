@@ -12,7 +12,7 @@ export default function ReviewsList() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_REVIEWS', payload: params.id });
-  }, [dispatch, params.id]);
+  }, []);
 
   return (
     <>
