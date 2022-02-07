@@ -18,6 +18,7 @@ import AdminNav from './components/AdminNav/AdminNav';
 import ItemList from './components/ItemList/ItemList';
 import ItemEditForm from './components/ItemEditForm/ItemEditForm';
 import Category from './components/Category/Category';
+import About from './components/About/About';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -27,6 +28,7 @@ ReactDOM.render(
           <Route index element={<Main />} />
           <Route path="registration" element={<Registration />} />
           <Route path="login" element={<Login />} />
+          <Route path="about" element={<About />} />
 
           <Route path="cats" element={<Cats />} />
           <Route path="dogs" element={<Dogs />} />
