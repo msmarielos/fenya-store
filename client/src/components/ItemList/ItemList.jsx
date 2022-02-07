@@ -45,7 +45,7 @@ function ItemList() {
             <li key={item.id}>
               <img src={item.img} alt="" />
               <p>{item.title}</p>
-              <Link to={`/items/${item.id}`}>
+              <Link to={`/admin/items/${item.id}`}>
                 <button>Редактировать</button>
               </Link>
               <button key={item.id} data-id={item.id} onClick={deleteFetch}>

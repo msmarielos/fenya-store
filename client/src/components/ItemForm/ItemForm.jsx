@@ -42,6 +42,7 @@ function ItemForm() {
 
   return (
     <div className="add-item-admin">
+      <h3>Добавить товар</h3>
       <form ref={itemForm} encType="multipart/form-data" onSubmit={addItem}>
         <input
           type="text"

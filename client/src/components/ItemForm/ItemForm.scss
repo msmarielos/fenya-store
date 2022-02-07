@@ -1,6 +1,10 @@
 .add-item-admin {
   width: 100%;
 
+  h3 {
+    text-align: center;
+  }
+
   form {
     display: flex;
     flex-direction: column;

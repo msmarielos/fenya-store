@@ -43,11 +43,10 @@ ReactDOM.render(
           <Route path="cats/:category/:id" element={<Item />} />
           <Route path="dogs/:category/:id" element={<Item />} />
 
-          <Route path="items/:id" element={<ItemEditForm />} />
-
           <Route path="admin" element={<AdminPage />}>
             <Route path="items" element={<ItemList />} />
             <Route path="items/add" element={<ItemForm />} />
+            <Route path="items/:id" element={<ItemEditForm />} />
             <Route path="orders" element={<OrderList />} />
           </Route>
 
