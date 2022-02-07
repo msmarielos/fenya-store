@@ -15,6 +15,7 @@ import {
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
+import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -142,12 +143,37 @@ function* postOrderItemsAsync(action) {
   });
 }
 
+function* getOrderListAsync(action) {
+  const orders = yield call(fetchData, {
+    url: process.env.REACT_APP_ORDER_URL,
+  });
+
+  yield put(initOrderListAC(orders));
+}
+
 function* getAnimalsAsync(action) {
   const animals = yield call(fetchData, {
     url: process.env.REACT_APP_ANIMALS_URL,
   });
 
   yield put(initAnimalsAC(animals));
+}
+
+function* deleteOrderAsync(action) {
+  yield put(pendingResponseAC());
+
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ORDER_URL}/${action.payload}`,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'DELETE',
+  });
+
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(deleteOrderAC(action.payload));
+  } else {
+    yield put(errorResponseAC());
+  }
 }
 
 export function* globalWatcher() {
@@ -163,4 +189,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
   yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
+  yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
+  yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
 }
