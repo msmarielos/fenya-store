@@ -17,6 +17,7 @@ const listsRouter = require('./routes/lists.route');
 const orderRouter = require('./routes/order.router');
 const authRouter = require('./routes/auth.router');
 const reviewRouter = require('./routes/reviews.route');
+const animalRouter = require('./routes/animal.route');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -32,6 +33,7 @@ app.use('/lists', listsRouter);
 app.use('/order', orderRouter);
 app.use('/api/auth', authRouter);
 app.use('/reviews', reviewRouter);
+app.use('/animals', animalRouter);
 
 app.listen(PORT, () => {
   console.info('The server is up and running on', PORT);

@@ -10,6 +10,7 @@ export default function AdminNav() {
           <Link to="/items">Все товары</Link>
           <Link to="/reviews">Отзывы</Link>
           <Link to="/animal/check">Объявления</Link>
+          <Link to="/orders">Заказы</Link>
         </div>
       </nav>
     </>

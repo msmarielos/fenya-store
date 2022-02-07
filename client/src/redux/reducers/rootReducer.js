@@ -15,4 +15,5 @@ export const rootReducer = combineReducers({
   basketItems: basketReducer,
   animals: animalReducer,
   reviews: reviewsReducer,
+  orders: orderReducer,
 });
