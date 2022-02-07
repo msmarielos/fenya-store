@@ -8,7 +8,7 @@ export default function ReviewForm() {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(5);
 
   const ratingChanged = value => {
     setRating(value);
@@ -36,6 +36,7 @@ export default function ReviewForm() {
         <h5>Оставьте свой отзыв</h5>
         <ReactStars
           count={5}
+          value={5}
           onChange={ratingChanged}
           size={24}
           activeColor="#ffd700"
