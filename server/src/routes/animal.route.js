@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const { Animal } = require('../db/models');
+const { Animal, User } = require('../db/models');
 
 router.get('/', async (req, res) => {
-  const animals = await Animal.findAll();
+  const animals = await Animal.findAll({
+    include: [User],
+  });
   res.json(animals);
 });
 
