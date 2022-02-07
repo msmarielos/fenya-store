@@ -1,12 +1,13 @@
 .admin-nav {
-  a {
-    align-self: center;
-    margin-bottom: 15px;
-    margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+
+  .admin-container {
+    display: flex;
+    flex-direction: column;
   }
 
-  .container {
-    height: 60px;
-    justify-content: flex-end;
+  a {
+    margin: 0;
   }
 }
