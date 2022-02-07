@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { error, info } from '../../utils/toast';
+import './ItemEditForm.scss';
 
 function ItemEditForm() {
   const { id } = useParams();
@@ -48,11 +49,12 @@ function ItemEditForm() {
   }, [itemResponseSuccess, itemResponseError]);
 
   return (
-    <div>
+    <div className="edit-item-admin">
+      <h3>Редактировать товар</h3>
       <form onSubmit={editItem} ref={editForm} encType="multipart/form-data">
         <label>
           Название:
-          <textarea type="text" name="title" defaultValue={currentItem.title} />
+          <input type="text" name="title" defaultValue={currentItem.title} />
         </label>
         <label>
           Цена:
@@ -60,7 +62,7 @@ function ItemEditForm() {
         </label>
         <label>
           Описание:
-          <input
+          <textarea
             type="text"
             name="description"
             defaultValue={currentItem.description}
