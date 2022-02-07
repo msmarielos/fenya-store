@@ -37,18 +37,24 @@ function ItemList() {
   }, [itemResponseSuccess, itemResponseError]);
 
   return (
-    <ul>
-      {items?.length &&
-        items.map(item => (
-          <li key={item.id}>
-            {item.title}
-            <Link to={`/items/${item.id}`}>Редактировать</Link>
-            <button key={item.id} data-id={item.id} onClick={deleteFetch}>
-              Удалить
-            </button>
-          </li>
-        ))}
-    </ul>
+    <div className="all-items-admin">
+      <h3>Все товары</h3>
+      <ul>
+        {items?.length &&
+          items.map(item => (
+            <li key={item.id}>
+              <img src={item.img} alt="" />
+              <p>{item.title}</p>
+              <Link to={`/items/${item.id}`}>
+                <button>Редактировать</button>
+              </Link>
+              <button key={item.id} data-id={item.id} onClick={deleteFetch}>
+                Удалить
+              </button>
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 }
 
