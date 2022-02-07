@@ -15,6 +15,7 @@ import {
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
+import { initReviewsAC } from '../actionCreators/reviewsAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -155,7 +156,7 @@ function* getReviewsAsync(action) {
     url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
   });
 
-  yield put(initAnimalsAC(reviews));
+  yield put(initReviewsAC(reviews));
 }
 
 export function* globalWatcher() {

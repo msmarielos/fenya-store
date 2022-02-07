@@ -1,6 +1,6 @@
 import { GET_REVIEWS } from '../actionTypes/reviewsAT';
 
-export const initListsAC = payload => {
+export const initReviewsAC = payload => {
   return {
     type: GET_REVIEWS,
     payload,
