@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ReviewCard from '../ReviewCard/ReviewCard';
 
 export default function ReviewsList() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function ReviewsList() {
   return (
     <>
       {reviews.map(item => (
-        <li>{item.title}</li>
+        <ReviewCard key={item.id} item={item} />
       ))}
     </>
   );
