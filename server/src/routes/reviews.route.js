@@ -20,7 +20,7 @@ router.post('/:id', async (req, res) => {
       rating: Math.floor(rating + currentItem.rating / 2),
     });
   }
-  await Review.create({
+  const newReview = await Review.create({
     title,
     description,
     item_id,
@@ -28,7 +28,7 @@ router.post('/:id', async (req, res) => {
     user_id: 1,
     isChecked: true,
   });
-  res.json({ created: true });
+  res.json(newReview);
 });
 
 module.exports = router;

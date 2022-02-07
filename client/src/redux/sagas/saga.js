@@ -15,7 +15,7 @@ import {
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
-import { initReviewsAC } from '../actionCreators/reviewsAC';
+import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -160,12 +160,14 @@ function* getReviewsAsync(action) {
 }
 
 function* postReviewAsync(action) {
-  yield call(fetchData, {
+  const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload.item_id}`,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
   });
+
+  yield put(createReviewAC(newReview));
 }
 
 export function* globalWatcher() {

@@ -1,4 +1,4 @@
-import { GET_REVIEWS } from '../actionTypes/reviewsAT';
+import { CREATE_REVIEW, GET_REVIEWS } from '../actionTypes/reviewsAT';
 
 const initialState = {
   reviews: [],
@@ -10,6 +10,12 @@ export const reviewsReducer = (state = initialState, action) => {
       return {
         ...state,
         reviews: action.payload,
+      };
+
+    case CREATE_REVIEW:
+      return {
+        ...state,
+        reviews: [...state.reviews, action.payload],
       };
     default:
       return state;
