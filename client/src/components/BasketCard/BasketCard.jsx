@@ -35,7 +35,7 @@ function BasketCard({ item }) {
       <p>{item.title}</p>
       <div className="image">
         <img
-          src="https://i.playground.ru/i/wiki/20580/content/vq2vo862.png"
+          src={item.img}
           alt="картика"
         />
       </div>

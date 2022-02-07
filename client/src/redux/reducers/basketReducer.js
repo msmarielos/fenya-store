@@ -6,22 +6,22 @@ import {
 } from '../actionTypes/basketAT';
 const initialState = {
   basketItems: [
-    {
-      id: 1,
-      title: 'Корм Royal Canin',
-      description: 'Пищевая привлекательность и здоровый рацион',
-      price: 1500,
-      rating: 5,
-      count: 1,
-    },
-    {
-      id: 2,
-      title: 'Petsmack морской кальций',
-      description: 'Натуральная добавка для приёма внутрь',
-      price: 350,
-      rating: 5,
-      count: 1,
-    },
+    // {
+    //   id: 1,
+    //   title: 'Корм Royal Canin',
+    //   description: 'Пищевая привлекательность и здоровый рацион',
+    //   price: 1500,
+    //   rating: 5,
+    //   count: 1,
+    // },
+    // {
+    //   id: 2,
+    //   title: 'Petsmack морской кальций',
+    //   description: 'Натуральная добавка для приёма внутрь',
+    //   price: 350,
+    //   rating: 5,
+    //   count: 1,
+    // },
   ],
 };
 
@@ -45,6 +45,12 @@ export const basketReducer = (state = initialState, action) => {
           return item.id !== action.payload.id;
         }),
       };
+
+      case ADD_ITEM_BASKET:
+        return {
+          ...state, basketItems: state.basketItems ?  [...state.basketItems,action.payload ] : [action.payload]
+         
+        };  
 
     default:
       return state;
