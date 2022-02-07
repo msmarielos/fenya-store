@@ -22,4 +22,20 @@ async function createUser(data) {
   return await User.create(newUser);
 }
 
-module.exports = { createUser };
+async function user(data) {
+  try {
+    const { email } = data;
+    const profile = await User.findOne({
+      where: {
+        email,
+      },
+    });
+    if (!profile) {
+      throw new Error('Email неверный');
+    }
+  } catch (err) {
+    throw err.message;
+  }
+}
+
+module.exports = { createUser, user };
