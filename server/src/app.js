@@ -16,6 +16,8 @@ const categoryRouter = require('./routes/category.route');
 const listsRouter = require('./routes/lists.route');
 const orderRouter = require('./routes/order.router');
 const authRouter = require('./routes/auth.router');
+const userRouter = require('./routes/user.router');
+const { isAuth } = require('./middlewares/isAuth');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -28,8 +30,9 @@ app.use(express.json());
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
-app.use('/order', orderRouter);
+app.use('/order', isAuth, orderRouter);
 app.use('/api/auth', authRouter);
+app.use('/user', isAuth, userRouter);
 
 app.listen(PORT, () => {
   console.info('The server is up and running on', PORT);

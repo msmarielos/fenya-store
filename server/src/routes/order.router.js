@@ -3,8 +3,9 @@ const { OrderItem, Order } = require('../db/models');
 
 router.post('/', async (req, res) => {
   const order = req.body;
+  const { userId } = req;
   const newOrder = await Order.create({
-    user_id: 1,
+    user_id: userId,
   });
   try {
     order.forEach(async el => {
