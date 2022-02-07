@@ -19,6 +19,7 @@ import ItemList from './components/ItemList/ItemList';
 import ItemEditForm from './components/ItemEditForm/ItemEditForm';
 import Category from './components/Category/Category';
 import OrderList from './components/OrderList/OrderList';
+import BulletinBoard from './components/BulletinBoard/BulletinBoard';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -48,6 +49,7 @@ ReactDOM.render(
           <Route path="admin" element={<AdminNav />} />
           <Route path="basket" element={<Basket />} />
           <Route path="basket/orderform" element={<OrderForm />} />
+          <Route path="board" element={<BulletinBoard />} />
         </Route>
       </Routes>
     </BrowserRouter>
