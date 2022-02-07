@@ -16,7 +16,7 @@ export default function OrderList() {
 
   return (
     <ul>
-      {orders?.length &&
+      {orders?.length ? (
         orders.map(order => (
           <li key={order.id}>
             {order.Item.title}
@@ -26,7 +26,10 @@ export default function OrderList() {
               Удалить
             </button>
           </li>
-        ))}
+        ))
+      ) : (
+        <p>Заказов нет</p>
+      )}
     </ul>
   );
 }
