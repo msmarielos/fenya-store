@@ -22,6 +22,7 @@ export const basketReducer = (state = initialState, action) => {
       };
 
     case DELETE_ITEM_BASKET:
+      
       return {
         ...state,
         basketItems: state.basketItems.filter(item => {
@@ -31,10 +32,21 @@ export const basketReducer = (state = initialState, action) => {
 
       case ADD_ITEM_BASKET:
         console.log(action.payload, 'action.payload')
-        return {
-          ...state, basketItems: state.basketItems ?  [...state.basketItems,action.payload ] : [action.payload]
-         
-        };  
+        const findItem = state.basketItems.find(el => el.id  === action.payload.id)
+        console.log(findItem, 'findItem')
+        if(findItem){
+          return {
+            ...state,
+            basketItems: state.basketItems.map(el =>{
+              if(el.id === action.payload.id) {
+                return { ...el, count: el.count + action.payload.count }
+              } return el
+            })
+          }
+        }else {
+          return {...state, basketItems: [...state.basketItems, action.payload ]}
+        }
+ 
 
     default:
       return state;
