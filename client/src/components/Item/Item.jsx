@@ -1,17 +1,25 @@
+import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { addItemsBasketAC } from '../../redux/actionCreators/basketAC';
 import ReviewsList from '../ReviewsList/ReviewsList';
 
 import './Item.scss';
 
 export default function Item() {
+  const inputItem = useRef();
   const params = useParams();
   const dispatch = useDispatch();
   const currentUrl = window.location.pathname;
   const breadcrumbs = currentUrl.split('/');
 
   const { currentItem } = useSelector(state => state.items);
+
+  const addBacket = () => {
+    const newItem = { ...currentItem, count: +inputItem.current.value };
+    dispatch(addItemsBasketAC(newItem));
+  };
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
@@ -53,9 +61,12 @@ export default function Item() {
               className="item-counter"
               type="number"
               defaultValue={1}
+              ref={inputItem}
               required
             />
-            <button className="regular-btn">Добавить в корзину</button>
+            <button onClick={() => addBacket()} className="regular-btn">
+              Добавить в корзину
+            </button>
           </div>
         </div>
         <h3>Описание товара</h3>

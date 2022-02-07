@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 function TotalItemCard(props) {
   const { basketItems } = useSelector(state => state.basketItems);
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
-  console.log(total, 'total');
 
   return (
     <>
