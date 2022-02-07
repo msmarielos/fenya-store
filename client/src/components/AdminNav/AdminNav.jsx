@@ -6,11 +6,12 @@ export default function AdminNav() {
     <>
       <nav className="admin-nav">
         <div className="admin-container">
-          <Link to="/items/add">Добавить товар</Link>
-          <Link to="/items">Все товары</Link>
-          <Link to="/reviews">Отзывы</Link>
-          <Link to="/animal/check">Объявления</Link>
-          <Link to="/orders">Заказы</Link>
+          <h4>Навигация</h4>
+          <Link to="/admin/items/add">Добавить товар</Link>
+          <Link to="/admin/items">Все товары</Link>
+          <Link to="/admin/reviews">Отзывы</Link>
+          <Link to="/admin/animal/check">Объявления</Link>
+          <Link to="/admin/orders">Заказы</Link>
         </div>
       </nav>
     </>
