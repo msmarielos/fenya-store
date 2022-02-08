@@ -12,9 +12,54 @@
     align-self: center;
   }
 
-  .search-input {
+  .search {
+    position: relative;
+    flex-grow: 1;
     align-self: center;
+    margin: 0 20px;
   }
+
+  .search-input {
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    padding: 0 0 0 15px;
+  }
+
+  .search-results {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1;
+
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+
+  .search-results-item {
+    padding: 5px 15px;
+    color: #000;
+  }
+
+  .search-results-no-found {
+    padding: 5px 15px;
+    color: rgba(58, 58, 58, 0.427);
+  }
+
+  .search-results-item:hover {
+    color: #ff6929;
+}
 
   a {
     text-decoration: none;
@@ -30,11 +75,6 @@
     margin: 0;
   }
 
-  form {
-    display: flex;
-    width: 80%;
-  }
-
   button {
     align-self: center;
     height: 50px;
@@ -48,15 +88,6 @@
 
   button:hover {
     background-color: #b4383e;
-  }
-
-  input {
-    width: 100%;
-    height: 50px;
-    border-radius: 5px;
-    border: none;
-    padding: 0 0 0 15px;
-    margin: 0 20px 0 0;
   }
 
   .basket-btn {
