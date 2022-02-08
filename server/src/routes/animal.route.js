@@ -17,7 +17,7 @@ router.post('/', upload.single('img'), async (req, res) => {
   const { filename } = req.file;
   const { useId } = req;
   try {
-    const newAnimal = await Animal.create({
+    const animal = await Animal.create({
       name,
       title,
       isChecked: false,
@@ -29,7 +29,7 @@ router.post('/', upload.single('img'), async (req, res) => {
       img: filename,
       user_id: useId,
     });
-    res.json({ success: true, newAnimal });
+    res.json({ success: true, animal });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

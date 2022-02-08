@@ -14,7 +14,7 @@ import {
   pendingResponseAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
-import { initAnimalsAC, addAnimalsAC } from '../actionCreators/animalAC';
+import { initAnimalsAC, addAnimalsAC, pendingResponseAnimalAC, successResponseAnimalAC, errorResponseAnimalAC } from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 
@@ -196,14 +196,20 @@ function* deleteOrderAsync(action) {
   }
 }
 function* postAnimalAsync(action) {
- 
+  yield put(pendingResponseAnimalAC());
   const response = yield call(fetchData, {
     url: process.env.REACT_APP_ANIMALS_URL,
     method: 'POST',
     body: action.payload,
   });
 
-  yield put(addAnimalsAC(response));
+  if (response.success) {
+    yield put(successResponseAnimalAC());
+    yield put(addAnimalsAC(response.animal));
+  } else {
+    yield put(errorResponseAnimalAC());
+  }
+  
 }
 
 
