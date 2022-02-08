@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         count: el.count,
       });
     });
-    res.status(200).json({ success: true })
+    res.status(200).json({ success: true });
   } catch (error) {
     res.status(500).json({ success: false });
   }
