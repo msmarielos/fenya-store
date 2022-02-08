@@ -5,7 +5,7 @@ import {
   INIT_ANIMAL,
   ANIMAL_RESPONSE_SUCCESS,
   ANIMAL_RESPONSE_ERROR,
-  ANIMAL_RESPONSE_PENDING
+  ANIMAL_RESPONSE_PENDING,
 } from '../actionTypes/animalAT.js';
 const initialState = {
   animals: [],
@@ -23,11 +23,11 @@ export const animalReducer = (state = initialState, action) => {
       };
 
     case ADD_ANIMAL:
-
-
       return {
         ...state,
-        animals: state.animals ? [...state.animals, action.payload] : [action.payload],
+        animals: state.animals
+          ? [...state.animals, action.payload]
+          : [action.payload],
       };
 
     // case UPDATE_ANIMAL:
@@ -42,30 +42,30 @@ export const animalReducer = (state = initialState, action) => {
           return animal.id !== action.payload.id;
         }),
       };
-    
-      case ANIMAL_RESPONSE_SUCCESS:
-        return {
-          ...state,
-          animalResponseSuccess: true,
-          animalResponsePending: null,
-          animalResponseError: false,
-        };
-  
-      case ANIMAL_RESPONSE_ERROR:
-        return {
-          ...state,
-          animalResponseSuccess: false,
-          animalResponsePending: null,
-          animalResponseError: true,
-        };
-  
-      case ANIMAL_RESPONSE_PENDING:
-        return {
-          ...state,
-          animalResponseSuccess: null,
-          animalResponsePending: true,
-          animalResponseError: null,
-        };
+
+    case ANIMAL_RESPONSE_SUCCESS:
+      return {
+        ...state,
+        animalResponseSuccess: true,
+        animalResponsePending: null,
+        animalResponseError: false,
+      };
+
+    case ANIMAL_RESPONSE_ERROR:
+      return {
+        ...state,
+        animalResponseSuccess: false,
+        animalResponsePending: null,
+        animalResponseError: true,
+      };
+
+    case ANIMAL_RESPONSE_PENDING:
+      return {
+        ...state,
+        animalResponseSuccess: null,
+        animalResponsePending: true,
+        animalResponseError: null,
+      };
 
     default:
       return state;

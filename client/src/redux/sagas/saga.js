@@ -15,7 +15,13 @@ import {
   initRelativeItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
-import { initAnimalsAC, addAnimalsAC, pendingResponseAnimalAC, successResponseAnimalAC, errorResponseAnimalAC } from '../actionCreators/animalAC';
+import {
+  initAnimalsAC,
+  addAnimalsAC,
+  pendingResponseAnimalAC,
+  successResponseAnimalAC,
+  errorResponseAnimalAC,
+} from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 
@@ -211,7 +217,6 @@ function* postAnimalAsync(action) {
     yield put(errorResponseAnimalAC());
   }
 }
-
 
 function* getRelativeItemsAsync(action) {
   const relativeItems = yield call(fetchData, {

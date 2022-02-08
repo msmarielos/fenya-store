@@ -10,8 +10,10 @@ function AnimalsForm() {
   const animalResponseSuccess = useSelector(
     state => state.animals.animalResponseSuccess
   );
-  const animalResponseError = useSelector(state => state.animals.animalResponseError);
-  console.log(animalResponseSuccess, animalResponseError)
+  const animalResponseError = useSelector(
+    state => state.animals.animalResponseError
+  );
+  console.log(animalResponseSuccess, animalResponseError);
 
   const addAnimal = event => {
     event.preventDefault();
@@ -35,48 +37,27 @@ function AnimalsForm() {
     }
   }, [animalResponseSuccess, animalResponseError]);
 
-
   return (
     <div className="add-item-admin">
       <h3>Добавить питомца</h3>
       <form ref={animalForm} encType="multipart/form-data" onSubmit={addAnimal}>
-      <input
-          type="text"
-          name="title"
-          placeholder="Заголовок"
-          required
-        />
-      <input
-          type="text"
-          name="description"
-          placeholder="Описание"
-          required
-        />
+        <input type="text" name="title" placeholder="Заголовок" required />
+        <input type="text" name="description" placeholder="Описание" required />
+        <input type="text" name="name" placeholder="Имя питомца" required />
         <input
-          type="text"
-          name="name"
-          placeholder="Имя питомца"
+          type="number"
+          name="age"
+          placeholder="Возвраст питомца"
           required
         />
-        <input type="number" name="age" placeholder="Возвраст питомца" required />
-        <input
-          type="text"
-          name="breed"
-          placeholder="Порода"
-          required
-        />
+        <input type="text" name="breed" placeholder="Порода" required />
         <input
           type="text"
           name="type"
           placeholder="Введите собака или кошка"
           required
         />
-        <input
-          type="text"
-          name="city"
-          placeholder="Город"
-          required
-        />
+        <input type="text" name="city" placeholder="Город" required />
         <input type="file" name="img" placeholder="Добавьте фото" required />
         <button type="submit" className="regular-btn admin-btn">
           Добавить
