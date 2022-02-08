@@ -13,7 +13,7 @@ function AnimalsForm() {
 
     const data = new FormData(animalForm.current);
 
-    dispatch({ type: 'FETCH_POST_ITEM', payload: data });
+    dispatch({ type: 'FETCH_POST_ANIMAL', payload: data });
   };
 
 

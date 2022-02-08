@@ -203,7 +203,7 @@ function* postAnimalAsync(action) {
     body: action.payload,
   });
 
-  yield put(addAnimalsAC());
+  yield put(addAnimalsAC(response));
 }
 
 

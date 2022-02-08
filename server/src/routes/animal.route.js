@@ -12,9 +12,10 @@ router.get('/', async (req, res) => {
   res.json(animals);
 });
 
-router.post('/', async (req, res) => {
-  const { name, title, description, age, type, city, breed,  } = req.body;
+router.post('/', upload.single('img'), async (req, res) => {
+  const { name, title, description, age, type, city, breed } = req.body;
   const { filename } = req.file;
+  const { useId } = req;
   try {
     const newAnimal = await Animal.create({
       name,
@@ -25,9 +26,10 @@ router.post('/', async (req, res) => {
       type,
       city,
       breed,
-      user_id: 1,
-
-    })
+      img: filename,
+      user_id: useId,
+    });
+    res.json({ success: true, newAnimal });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
