@@ -1,26 +1,28 @@
+import { Link } from 'react-router-dom';
 import './BulletinBoardCard.scss';
 
 function BulletinBoardCard({ animal }) {
   return (
     <div className="animal-card">
-      <h4>{animal.title}</h4>
+      <div className="animal-img">
+        <img src={animal.img} alt="Фото питомца" />
+      </div>
+      <div className="animal-info">
+        <h4>{animal.title}</h4>
 
-      <img src={animal.img} alt="Фото питомца" />
+        <p>
+          <strong>Порода</strong>: {animal.breed}
+        </p>
+        <p>
+          <strong>Кличка</strong>: {animal.name}
+        </p>
+        <p>
+          <strong>Возраст</strong>: {animal.age}
+        </p>
+        <Link to={`/board/animal/${animal.id}`}>Подробнее</Link>
+      </div>
 
-      <p>
-        <strong>Порода</strong>: {animal.breed}
-      </p>
-      <p>
-        <strong>Кличка</strong>: {animal.name}
-      </p>
-      <p>
-        <strong>Возраст</strong>: {animal.age}
-      </p>
-      <p>
-        <strong>Описание</strong> {animal.description}
-      </p>
-
-      <h4>Информация о владельце</h4>
+      {/* <h4>Информация о владельце</h4>
       <p>
         <strong>Город</strong>: {animal.city}
       </p>
@@ -32,7 +34,7 @@ function BulletinBoardCard({ animal }) {
       </p>
       <p>
         <strong>Дата размещения</strong>: {animal.updatedAt.slice(0, 10)}
-      </p>
+      </p> */}
     </div>
   );
 }
