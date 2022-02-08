@@ -3,6 +3,7 @@ import {
   UPDATE_ITEM_BASKET,
   DELETE_ITEM_BASKET,
   INIT_ITEMS_BASKET,
+  CLEAR_BASKET,
 } from '../actionTypes/basketAT';
 const initialState = {
   basketItems: JSON.parse(localStorage.getItem('basket')) ?? [],
@@ -49,6 +50,12 @@ export const basketReducer = (state = initialState, action) => {
           basketItems: [...state.basketItems, action.payload],
         };
       }
+
+    case CLEAR_BASKET:
+      return {
+        ...state,
+        basketItems: [],
+      };
 
     default:
       return state;

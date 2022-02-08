@@ -15,7 +15,8 @@
   }
 
   .del-btn {
-    height: 30px;
+    height: 40px;
+    width: 100px;
     border: none;
     background-color: rgb(238, 238, 238);
     border-radius: 3px;
@@ -23,8 +24,8 @@
 
   .plus-btn,
   .minus-btn {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border: none;
     border-radius: 3px;
     background-color: rgb(238, 238, 238);
@@ -37,7 +38,7 @@
   }
 
   .price {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   .item-count {

@@ -9,7 +9,7 @@ export default function SearchPanel() {
   const { basketItems } = useSelector(state => state.basketItems);
 
   const showModal = () => {
-    dispatch(showModalAC());
+    basketItems.length && dispatch(showModalAC());
   };
 
   return (

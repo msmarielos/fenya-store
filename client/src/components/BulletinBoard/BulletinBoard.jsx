@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BulletinBoardCard from '../BulletinBoardCard/BulletinBoardCard';
 import { Link } from 'react-router-dom';
 
-function BulletinBoard(props) {
+function BulletinBoard() {
   const { animals } = useSelector(state => state.animals);
   const dispatch = useDispatch();
 

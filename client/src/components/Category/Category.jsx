@@ -68,7 +68,7 @@ export default function Category() {
               {item.title}
             </Link>
             <div className="price-buy">
-              <p className="price">{item.price} p.</p>
+              <p className="price">{item.price} ₽</p>
               <a
                 href={`${window.location.pathname}/${item.id}`}
                 onClick={addBacket}

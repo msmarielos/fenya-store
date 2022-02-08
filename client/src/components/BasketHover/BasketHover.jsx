@@ -13,7 +13,7 @@ export default function BasketHover() {
           <div className="basket-hover-item">
             <img src={item.img} alt={item.title} />
             <p>{`${item.title.slice(0, 30)}...`}</p>
-            <p>{`${item.price} p.`}</p>
+            <p>{`${item.price} ₽`}</p>
             <p>{`${item.count} шт.`}</p>
           </div>
         );
