@@ -12,6 +12,7 @@ import {
   successResponseAC,
   errorResponseAC,
   pendingResponseAC,
+  initRelativeItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
@@ -196,6 +197,13 @@ function* deleteOrderAsync(action) {
   }
 }
 
+function* getRelativeItemsAsync(action) {
+  const relativeItems = yield call(fetchData, {
+    url: `${process.env.REACT_APP_RELATIVE_ITEMS_URL}/${action.payload}`,
+  });
+  yield put(initRelativeItemsAC(relativeItems));
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -213,4 +221,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
   yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
+  yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
 }

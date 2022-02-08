@@ -30,11 +30,9 @@ export const basketReducer = (state = initialState, action) => {
       };
 
     case ADD_ITEM_BASKET:
-      console.log(action.payload, 'action.payload');
       const findItem = state.basketItems.find(
         el => el.id === action.payload.id
       );
-      console.log(findItem, 'findItem');
       if (findItem) {
         return {
           ...state,
