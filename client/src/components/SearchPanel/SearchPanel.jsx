@@ -30,14 +30,14 @@ export default function SearchPanel() {
 
     return () => {
       document.body.removeEventListener('click', onClick);
-    }
+    };
   }, []);
 
   useEffect(() => {
     handleSearch(search);
   }, [search]);
 
-  const handleSearch = debounce((search) => {
+  const handleSearch = debounce(search => {
     if (search.length !== 0) {
       dispatch({ type: 'FETCH_GET_SEARCH_LIST', payload: { search } });
     } else {
@@ -46,7 +46,10 @@ export default function SearchPanel() {
   });
 
   function onClick(event) {
-    if (resultsContainer.current?.contains(event.target) || inputRef.current?.contains(event.target)) {
+    if (
+      resultsContainer.current?.contains(event.target) ||
+      inputRef.current?.contains(event.target)
+    ) {
       return;
     }
 
@@ -68,7 +71,7 @@ export default function SearchPanel() {
     dispatch({ type: 'INIT_RESULTS' });
     navigate('/search/results');
   }
-  
+
   const { basketItems } = useSelector(state => state.basketItems);
 
   const showModal = () => {
@@ -76,42 +79,55 @@ export default function SearchPanel() {
   };
 
   return (
-     <div className="search-panel">
-        <div className="search-container">
-          <div className="logo">
-            <Link to={'/'}>
-              <h1>Fenya Store</h1>
-            </Link>
-            <p>Интернет-зоомагазин</p>
-          </div>
-          <div className="search">
-            <form onSubmit={handleForm}>
-            <input ref={inputRef} value={search} className="search-input" type="text" placeholder="Поиск" onChange={e => setSearch(e.target.value)} onFocus={handleFocus}/>
-            {isDropdownVisible && <div ref={resultsContainer} className="search-results">
-              {results.length > 0
-                ? results.map((result) => <Link key={result.id} className="search-results-item" to={`items/${result.id}`}>
-                {result.title}
-              </Link>)
-              : <p className="search-results-no-found">Ничего не найдено</p>
-              }
-            </div>}
-            </form>
-          </div>
-
-          <Link
-              to="/basket"
-              onMouseEnter={showModal}
-              onMouseLeave={showModal}
-            >
-              <button className="regular-btn basket-btn">Корзина</button>
-              {basketItems.length ? (
-                <div className="basket-counter">
-                  <span>{basketItems.length}</span>
-                </div>
-              ) : null}
-            </Link>
+    <div className="search-panel">
+      <div className="search-container">
+        <div className="logo">
+          <Link to={'/'}>
+            <h1>Fenya Store</h1>
+          </Link>
+          <p>Интернет-зоомагазин</p>
         </div>
-        <Navigation />
+        <div className="search">
+          <form onSubmit={handleForm}>
+            <input
+              ref={inputRef}
+              value={search}
+              className="search-input"
+              type="text"
+              placeholder="Поиск"
+              onChange={e => setSearch(e.target.value)}
+              onFocus={handleFocus}
+            />
+            {isDropdownVisible && (
+              <div ref={resultsContainer} className="search-results">
+                {results.length > 0 ? (
+                  results.map(result => (
+                    <Link
+                      key={result.id}
+                      className="search-results-item"
+                      to={`items/${result.id}`}
+                    >
+                      {result.title}
+                    </Link>
+                  ))
+                ) : (
+                  <p className="search-results-no-found">Ничего не найдено</p>
+                )}
+              </div>
+            )}
+          </form>
+        </div>
+
+        <Link to="/basket" onMouseEnter={showModal} onMouseLeave={showModal}>
+          <button className="regular-btn basket-btn">Корзина</button>
+          {basketItems.length ? (
+            <div className="basket-counter">
+              <span>{basketItems.length}</span>
+            </div>
+          ) : null}
+        </Link>
       </div>
+      <Navigation />
+    </div>
   );
 }

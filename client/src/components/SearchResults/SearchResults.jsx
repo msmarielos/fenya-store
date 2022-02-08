@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import '../Category/Category.scss';
 
 export default function SearchResults() {
-
   const results = useSelector(state => state.search.results);
 
   return (
     <>
-    <div className="sort-block">
-      <h1>Результаты поиска:</h1>
-    </div>
-    <div className="items-list">
+      <div className="sort-block">
+        <h1>Результаты поиска:</h1>
+      </div>
+      <div className="items-list">
         {results?.map(result => (
           <div className="item-card" key={result.id}>
             <Link to={`${window.location.pathname}/${result.id}`}>
@@ -24,6 +23,6 @@ export default function SearchResults() {
           </div>
         ))}
       </div>
-      </>
-  )
+    </>
+  );
 }

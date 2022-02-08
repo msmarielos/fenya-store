@@ -1,4 +1,8 @@
-import { INIT_SEARCH_LIST, DELETE_SEARCH_LIST, INIT_RESULTS } from '../actionTypes/searchAT';
+import {
+  INIT_SEARCH_LIST,
+  DELETE_SEARCH_LIST,
+  INIT_RESULTS,
+} from '../actionTypes/searchAT';
 
 export const initSearchListAC = payload => {
   return {

@@ -25,7 +25,7 @@ import {
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 import { initSearchListAC } from '../actionCreators/searchAC';
- 
+
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
   return await response.json();
@@ -257,7 +257,7 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
   yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
-  yield takeEvery('FETCH_GET_SEARCH_LIST', getSearchListAsync)
+  yield takeEvery('FETCH_GET_SEARCH_LIST', getSearchListAsync);
   yield takeEvery('FETCH_POST_ANIMAL', postAnimalAsync);
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
 }

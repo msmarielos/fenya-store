@@ -12,5 +12,5 @@ export function debounce(fn, timeout = 300) {
     }
 
     timer = setTimeout(() => fn(...args), timeout);
-  }
+  };
 }

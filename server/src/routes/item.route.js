@@ -67,9 +67,13 @@ router.get('/:itemId', (req, res) => {
 
 router.get('/', async (req, res) => {
   if (req.query.search) {
-    Item.findAll({ where: { title: {
-      [Sequelize.Op.iLike]: `%${req.query.search}%`
-    }} })
+    Item.findAll({
+      where: {
+        title: {
+          [Sequelize.Op.iLike]: `%${req.query.search}%`,
+        },
+      },
+    })
       .then(allItems => res.json(allItems))
       .catch(error => console.log(error));
 
