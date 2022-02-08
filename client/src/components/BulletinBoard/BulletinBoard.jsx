@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BulletinBoardCard from '../BulletinBoardCard/BulletinBoardCard';
+import { Link } from 'react-router-dom';
 
 function BulletinBoard(props) {
   const { animals } = useSelector(state => state.animals);
@@ -13,7 +14,7 @@ function BulletinBoard(props) {
   return (
     <div>
       <h2>Доска объявлений</h2>
-      <button>Подать объявление</button>
+      <Link to="/addform"> Подать объявление</Link>
       {animals.length &&
         animals.map(animal => (
           <BulletinBoardCard key={animal.id} animal={animal} />

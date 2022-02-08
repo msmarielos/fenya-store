@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 async function isAuth(req, res, next) {
   try {
-    const authHeader = req.get('Authorization'); //получаю из header токен, проверяю правильный ли токен
+    const authHeader = req.get('Authorization'); // получаю из header токен, проверяю правильный ли токен
     const token = authHeader.split(' ')[1];
     const { userId, email } = jwt.verify(token, process.env.ACCESS_TOKEN);
     req.userId = userId;
@@ -10,7 +10,7 @@ async function isAuth(req, res, next) {
 
     next();
   } catch (e) {
-    res.status(400).json({ message: e.message });
+    res.status(401).json({ message: 'Пользователь не авторизован' });
     return;
   }
 }

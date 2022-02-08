@@ -17,11 +17,13 @@ import Login from './components/App/Login/Login';
 import ItemList from './components/ItemList/ItemList';
 import ItemEditForm from './components/ItemEditForm/ItemEditForm';
 import Category from './components/Category/Category';
+import Profile from './components/App/Profile/Profile';
 import About from './components/About/About';
 import OrderList from './components/OrderList/OrderList';
 import BulletinBoard from './components/BulletinBoard/BulletinBoard';
 import AdminPage from './components/AdminPage/AdminPage';
 import SearchResults from './components/SearchResults/SearchResults';
+import AnimalsForm from './components/animalsForm/AnimalsForm';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -31,6 +33,7 @@ ReactDOM.render(
           <Route index element={<Main />} />
           <Route path="registration" element={<Registration />} />
           <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="about" element={<About />} />
 
           <Route path="cats" element={<Cats />} />
@@ -57,6 +60,7 @@ ReactDOM.render(
           <Route path="search/results" element={<SearchResults />} />
           <Route path="items/:id" element={<Item />} />
           <Route path="search/results/:id" element={<Item />} />
+          <Route path="addform" element={<AnimalsForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

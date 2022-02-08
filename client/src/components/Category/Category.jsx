@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { sortAscAC, sortDescAC } from '../../redux/actionCreators/itemsAC';
+import { addItemsBasketAC } from '../../redux/actionCreators/basketAC';
+import { info } from '../../utils/toast';
 import './Category.scss';
 
 export default function Category() {
@@ -26,6 +28,16 @@ export default function Category() {
 
   const sortDesc = () => {
     dispatch(sortDescAC());
+  };
+
+  const addBacket = e => {
+    e.preventDefault();
+    const idArr = e.target.pathname.split('/');
+    const id = Number(idArr[idArr.length - 1]);
+    const currentItem = items.find(item => item.id === id);
+    const newItem = { ...currentItem, count: +1 };
+    dispatch(addItemsBasketAC(newItem));
+    info('Товар добавлен в корзину');
   };
 
   return (
@@ -55,7 +67,15 @@ export default function Category() {
             <Link to={`${window.location.pathname}/${item.id}`}>
               {item.title}
             </Link>
-            <p className="price">{item.price} p.</p>
+            <div className="price-buy">
+              <p className="price">{item.price} p.</p>
+              <a
+                href={`${window.location.pathname}/${item.id}`}
+                onClick={addBacket}
+              >
+                Купить
+              </a>
+            </div>
           </div>
         ))}
       </div>

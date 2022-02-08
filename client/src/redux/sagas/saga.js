@@ -12,9 +12,16 @@ import {
   successResponseAC,
   errorResponseAC,
   pendingResponseAC,
+  initRelativeItemsAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
-import { initAnimalsAC } from '../actionCreators/animalAC';
+import {
+  initAnimalsAC,
+  addAnimalsAC,
+  pendingResponseAnimalAC,
+  successResponseAnimalAC,
+  errorResponseAnimalAC,
+} from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 import { initSearchListAC } from '../actionCreators/searchAC';
@@ -210,6 +217,28 @@ function* deleteOrderAsync(action) {
     yield put(errorResponseAC());
   }
 }
+function* postAnimalAsync(action) {
+  yield put(pendingResponseAnimalAC());
+  const response = yield call(fetchData, {
+    url: process.env.REACT_APP_ANIMALS_URL,
+    method: 'POST',
+    body: action.payload,
+  });
+
+  if (response.success) {
+    yield put(successResponseAnimalAC());
+    yield put(addAnimalsAC(response.animal));
+  } else {
+    yield put(errorResponseAnimalAC());
+  }
+}
+
+function* getRelativeItemsAsync(action) {
+  const relativeItems = yield call(fetchData, {
+    url: `${process.env.REACT_APP_RELATIVE_ITEMS_URL}/${action.payload}`,
+  });
+  yield put(initRelativeItemsAC(relativeItems));
+}
 
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
@@ -229,4 +258,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
   yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
   yield takeEvery('FETCH_GET_SEARCH_LIST', getSearchListAsync)
+  yield takeEvery('FETCH_POST_ANIMAL', postAnimalAsync);
+  yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
 }

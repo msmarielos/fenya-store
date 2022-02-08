@@ -8,6 +8,7 @@ import { animalReducer } from './animalReducer';
 import { reviewsReducer } from './reviewsReducer';
 import { orderReducer } from './orderReducer';
 import { searchReducer } from './searchReducer';
+import { modalReducer } from './modalReducer';
 
 export const rootReducer = combineReducers({
   items: itemReducer,
@@ -19,4 +20,5 @@ export const rootReducer = combineReducers({
   reviews: reviewsReducer,
   orders: orderReducer,
   search: searchReducer,
+  modal: modalReducer,
 });

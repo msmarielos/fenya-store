@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { debounce } from '../../utils/debounce';
 import { useRef } from 'react';
+import { showModalAC } from '../../redux/actionCreators/modalAC';
 
 export default function SearchPanel() {
   const [search, setSearch] = useState('');
@@ -67,9 +68,15 @@ export default function SearchPanel() {
     dispatch({ type: 'INIT_RESULTS' });
     navigate('/search/results');
   }
+  
+  const { basketItems } = useSelector(state => state.basketItems);
+
+  const showModal = () => {
+    dispatch(showModalAC());
+  };
 
   return (
-      <div className="search-panel">
+     <div className="search-panel">
         <div className="search-container">
           <div className="logo">
             <Link to={'/'}>
@@ -91,8 +98,17 @@ export default function SearchPanel() {
             </form>
           </div>
 
-            <Link to="/basket">
+          <Link
+              to="/basket"
+              onMouseEnter={showModal}
+              onMouseLeave={showModal}
+            >
               <button className="regular-btn basket-btn">Корзина</button>
+              {basketItems.length ? (
+                <div className="basket-counter">
+                  <span>{basketItems.length}</span>
+                </div>
+              ) : null}
             </Link>
         </div>
         <Navigation />

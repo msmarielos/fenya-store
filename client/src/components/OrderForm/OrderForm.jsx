@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './OrderForm.scss';
 
 function OrderForm(props) {
   const { basketItems } = useSelector(state => state.basketItems);
@@ -19,12 +20,30 @@ function OrderForm(props) {
 
   return (
     <div>
-      <h3>Оформление заказа</h3>
-      <p>Заказ на сумму {total}</p>
-      <form ref={orderForm} name="Order" onSubmit={order}>
-        <input placeholder="Введите ваш телофон" name="phone" type="text" />
-        <input placeholder="Введите ваше имя" name="name" type="text" />
-        <button type="submit">Оформить заказ</button>
+      <h1>Оформление заказа</h1>
+      {total ? <p>Заказ на сумму {total} p.</p> : <p>Ваша корзина пуста.</p>}
+
+      <form
+        ref={orderForm}
+        name="Order"
+        onSubmit={order}
+        className="order-form"
+      >
+        <input
+          placeholder="Введите ваш телефон"
+          name="phone"
+          type="text"
+          required
+        />
+        <input
+          placeholder="Введите ваше имя"
+          name="name"
+          type="text"
+          required
+        />
+        <button type="submit" className="regular-btn">
+          Оформить заказ
+        </button>
       </form>
     </div>
   );

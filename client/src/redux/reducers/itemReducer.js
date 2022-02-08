@@ -10,9 +10,11 @@ import {
   ITEM_RESPONSE_SUCCESS,
   ITEM_RESPONSE_PENDING,
   ITEM_RESPONSE_ERROR,
+  INIT_RELATIVE_ITEMS,
 } from '../actionTypes/itemsAT';
 const initialState = {
   items: [],
+  relativeItems: [],
   currentItem: {},
   itemResponseSuccess: null,
   itemResponsePending: null,
@@ -100,6 +102,12 @@ export const itemReducer = (state = initialState, action) => {
             return el;
           }
         }),
+      };
+
+    case INIT_RELATIVE_ITEMS:
+      return {
+        ...state,
+        relativeItems: action.payload,
       };
 
     default:

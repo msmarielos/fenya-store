@@ -3,9 +3,15 @@ import {
   UPDATE_ANIMAL,
   DELETE_ANIMAL,
   INIT_ANIMAL,
+  ANIMAL_RESPONSE_SUCCESS,
+  ANIMAL_RESPONSE_ERROR,
+  ANIMAL_RESPONSE_PENDING,
 } from '../actionTypes/animalAT.js';
 const initialState = {
   animals: [],
+  animalResponseSuccess: null,
+  animalResponsePending: null,
+  animalResponseError: null,
 };
 
 export const animalReducer = (state = initialState, action) => {
@@ -17,23 +23,11 @@ export const animalReducer = (state = initialState, action) => {
       };
 
     case ADD_ANIMAL:
-      const newAnimal = {
-        id: action.payload.id,
-        name: action.payload.name,
-        isChecked: action.payload.isChecked,
-        age: action.payload.age,
-        city: action.payload.city,
-        breed: action.payload.breed,
-        title: action.payload.title,
-        description: action.payload.description,
-        user_id: action.payload.user_id,
-        img: action.payload.img,
-        type: action.payload.type,
-      };
-
       return {
         ...state,
-        animals: state.animals ? [...state.animals, newAnimal] : [newAnimal],
+        animals: state.animals
+          ? [...state.animals, action.payload]
+          : [action.payload],
       };
 
     // case UPDATE_ANIMAL:
@@ -47,6 +41,30 @@ export const animalReducer = (state = initialState, action) => {
         animals: state.animals.filter(animal => {
           return animal.id !== action.payload.id;
         }),
+      };
+
+    case ANIMAL_RESPONSE_SUCCESS:
+      return {
+        ...state,
+        animalResponseSuccess: true,
+        animalResponsePending: null,
+        animalResponseError: false,
+      };
+
+    case ANIMAL_RESPONSE_ERROR:
+      return {
+        ...state,
+        animalResponseSuccess: false,
+        animalResponsePending: null,
+        animalResponseError: true,
+      };
+
+    case ANIMAL_RESPONSE_PENDING:
+      return {
+        ...state,
+        animalResponseSuccess: null,
+        animalResponsePending: true,
+        animalResponseError: null,
       };
 
     default:

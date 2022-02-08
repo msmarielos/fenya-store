@@ -17,7 +17,6 @@ async function signUp(req, res) {
     });
   }
 }
-
 async function signIn(req, res) {
   try {
     const user = await authService.login(req.body);
