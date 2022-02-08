@@ -20,11 +20,12 @@ function TotalItemCard() {
       <p>
         Товаров на сумму: <strong>{total}</strong> ₽
       </p>
+      <input type="text" placeholder="Промокод" />
       <button className="regular-btn login-btn">Войти</button>
 
-      <Link to="/basket/orderform">
-        <button className="regular-btn">Оформить заказ</button>
-      </Link>
+      <button className="regular-btn">
+        <Link to="/basket/orderform">Оформить заказ</Link>
+      </button>
 
       <button className="regular-btn clear-btn" onClick={clearBasket}>
         Очистить корзину
