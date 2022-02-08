@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { OrderItem, Order } = require('../db/models');
+const { OrderItem, Order, User, Item } = require('../db/models');
 
 router.post('/', async (req, res) => {
   const order = req.body;
   const { userId } = req;
+
   const newOrder = await Order.create({
     user_id: userId,
   });
@@ -15,9 +16,40 @@ router.post('/', async (req, res) => {
         count: el.count,
       });
     });
+    res.status(200).json({ success: true })
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false });
   }
+});
+
+router.get('/', async (req, res) => {
+  const allOrders = await OrderItem.findAll(
+    {
+      include: [Order, Item],
+    },
+    { raw: true }
+  );
+
+  try {
+    const allOrders = await OrderItem.findAll(
+      {
+        include: [Order, Item],
+      },
+      { raw: true }
+    );
+    res.json(allOrders);
+  } catch (error) {
+    res.status(500).json({ success: false });
+  }
+});
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  OrderItem.destroy({ where: { id } })
+    .then(data =>
+      data ? res.json({ success: true }) : res.status(404).json(data)
+    )
+    .catch(error => res.status(500).json({ success: false, message: error }));
 });
 
 module.exports = router;

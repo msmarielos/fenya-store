@@ -1,9 +1,16 @@
+import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { error, info } from '../../utils/toast';
 
 function ItemList() {
-  const itemslist = useSelector(state => state.items.itemslist);
+  const items = useSelector(state => state.items.items);
+  const itemResponseSuccess = useSelector(
+    state => state.items.itemResponseSuccess
+  );
+  const itemResponseError = useSelector(state => state.items.itemResponseError);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,21 +22,39 @@ function ItemList() {
     dispatch({ type: 'FETCH_DELETE_ITEM', payload: id });
   };
 
+  const notInitialRender = useRef(false);
+
+  useEffect(() => {
+    if (notInitialRender.current) {
+      if (itemResponseSuccess) {
+        info('Товар удален!');
+      } else if (itemResponseError) {
+        error('Ошибка!');
+      }
+    } else {
+      notInitialRender.current = true;
+    }
+  }, [itemResponseSuccess, itemResponseError]);
+
   return (
-    <>
+    <div className="all-items-admin">
+      <h3>Все товары</h3>
       <ul>
-        {itemslist?.length &&
-          itemslist.map(item => (
+        {items?.length &&
+          items.map(item => (
             <li key={item.id}>
-              {item.title}
-              <Link to={`/items/${item.id}`}>Редактировать</Link>
-              <button data-id={item.id} onClick={deleteFetch}>
+              <img src={item.img} alt="" />
+              <p>{item.title}</p>
+              <Link to={`/admin/items/${item.id}`}>
+                <button>Редактировать</button>
+              </Link>
+              <button key={item.id} data-id={item.id} onClick={deleteFetch}>
                 Удалить
               </button>
             </li>
           ))}
       </ul>
-    </>
+    </div>
   );
 }
 

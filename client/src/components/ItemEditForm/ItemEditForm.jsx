@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { error, info } from '../../utils/toast';
+import './ItemEditForm.scss';
 
 function ItemEditForm() {
   const { id } = useParams();
@@ -9,6 +11,10 @@ function ItemEditForm() {
   const editForm = useRef();
 
   const currentItem = useSelector(state => state.items.currentItem);
+  const itemResponseSuccess = useSelector(
+    state => state.items.itemResponseSuccess
+  );
+  const itemResponseError = useSelector(state => state.items.itemResponseError);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: id });
@@ -28,12 +34,27 @@ function ItemEditForm() {
     });
   };
 
+  const notInitialRender = useRef(false);
+
+  useEffect(() => {
+    if (notInitialRender.current) {
+      if (itemResponseSuccess) {
+        info('Информация отредактирована!');
+      } else if (itemResponseError) {
+        error('Ошибка!');
+      }
+    } else {
+      notInitialRender.current = true;
+    }
+  }, [itemResponseSuccess, itemResponseError]);
+
   return (
-    <div>
+    <div className="edit-item-admin">
+      <h3>Редактировать товар</h3>
       <form onSubmit={editItem} ref={editForm} encType="multipart/form-data">
         <label>
           Название:
-          <textarea type="text" name="title" defaultValue={currentItem.title} />
+          <input type="text" name="title" defaultValue={currentItem.title} />
         </label>
         <label>
           Цена:
@@ -41,7 +62,7 @@ function ItemEditForm() {
         </label>
         <label>
           Описание:
-          <input
+          <textarea
             type="text"
             name="description"
             defaultValue={currentItem.description}

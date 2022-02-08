@@ -9,9 +9,14 @@ import {
   initCategoriesAC,
   initCurrentItemAC,
   initListItemsAC,
+  successResponseAC,
+  errorResponseAC,
+  pendingResponseAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
 import { initAnimalsAC } from '../actionCreators/animalAC';
+import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
+import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -67,35 +72,54 @@ function* getCurrentItemAsync(action) {
 }
 
 function* deleteItemAsync(action) {
-  const id = yield call(fetchData, {
+  yield put(pendingResponseAC());
+
+  const response = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,
     headers: { 'Content-Type': 'Application/json' },
     method: 'DELETE',
   });
 
-  yield put(deleteItemsAC(id));
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(deleteItemsAC(action.payload));
+  } else {
+    yield put(errorResponseAC());
+  }
 }
 
 function* putItemAsync(action) {
-  const updatedItem = yield call(fetchData, {
+  yield put(pendingResponseAC());
+  const response = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.id}`,
     method: 'PUT',
     body: action.payload.item,
   });
 
-  console.log(updatedItem);
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(addItemsAC(response.item));
+  } else {
+    yield put(errorResponseAC());
+  }
 
-  yield put(updateItemsAC(updatedItem));
+  yield put(updateItemsAC(response.item));
 }
 
 function* postItemAsync(action) {
-  const newItem = yield call(fetchData, {
+  yield put(pendingResponseAC());
+  const response = yield call(fetchData, {
     url: process.env.REACT_APP_ITEMS_URL,
     method: 'POST',
     body: action.payload,
   });
 
-  yield put(addItemsAC(newItem));
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(addItemsAC(response.item));
+  } else {
+    yield put(errorResponseAC());
+  }
 }
 
 function* getCategoryAsync(action) {
@@ -120,12 +144,56 @@ function* postOrderItemsAsync(action) {
   });
 }
 
+function* getOrderListAsync(action) {
+  const orders = yield call(fetchData, {
+    url: process.env.REACT_APP_ORDER_URL,
+  });
+
+  yield put(initOrderListAC(orders));
+}
+
 function* getAnimalsAsync(action) {
   const animals = yield call(fetchData, {
     url: process.env.REACT_APP_ANIMALS_URL,
   });
 
   yield put(initAnimalsAC(animals));
+}
+
+function* getReviewsAsync(action) {
+  const reviews = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
+  });
+
+  yield put(initReviewsAC(reviews));
+}
+
+function* postReviewAsync(action) {
+  const newReview = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload.item_id}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify(action.payload),
+  });
+
+  yield put(createReviewAC(newReview));
+}
+
+function* deleteOrderAsync(action) {
+  yield put(pendingResponseAC());
+
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ORDER_URL}/${action.payload}`,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'DELETE',
+  });
+
+  if (response.success) {
+    yield put(successResponseAC());
+    yield put(deleteOrderAC(action.payload));
+  } else {
+    yield put(errorResponseAC());
+  }
 }
 
 export function* globalWatcher() {
@@ -141,4 +209,8 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
   yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
+  yield takeEvery('FETCH_GET_REVIEWS', getReviewsAsync);
+  yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
+  yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
+  yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
 }

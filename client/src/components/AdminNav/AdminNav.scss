@@ -1,12 +1,16 @@
 .admin-nav {
-  a {
-    align-self: center;
-    margin-bottom: 15px;
-    margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  width: 200px;
+
+  .admin-container {
+    display: flex;
+    flex-direction: column;
   }
 
-  .container {
-    height: 60px;
-    justify-content: flex-end;
+  a {
+    margin: 5px 0 0 10px;
+    text-decoration: none;
   }
 }

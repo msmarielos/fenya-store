@@ -8,6 +8,9 @@ import {
   SORT_ITEMS_ASC,
   SORT_ITEMS_DESC,
   INIT_ITEM_LIST,
+  ITEM_RESPONSE_SUCCESS,
+  ITEM_RESPONSE_PENDING,
+  ITEM_RESPONSE_ERROR,
 } from '../actionTypes/itemsAT';
 
 export const addItemsAC = payload => {
@@ -70,5 +73,26 @@ export const initListItemsAC = payload => {
   return {
     type: INIT_ITEM_LIST,
     payload,
+  };
+};
+
+export const errorResponseAC = payload => {
+  return {
+    type: ITEM_RESPONSE_ERROR,
+    payload,
+  };
+};
+
+export const successResponseAC = payload => {
+  return {
+    type: ITEM_RESPONSE_SUCCESS,
+    payload,
+  };
+};
+
+export const pendingResponseAC = () => {
+  return {
+    type: ITEM_RESPONSE_PENDING,
+    payload: null,
   };
 };
