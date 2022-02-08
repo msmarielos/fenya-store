@@ -7,13 +7,17 @@ function TotalItemCard(props) {
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
 
   return (
-    <>
-      <button>Войти</button>
-      <p>Товаров на сумму: {total} ₽</p>
-      <button>
-        <Link to="/basket/orderform">Оформить заказ {total} </Link>
-      </button>
-    </>
+    <div className="total-item-card">
+      <h5>Ваш заказ:</h5>
+      <p>
+        Товаров на сумму: <strong>{total}</strong> ₽
+      </p>
+      <button className="regular-btn login-btn">Войти</button>
+
+      <Link to="/basket/orderform">
+        <button className="regular-btn">Оформить заказ</button>
+      </Link>
+    </div>
   );
 }
 

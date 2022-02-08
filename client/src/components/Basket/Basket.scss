@@ -6,7 +6,26 @@
     margin-right: 20px;
   }
 
+  .total-item-card {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      align-self: center;
+      margin-top: 5px;
+    }
+
+    button {
+      height: 35px;
+    }
+
+    .login-btn {
+      background-color: rgb(4, 126, 203);
+    }
+  }
+
   .basket-pay {
+    height: 200px;
     width: 400px;
     border: 1px solid rgb(240, 240, 240);
     border-radius: 5px;

@@ -38,21 +38,32 @@ function BasketCard({ item }) {
 
   return (
     <div className="basket-card">
-      <div className="image">
-        <img src={item.img} alt="картика" />
+      <div className="first-row">
+        <div className="image">
+          <img src={item.img} alt="картика" />
+        </div>
+        <p className="item-title">{item.title}</p>
       </div>
-      <p className="item-title">{item.title}</p>
-      <button
-        disabled={item.count < 2 ? true : ''}
-        onClick={() => decrementItem(item.id)}
-      >
-        -
-      </button>
-      <span>{item.count}</span>
-      <button onClick={() => incrementItem(item.id)}>+</button>
-      <br />
-      <button onClick={() => deleteItem(item.id)}>Удалить</button>
-      <p>{item.price} ₽</p>
+      <div className="second-row">
+        <div className="inc-dec">
+          <button
+            disabled={item.count < 2 ? true : ''}
+            onClick={() => decrementItem(item.id)}
+            className="minus-btn"
+          >
+            -
+          </button>
+          <span className="item-count">{item.count}</span>
+          <button onClick={() => incrementItem(item.id)} className="plus-btn">
+            +
+          </button>
+        </div>
+
+        <button onClick={() => deleteItem(item.id)} className="del-btn">
+          Удалить
+        </button>
+        <p className="price">{item.price} ₽</p>
+      </div>
     </div>
   );
 }
