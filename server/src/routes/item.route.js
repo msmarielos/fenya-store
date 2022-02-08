@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Sequelize = require('sequelize');
 const multer = require('multer');
 const { Item, CategoryType } = require('../db/models');
 const { storage } = require('../storage');
@@ -65,6 +66,16 @@ router.get('/:itemId', (req, res) => {
 });
 
 router.get('/', async (req, res) => {
+  if (req.query.search) {
+    Item.findAll({ where: { title: {
+      [Sequelize.Op.iLike]: `%${req.query.search}%`
+    }} })
+      .then(allItems => res.json(allItems))
+      .catch(error => console.log(error));
+
+    return;
+  }
+
   Item.findAll()
     .then(allItems => res.json(allItems))
     .catch(error => console.log(error));
