@@ -1,0 +1,37 @@
+.basket {
+  display: flex;
+
+  .basket-items {
+    width: 100%;
+    margin-right: 20px;
+  }
+
+  .total-item-card {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      align-self: center;
+      margin-top: 5px;
+    }
+
+    button {
+      height: 35px;
+    }
+
+    .login-btn {
+      background-color: rgb(4, 126, 203);
+    }
+  }
+
+  .basket-pay {
+    height: 200px;
+    width: 400px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 5px;
+    padding: 20px;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  }
+}

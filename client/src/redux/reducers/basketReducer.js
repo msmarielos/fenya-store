@@ -5,7 +5,7 @@ import {
   INIT_ITEMS_BASKET,
 } from '../actionTypes/basketAT';
 const initialState = {
-  basketItems: [],
+  basketItems: JSON.parse(localStorage.getItem('basket')) ?? [],
 };
 
 export const basketReducer = (state = initialState, action) => {

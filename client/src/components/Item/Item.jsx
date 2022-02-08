@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { addItemsBasketAC } from '../../redux/actionCreators/basketAC';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import { info } from '../../utils/toast';
 
 import './Item.scss';
 
@@ -14,12 +15,18 @@ export default function Item() {
   const currentUrl = window.location.pathname;
   const breadcrumbs = currentUrl.split('/');
 
+  const { basketItems } = useSelector(state => state.basketItems);
   const { currentItem } = useSelector(state => state.items);
 
   const addBacket = () => {
     const newItem = { ...currentItem, count: +inputItem.current.value };
     dispatch(addItemsBasketAC(newItem));
+    info('Товар добавлен в корзину');
   };
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basketItems));
+  }, [basketItems]);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
