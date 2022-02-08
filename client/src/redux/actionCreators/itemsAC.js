@@ -11,6 +11,7 @@ import {
   ITEM_RESPONSE_SUCCESS,
   ITEM_RESPONSE_PENDING,
   ITEM_RESPONSE_ERROR,
+  INIT_RELATIVE_ITEMS,
 } from '../actionTypes/itemsAT';
 
 export const addItemsAC = payload => {
@@ -94,5 +95,12 @@ export const pendingResponseAC = () => {
   return {
     type: ITEM_RESPONSE_PENDING,
     payload: null,
+  };
+};
+
+export const initRelativeItemsAC = payload => {
+  return {
+    type: INIT_RELATIVE_ITEMS,
+    payload,
   };
 };

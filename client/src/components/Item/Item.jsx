@@ -7,6 +7,7 @@ import ReviewsList from '../ReviewsList/ReviewsList';
 import { info } from '../../utils/toast';
 
 import './Item.scss';
+import RelativeItems from '../RelativeItems/RelativeItems';
 
 export default function Item() {
   const inputItem = useRef();
@@ -78,6 +79,8 @@ export default function Item() {
         </div>
         <h3>Описание товара</h3>
         <div className="item-description">{currentItem.description}</div>
+        <h3>Похожие товары</h3>
+        <RelativeItems id={params.id} />
         <h3>Отзывы</h3>
         <ReviewsList />
       </div>
