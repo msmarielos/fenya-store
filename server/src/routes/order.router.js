@@ -3,9 +3,10 @@ const { OrderItem, Order, User, Item } = require('../db/models');
 
 router.post('/', async (req, res) => {
   const order = req.body;
-  console.log(req.userId, '<<<<<<userId');
+  const { userId } = req;
+
   const newOrder = await Order.create({
-    user_id: 1,
+    user_id: userId,
   });
   try {
     order.forEach(async el => {
@@ -15,13 +16,13 @@ router.post('/', async (req, res) => {
         count: el.count,
       });
     });
+    res.status(200).json({ success: true });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false });
   }
 });
 
 router.get('/', async (req, res) => {
-  // const currentUser = User.findOne();
   const allOrders = await OrderItem.findAll(
     {
       include: [Order, Item],

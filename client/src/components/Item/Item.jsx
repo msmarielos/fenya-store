@@ -1,25 +1,32 @@
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { addItemsBasketAC } from '../../redux/actionCreators/basketAC';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import { info } from '../../utils/toast';
 
 import './Item.scss';
+import RelativeItems from '../RelativeItems/RelativeItems';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 export default function Item() {
   const inputItem = useRef();
   const params = useParams();
   const dispatch = useDispatch();
-  const currentUrl = window.location.pathname;
-  const breadcrumbs = currentUrl.split('/');
 
+  const { basketItems } = useSelector(state => state.basketItems);
   const { currentItem } = useSelector(state => state.items);
 
   const addBacket = () => {
     const newItem = { ...currentItem, count: +inputItem.current.value };
     dispatch(addItemsBasketAC(newItem));
+    info('Товар добавлен в корзину');
   };
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basketItems));
+  }, [basketItems]);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
@@ -28,18 +35,7 @@ export default function Item() {
   return (
     <>
       <div className="item-container">
-        <div className="breadcrumbs">
-          <Link to={'/'}>главная</Link>
-          <span>{'>'}</span>
-          <Link to={`/${breadcrumbs[1]}`}>{breadcrumbs[1]}</Link>
-          <span>{'>'}</span>
-          <Link
-            className="current-url"
-            to={`/${breadcrumbs[1]}/${breadcrumbs[2]}`}
-          >
-            {breadcrumbs[2]}
-          </Link>
-        </div>
+        <Breadcrumbs currentItem={currentItem} />
         <div className="item-top">
           <div className="item-img">
             <img src={currentItem.img} alt="" />
@@ -71,6 +67,8 @@ export default function Item() {
         </div>
         <h3>Описание товара</h3>
         <div className="item-description">{currentItem.description}</div>
+        <h3>Похожие товары</h3>
+        <RelativeItems id={params.id} />
         <h3>Отзывы</h3>
         <ReviewsList />
       </div>
