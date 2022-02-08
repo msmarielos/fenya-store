@@ -21,7 +21,7 @@ async function createUser(data) {
   }
   return await User.create(newUser);
 }
-
+//TODO `поменять название`
 async function user(data) {
   try {
     const { email } = data;

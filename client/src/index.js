@@ -27,25 +27,25 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Main />} />
-          <Route path="registration" element={<Registration />} />
-          <Route path="login" element={<Login />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="about" element={<About />} />
+        <Route path="/" element={<App />} />
+        <Route index element={<Main />} />
+        <Route path="registration" element={<Registration />} />
+        <Route path="login" element={<Login />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="about" element={<About />} />
 
-          <Route path="cats" element={<Cats />} />
-          <Route path="dogs" element={<Dogs />} />
+        <Route path="cats" element={<Cats />} />
+        <Route path="dogs" element={<Dogs />} />
 
-          <Route path=":category" element={<Category />} />
-          <Route path="cats/:category" element={<Category />} />
-          <Route path="dogs/:category" element={<Category />} />
+        <Route path=":category" element={<Category />} />
+        <Route path="cats/:category" element={<Category />} />
+        <Route path="dogs/:category" element={<Category />} />
 
-          <Route path=":category/:id" element={<Item />} />
-          <Route path="cats/:category/:id" element={<Item />} />
-          <Route path="dogs/:category/:id" element={<Item />} />
+        <Route path=":category/:id" element={<Item />} />
+        <Route path="cats/:category/:id" element={<Item />} />
+        <Route path="dogs/:category/:id" element={<Item />} />
 
-          <Route path="admin" element={<AdminPage />}>
+        <Route path="admin" element={<AdminPage />}>
           <Route path="items" element={<ItemList />} />
           <Route path="items/add" element={<ItemForm />} />
           <Route path="items/:id" element={<ItemEditForm />} />
