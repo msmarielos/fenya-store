@@ -7,6 +7,11 @@ import './animalsForm.scss';
 function AnimalsForm() {
   const animalForm = useRef();
   const dispatch = useDispatch();
+  const animalResponseSuccess = useSelector(
+    state => state.items.itemResponseSuccess
+  );
+  const itemResponseError = useSelector(state => state.items.itemResponseError);
+
 
   const addAnimal = event => {
     event.preventDefault();
@@ -16,10 +21,24 @@ function AnimalsForm() {
     dispatch({ type: 'FETCH_POST_ANIMAL', payload: data });
   };
 
+  const notInitialRender = useRef(false);
+
+  useEffect(() => {
+    if (notInitialRender.current) {
+      if (itemResponseSuccess) {
+        info('Товар добавлен!');
+      } else if (itemResponseError) {
+        error('Ошибка!');
+      }
+    } else {
+      notInitialRender.current = true;
+    }
+  }, [itemResponseSuccess, itemResponseError]);
+
 
   return (
     <div className="add-item-admin">
-      <h3>Добавить товар</h3>
+      <h3>Добавить питомца</h3>
       <form ref={animalForm} encType="multipart/form-data" onSubmit={addAnimal}>
       <input
           type="text"
@@ -36,10 +55,10 @@ function AnimalsForm() {
         <input
           type="text"
           name="name"
-          placeholder="Название животного"
+          placeholder="Имя питомца"
           required
         />
-        <input type="number" name="age" placeholder="Возвраст животного" required />
+        <input type="number" name="age" placeholder="Возвраст питомца" required />
         <input
           type="text"
           name="breed"
