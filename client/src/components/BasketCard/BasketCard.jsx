@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   updateItemsBasketAC,
   deleteItemsBasketAC,
@@ -8,7 +7,6 @@ import './backetCard.scss';
 
 function BasketCard({ item }) {
   const dispatch = useDispatch();
-  const { basketItems } = useSelector(state => state.basketItems);
 
   const incrementItem = id => {
     dispatch(
@@ -31,10 +29,6 @@ function BasketCard({ item }) {
   const deleteItem = id => {
     dispatch(deleteItemsBasketAC({ id }));
   };
-
-  useEffect(() => {
-    localStorage.setItem('basket', JSON.stringify(basketItems));
-  }, [basketItems]);
 
   return (
     <div className="basket-card">
