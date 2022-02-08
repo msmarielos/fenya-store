@@ -31,7 +31,7 @@ router.post('/', upload.single('img'), async (req, res) => {
     });
     res.json({ success: true, animal });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(501).json({ success: false });
   }
 });
 

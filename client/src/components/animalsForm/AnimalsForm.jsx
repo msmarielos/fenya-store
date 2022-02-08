@@ -8,10 +8,10 @@ function AnimalsForm() {
   const animalForm = useRef();
   const dispatch = useDispatch();
   const animalResponseSuccess = useSelector(
-    state => state.items.itemResponseSuccess
+    state => state.animals.animalResponseSuccess
   );
-  const itemResponseError = useSelector(state => state.items.itemResponseError);
-
+  const animalResponseError = useSelector(state => state.animals.animalResponseError);
+  console.log(animalResponseSuccess, animalResponseError)
 
   const addAnimal = event => {
     event.preventDefault();
@@ -25,15 +25,15 @@ function AnimalsForm() {
 
   useEffect(() => {
     if (notInitialRender.current) {
-      if (itemResponseSuccess) {
-        info('Товар добавлен!');
-      } else if (itemResponseError) {
+      if (animalResponseSuccess) {
+        info('Питомец добавлен!');
+      } else if (animalResponseError) {
         error('Ошибка!');
       }
     } else {
       notInitialRender.current = true;
     }
-  }, [itemResponseSuccess, itemResponseError]);
+  }, [animalResponseSuccess, animalResponseError]);
 
 
   return (

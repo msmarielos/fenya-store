@@ -47,24 +47,24 @@ export const animalReducer = (state = initialState, action) => {
         return {
           ...state,
           animalResponseSuccess: true,
-          animalResponsePending: false,
-          animalResponseError: null,
+          animalResponsePending: null,
+          animalResponseError: false,
         };
   
       case ANIMAL_RESPONSE_ERROR:
         return {
           ...state,
-          animalResponseSuccess: true,
-          animalResponsePending: false,
-          animalResponseError: null,
+          animalResponseSuccess: false,
+          animalResponsePending: null,
+          animalResponseError: true,
         };
   
       case ANIMAL_RESPONSE_PENDING:
         return {
           ...state,
           animalResponseSuccess: null,
-          animalResponsePending: null,
-          animalResponseError: true,
+          animalResponsePending: true,
+          animalResponseError: null,
         };
 
     default:

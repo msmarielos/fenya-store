@@ -209,9 +209,7 @@ function* postAnimalAsync(action) {
   } else {
     yield put(errorResponseAnimalAC());
   }
-  
 }
-
 
 
 export function* globalWatcher() {
