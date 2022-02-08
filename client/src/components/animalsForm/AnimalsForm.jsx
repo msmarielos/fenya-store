@@ -5,15 +5,22 @@ import { error, info } from '../../utils/toast';
 import './animalsForm.scss';
 
 function AnimalsForm() {
-  
+  const animalForm = useRef();
   const dispatch = useDispatch();
 
+  const addAnimal = event => {
+    event.preventDefault();
+
+    const data = new FormData(animalForm.current);
+
+    dispatch({ type: 'FETCH_POST_ITEM', payload: data });
+  };
 
 
   return (
     <div className="add-item-admin">
       <h3>Добавить товар</h3>
-      <form encType="multipart/form-data" >
+      <form ref={animalForm} encType="multipart/form-data" onSubmit={addAnimal}>
       <input
           type="text"
           name="title"

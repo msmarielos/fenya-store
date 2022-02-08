@@ -14,7 +14,7 @@ import {
   pendingResponseAC,
 } from '../actionCreators/itemsAC';
 import { initListsAC } from '../actionCreators/listsAC';
-import { initAnimalsAC } from '../actionCreators/animalAC';
+import { initAnimalsAC, addAnimalsAC } from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 
@@ -195,6 +195,18 @@ function* deleteOrderAsync(action) {
     yield put(errorResponseAC());
   }
 }
+function* postAnimalAsync(action) {
+ 
+  const response = yield call(fetchData, {
+    url: process.env.REACT_APP_ANIMALS_URL,
+    method: 'POST',
+    body: action.payload,
+  });
+
+  yield put(addAnimalsAC());
+}
+
+
 
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
@@ -213,4 +225,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
   yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
+  yield takeEvery('FETCH_POST_ANIMAL', postAnimalAsync);
 }
