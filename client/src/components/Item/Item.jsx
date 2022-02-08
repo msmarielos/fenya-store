@@ -19,7 +19,7 @@ export default function Item() {
   const { currentItem } = useSelector(state => state.items);
 
   const addBacket = () => {
-    const newItem = { ...currentItem, count: +inputItem.current.value };
+    const newItem = { ...currentItem, count: + inputItem.current.value };
     dispatch(addItemsBasketAC(newItem));
     info('Товар добавлен в корзину');
   };

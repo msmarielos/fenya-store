@@ -1,10 +1,16 @@
 import './SearchPanel.scss';
 import { Link } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { showModalAC } from '../../redux/actionCreators/modalAC';
 
 export default function SearchPanel() {
+  const dispatch = useDispatch();
   const { basketItems } = useSelector(state => state.basketItems);
+
+  const showModal = () => {
+    dispatch(showModalAC());
+  };
 
   return (
     <>
@@ -18,7 +24,11 @@ export default function SearchPanel() {
           </div>
           <form>
             <input className="search-input" type="text" placeholder="Поиск" />
-            <Link to="/basket">
+            <Link
+              to="/basket"
+              onMouseEnter={showModal}
+              onMouseLeave={showModal}
+            >
               <button className="regular-btn basket-btn">Корзина</button>
               {basketItems.length ? (
                 <div className="basket-counter">
