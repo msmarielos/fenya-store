@@ -1,20 +1,19 @@
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { addItemsBasketAC } from '../../redux/actionCreators/basketAC';
 import ReviewsList from '../ReviewsList/ReviewsList';
 import { info } from '../../utils/toast';
 
 import './Item.scss';
 import RelativeItems from '../RelativeItems/RelativeItems';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 export default function Item() {
   const inputItem = useRef();
   const params = useParams();
   const dispatch = useDispatch();
-  const currentUrl = window.location.pathname;
-  const breadcrumbs = currentUrl.split('/');
 
   const { basketItems } = useSelector(state => state.basketItems);
   const { currentItem } = useSelector(state => state.items);
@@ -36,18 +35,7 @@ export default function Item() {
   return (
     <>
       <div className="item-container">
-        <div className="breadcrumbs">
-          <Link to={'/'}>главная</Link>
-          <span>{'>'}</span>
-          <Link to={`/${breadcrumbs[1]}`}>{breadcrumbs[1]}</Link>
-          <span>{'>'}</span>
-          <Link
-            className="current-url"
-            to={`/${breadcrumbs[1]}/${breadcrumbs[2]}`}
-          >
-            {breadcrumbs[2]}
-          </Link>
-        </div>
+        <Breadcrumbs currentItem={currentItem} />
         <div className="item-top">
           <div className="item-img">
             <img src={currentItem.img} alt="" />

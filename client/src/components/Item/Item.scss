@@ -41,17 +41,16 @@
     a {
       text-decoration: none;
       color: rgb(169, 169, 169);
-      font-weight: thin;
     }
 
-    span {
+    .separate {
       color: #e84a53;
       font-weight: bold;
       margin: 0 10px;
     }
 
     .current-url {
-      color: rgb(80, 80, 80);
+      color: rgb(189, 189, 189);
     }
   }
 }
