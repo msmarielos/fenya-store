@@ -7,6 +7,7 @@ export default function RelativeItems({ id }) {
   const dispatch = useDispatch();
 
   const { relativeItems } = useSelector(state => state.items);
+  const url = window.location.pathname.split('/').slice(0, -1).join('/');
 
   useEffect(() => {
     dispatch({ type: 'FETCH_RELATIVE_ITEMS', payload: id });
@@ -16,8 +17,10 @@ export default function RelativeItems({ id }) {
     <div className="relative-item-list">
       {relativeItems.map(item => (
         <div className="relative-item" key={item.id}>
-          <img src={item.img} alt={item.title} />
-          <p>{item.title}</p>
+          <Link to={`${url}/${item.id}`}><img src={item.img} alt={item.title} /></Link>
+          <p>
+            <Link to={`${url}/${item.id}`}>{item.title}</Link>
+          </p>
         </div>
       ))}
     </div>

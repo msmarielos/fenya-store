@@ -60,7 +60,9 @@ router.get('/relative/:id', async (req, res) => {
       categoryType_id: currentItem.categoryType_id,
     },
   });
-  const result = relativeItems.filter((item) => item.id !== id);
+  const result = relativeItems
+    .filter((item) => item.id !== Number(id))
+    .sort(() => Math.random() - 0.5);
   res.json(result.slice(0, 5));
 });
 
