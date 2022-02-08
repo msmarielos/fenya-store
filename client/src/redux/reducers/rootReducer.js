@@ -7,6 +7,7 @@ import { basketReducer } from './basketReducer';
 import { animalReducer } from './animalReducer';
 import { reviewsReducer } from './reviewsReducer';
 import { orderReducer } from './orderReducer';
+import { searchReducer } from './searchReducer';
 
 export const rootReducer = combineReducers({
   items: itemReducer,
@@ -17,4 +18,5 @@ export const rootReducer = combineReducers({
   animals: animalReducer,
   reviews: reviewsReducer,
   orders: orderReducer,
+  search: searchReducer,
 });
