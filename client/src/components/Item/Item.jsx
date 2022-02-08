@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { addItemsBasketAC } from '../../redux/actionCreators/basketAC';
 import ReviewsList from '../ReviewsList/ReviewsList';
+import { info } from '../../utils/toast';
 
 import './Item.scss';
 
@@ -19,6 +20,7 @@ export default function Item() {
   const addBacket = () => {
     const newItem = { ...currentItem, count: +inputItem.current.value };
     dispatch(addItemsBasketAC(newItem));
+    info('Товар добавлен в корзину');
   };
 
   useEffect(() => {

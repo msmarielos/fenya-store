@@ -55,7 +55,10 @@ export default function Category() {
             <Link to={`${window.location.pathname}/${item.id}`}>
               {item.title}
             </Link>
-            <p className="price">{item.price} p.</p>
+            <div className="price-buy">
+              <p className="price">{item.price} p.</p>
+              <a href="">Купить</a>
+            </div>
           </div>
         ))}
       </div>
