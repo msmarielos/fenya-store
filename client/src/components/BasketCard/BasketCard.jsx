@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   updateItemsBasketAC,
   deleteItemsBasketAC,
@@ -8,6 +8,7 @@ import './backetCard.scss';
 
 function BasketCard({ item }) {
   const dispatch = useDispatch();
+  const { basketItems } = useSelector(state => state.basketItems);
 
   const incrementItem = id => {
     dispatch(
@@ -31,12 +32,16 @@ function BasketCard({ item }) {
     dispatch(deleteItemsBasketAC({ id }));
   };
 
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basketItems));
+  }, [basketItems]);
+
   return (
     <div className="basket-card">
       <div className="image">
         <img src={item.img} alt="картика" />
       </div>
-      <p className='item-title'>{item.title}</p>
+      <p className="item-title">{item.title}</p>
       <button
         disabled={item.count < 2 ? true : ''}
         onClick={() => decrementItem(item.id)}

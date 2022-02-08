@@ -15,6 +15,7 @@ export default function Item() {
   const currentUrl = window.location.pathname;
   const breadcrumbs = currentUrl.split('/');
 
+  const { basketItems } = useSelector(state => state.basketItems);
   const { currentItem } = useSelector(state => state.items);
 
   const addBacket = () => {
@@ -22,6 +23,10 @@ export default function Item() {
     dispatch(addItemsBasketAC(newItem));
     info('Товар добавлен в корзину');
   };
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basketItems));
+  }, [basketItems]);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
