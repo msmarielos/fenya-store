@@ -17,7 +17,9 @@ export default function RelativeItems({ id }) {
     <div className="relative-item-list">
       {relativeItems.map(item => (
         <div className="relative-item" key={item.id}>
-          <Link to={`${url}/${item.id}`}><img src={item.img} alt={item.title} /></Link>
+          <Link to={`${url}/${item.id}`}>
+            <img src={item.img} alt={item.title} />
+          </Link>
           <p>
             <Link to={`${url}/${item.id}`}>{item.title}</Link>
           </p>

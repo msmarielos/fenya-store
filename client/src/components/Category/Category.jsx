@@ -34,7 +34,7 @@ export default function Category() {
     e.preventDefault();
     const idArr = e.target.pathname.split('/');
     const id = Number(idArr[idArr.length - 1]);
-    const currentItem = items.find(item => item.id === id)
+    const currentItem = items.find(item => item.id === id);
     const newItem = { ...currentItem, count: +1 };
     dispatch(addItemsBasketAC(newItem));
     info('Товар добавлен в корзину');
