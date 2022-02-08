@@ -16,9 +16,12 @@ export default function ReviewsList() {
 
   return (
     <>
-      {reviews.map(item => (
-        <ReviewCard key={item.id} item={item} />
-      ))}
+      {reviews.length ? (
+        reviews.map(item => <ReviewCard key={item.id} item={item} />)
+      ) : (
+        <p>Отзывов пока нет</p>
+      )}
+
       <ReviewForm />
     </>
   );

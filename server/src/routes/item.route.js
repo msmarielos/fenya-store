@@ -52,6 +52,18 @@ router.get('/', async (req, res) => {
     .catch((error) => console.log(error));
 });
 
+router.get('/relative/:id', async (req, res) => {
+  const { id } = req.params;
+  const currentItem = await Item.findOne({ where: { id } });
+  const relativeItems = await Item.findAll({
+    where: {
+      categoryType_id: currentItem.categoryType_id,
+    },
+  });
+  const result = relativeItems.filter((item) => item.id !== id);
+  res.json(result.slice(0, 5));
+});
+
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Item.destroy({ where: { id } })
