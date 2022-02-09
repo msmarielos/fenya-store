@@ -6,7 +6,7 @@ function BulletinBoardCard({ animal }) {
     <div className="animal-card">
       <div className="animal-img">
         <Link to={`/board/animal/${animal.id}`}>
-          <img src={animal.img} alt="Фото питомца" />
+          <img src={animal.img.split('/')[0] === 'https:' ? animal.img : `storage/${animal.img}`} alt="Фото питомца" />
         </Link>
       </div>
       <div className="animal-info">

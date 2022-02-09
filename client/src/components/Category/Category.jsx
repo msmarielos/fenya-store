@@ -62,7 +62,7 @@ export default function Category() {
         {items.map(item => (
           <div className="item-card" key={item.id}>
             <Link to={`${window.location.pathname}/${item.id}`}>
-              <img src={item.img} alt="" />
+              <img src={item.img.split('/')[0] === 'https:' ? item.img : `storage/${item.img}`} alt="" />
             </Link>
             <Link to={`${window.location.pathname}/${item.id}`}>
               {item.title}
