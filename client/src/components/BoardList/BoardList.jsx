@@ -6,12 +6,16 @@ import { error, info } from '../../utils/toast';
 export default function BoardList() {
   const animals = useSelector(state => state.animals.animals);
   const publishedAnimals = animals.filter(animal => animal.isChecked === true);
-  const unpublishedAnimals = animals.filter(animal => animal.isChecked === false)
+  const unpublishedAnimals = animals.filter(
+    animal => animal.isChecked === false
+  );
 
   const animalResponseSuccess = useSelector(
     state => state.animals.animalResponseSuccess
   );
-  const animalResponseError = useSelector(state => state.animals.animalResponseError);
+  const animalResponseError = useSelector(
+    state => state.animals.animalResponseError
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,33 +48,35 @@ export default function BoardList() {
 
   return (
     <div>
-    <div>Неопубликованные объявления:</div>
-    <ul>
-      {unpublishedAnimals?.length > 0 &&
-        unpublishedAnimals.map(animal => (
-          <li key={animal.id}>
-            {animal.name}
-            <img src={`storage/${animal.img}`} />
-            <button data-id={animal.id} onClick={putFetch}>Опубликовать</button>
-            <button data-id={animal.id} onClick={deleteFetch}>
-              Удалить
-            </button>
-          </li>
-        ))}
-    </ul>
-    <div>Опубликованные объявления:</div>
-    <ul>
-      {publishedAnimals?.length > 0 &&
-        publishedAnimals.map(animal => (
-          <li key={animal.id}>
-            {animal.name}
-            <img src={`storage/${animal.img}`} />
-            <button data-id={animal.id} onClick={deleteFetch}>
-              Удалить
-            </button>
-          </li>
-        ))}
-    </ul>
+      <div>Неопубликованные объявления:</div>
+      <ul>
+        {unpublishedAnimals?.length > 0 &&
+          unpublishedAnimals.map(animal => (
+            <li key={animal.id}>
+              {animal.name}
+              <img src={`storage/${animal.img}`} />
+              <button data-id={animal.id} onClick={putFetch}>
+                Опубликовать
+              </button>
+              <button data-id={animal.id} onClick={deleteFetch}>
+                Удалить
+              </button>
+            </li>
+          ))}
+      </ul>
+      <div>Опубликованные объявления:</div>
+      <ul>
+        {publishedAnimals?.length > 0 &&
+          publishedAnimals.map(animal => (
+            <li key={animal.id}>
+              {animal.name}
+              <img src={`storage/${animal.img}`} />
+              <button data-id={animal.id} onClick={deleteFetch}>
+                Удалить
+              </button>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 }

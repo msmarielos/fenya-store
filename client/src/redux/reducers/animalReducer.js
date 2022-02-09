@@ -69,21 +69,21 @@ export const animalReducer = (state = initialState, action) => {
         animalResponsePending: true,
         animalResponseError: null,
       };
-    
+
     case ANIMAL_TO_PUBLIC:
       return {
-        ...state, 
+        ...state,
         animals: state.animals.map(el => {
           if (el.id === Number(action.payload)) {
             return {
               ...el,
-              isChecked: true
-            }
+              isChecked: true,
+            };
           } else {
-            return el
+            return el;
           }
-        })
-      }
+        }),
+      };
 
     case INIT_CURRENT_ANIMAL:
       return {
