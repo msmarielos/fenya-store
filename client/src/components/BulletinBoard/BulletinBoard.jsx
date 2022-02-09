@@ -13,12 +13,10 @@ function BulletinBoard() {
   }, [dispatch]);
 
   return (
-    <div className='animals-block'>
+    <div className="animals-block">
       <h1>Доска объявлений</h1>
       <Link to="/addform">
-        <button className="regular-btn">
-          Подать объявление
-        </button>
+        <button className="regular-btn">Подать объявление</button>
       </Link>
       <div className="animals-board">
         {animals.length &&
