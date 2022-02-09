@@ -5,10 +5,14 @@ function BulletinBoardCard({ animal }) {
   return (
     <div className="animal-card">
       <div className="animal-img">
-        <img src={animal.img} alt="Фото питомца" />
+        <Link to={`/board/animal/${animal.id}`}>
+          <img src={animal.img} alt="Фото питомца" />
+        </Link>
       </div>
       <div className="animal-info">
-        <h4>{animal.title}</h4>
+        <Link to={`/board/animal/${animal.id}`}>
+          <h4>{animal.title}</h4>
+        </Link>
 
         <p>
           <strong>Порода</strong>: {animal.breed}

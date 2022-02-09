@@ -12,6 +12,15 @@ router.get('/', async (req, res) => {
   res.json(animals);
 });
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const animal = await Animal.findOne({
+    include: [User],
+    where: { id },
+  });
+  res.json(animal);
+});
+
 router.post('/', upload.single('img'), async (req, res) => {
   const { name, title, description, age, type, city, breed } = req.body;
   const { filename } = req.file;
