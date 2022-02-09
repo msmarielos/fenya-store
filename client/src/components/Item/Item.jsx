@@ -40,7 +40,9 @@ export default function Item() {
         <Breadcrumbs currentItem={currentItem} />
         <div className="item-top">
           <div className="item-img">
-            <img src={currentItem.img} alt="" />
+            <img src={currentItem.img?.split('/')[0] === 'https:'
+                ? currentItem.img
+                : `/storage/${currentItem.img}`} alt="" />
           </div>
           <div className="item-short-description">
             <h3>{currentItem.title}</h3>
