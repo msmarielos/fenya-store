@@ -4,6 +4,7 @@ import {
   DELETE_ITEM_BASKET,
   INIT_ITEMS_BASKET,
   CLEAR_BASKET,
+  APPLY_PROMO,
 } from '../actionTypes/basketAT';
 
 export const addItemsBasketAC = payload => {
@@ -37,6 +38,13 @@ export const initItemsBasketAC = payload => {
 export const clearBasketAC = payload => {
   return {
     type: CLEAR_BASKET,
+    payload,
+  };
+};
+
+export const applyPromoAC = payload => {
+  return {
+    type: APPLY_PROMO,
     payload,
   };
 };

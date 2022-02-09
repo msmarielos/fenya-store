@@ -1,17 +1,33 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { clearBasketAC } from '../../redux/actionCreators/basketAC';
+import {
+  applyPromoAC,
+  clearBasketAC,
+} from '../../redux/actionCreators/basketAC';
 
 function TotalItemCard() {
   const dispatch = useDispatch();
 
-  const { basketItems } = useSelector(state => state.basketItems);
+  const { basketItems, promo } = useSelector(state => state.basketItems);
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
 
   const clearBasket = e => {
     e.preventDefault();
     dispatch(clearBasketAC());
+  };
+
+  const applyPromo = e => {
+    console.log(123);
+    e.preventDefault();
+    if (
+      total &&
+      e.target.promo.value === process.env.REACT_APP_PROMOCODE &&
+      !promo
+    ) {
+      dispatch(applyPromoAC());
+      localStorage.setItem('promo', true);
+    }
   };
 
   return (
@@ -20,14 +36,31 @@ function TotalItemCard() {
       <p>
         Товаров на сумму: <strong>{total}</strong> ₽
       </p>
-      <input type="text" placeholder="Промокод" />
+      <form onSubmit={applyPromo}>
+        {promo ? (
+          <>
+            <input disabled type="text" name="promo" placeholder="Промокод" />
+            <button disabled className="promo-btn" type="submit">
+              Применить промокод
+            </button>
+          </>
+        ) : (
+          <>
+            <input type="text" name="promo" placeholder="Промокод" />
+            <button className="promo-btn" type="submit">
+              Применить промокод
+            </button>
+          </>
+        )}
+      </form>
+
       <button className="regular-btn login-btn">Войти</button>
 
       <button className="regular-btn">
         <Link to="/basket/orderform">Оформить заказ</Link>
       </button>
 
-      <button className="regular-btn clear-btn" onClick={clearBasket}>
+      <button className="empty-btn" onClick={clearBasket}>
         Очистить корзину
       </button>
     </div>
