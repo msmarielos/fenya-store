@@ -11,8 +11,8 @@ function BulletinBoardCard({ animal }) {
         <p>{animal.type} </p>
         <p>породы: {animal.breed}</p>
         <p>Кличка:{animal.name} </p>
-        <p>Возвраст: {animal.age}</p>
-        <p>Описание:{animal.description} </p>
+        <p>Возраст: {animal.age}</p>
+        <p>Описание:{animal.description}</p>
       </div>
       <div>
         <h5>Информация о владельце</h5>
