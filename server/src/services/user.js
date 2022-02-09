@@ -21,21 +21,36 @@ async function createUser(data) {
   }
   return await User.create(newUser);
 }
-//TODO `поменять название`
-async function user(data) {
-  try {
-    const { email } = data;
-    const profile = await User.findOne({
-      where: {
-        email,
-      },
-    });
-    if (!profile) {
-      throw new Error('Email неверный');
+async function getUserById(id) {
+  const user = await User.findOne({
+    where: {
+      id,
+    },
+  });
+  if (!user) {
+    throw new Error('id неверный');
+  }
+  return user;
+}
+
+async function updateUser(id, data) {
+  const { name, email, phone, password } = data;
+  const user = await User.update(
+    {
+      name,
+      email,
+      phone,
+      password,
+    },
+    {
+      where: { id },
     }
-  } catch (err) {
-    throw err.message;
+  );
+  if (!user) {
+    throw new Error('Данные не изменены');
+  } else {
+    return user;
   }
 }
 
-module.exports = { createUser, user };
+module.exports = { createUser, getUserById, updateUser };
