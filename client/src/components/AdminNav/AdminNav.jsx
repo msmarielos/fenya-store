@@ -9,7 +9,8 @@ export default function AdminNav() {
           <h4>Навигация</h4>
           <Link to="/admin/items/add">Добавить товар</Link>
           <Link to="/admin/items">Все товары</Link>
-          <Link to="/admin/reviews">Отзывы</Link>
+          {/* <Link to="/admin/reviews">Отзывы</Link> */}
+          <Link to="/admin/animal/addform">Добавить объявление</Link>
           <Link to="/admin/animal/check">Объявления</Link>
           <Link to="/admin/orders">Заказы</Link>
         </div>
