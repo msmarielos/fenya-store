@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { OrderItem, Order, User, Item } = require('../db/models');
+const { OrderItem, Order, Item } = require('../db/models');
 
 router.post('/', async (req, res) => {
   const order = req.body;
@@ -23,13 +23,6 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  const allOrders = await OrderItem.findAll(
-    {
-      include: [Order, Item],
-    },
-    { raw: true }
-  );
-
   try {
     const allOrders = await OrderItem.findAll(
       {

@@ -22,7 +22,7 @@ export default function MainPageAnimals() {
       </div>
       <div className="animal-main-list">
         {animals.slice(0, 3).map(animal => (
-          <Link to={`/board/animal/${animal.id}`}>
+          <Link key={animal.id} to={`/board/animal/${animal.id}`}>
             <div className="animal-main-card">
               <img src={animal.img} alt={animal.title} />
               <h5>{animal.name}</h5>

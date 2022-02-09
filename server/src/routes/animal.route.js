@@ -6,19 +6,27 @@ const { Animal, User } = require('../db/models');
 const upload = multer({ storage });
 
 router.get('/', async (req, res) => {
-  const animals = await Animal.findAll({
-    include: [User],
-  });
-  res.json(animals);
+  try {
+    const animals = await Animal.findAll({
+      include: [User],
+    });
+    res.json(animals);
+  } catch (err) {
+    res.json({ res: 404 });
+  }
 });
 
 router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const animal = await Animal.findOne({
-    include: [User],
-    where: { id },
-  });
-  res.json(animal);
+  try {
+    const { id } = req.params;
+    const animal = await Animal.findOne({
+      include: [User],
+      where: { id },
+    });
+    res.json(animal);
+  } catch (err) {
+    res.json({ res: 404 });
+  }
 });
 
 router.post('/', upload.single('img'), async (req, res) => {

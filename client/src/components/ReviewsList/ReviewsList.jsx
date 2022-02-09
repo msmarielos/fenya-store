@@ -11,7 +11,9 @@ export default function ReviewsList() {
   const { reviews } = useSelector(state => state.reviews);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_REVIEWS', payload: params.id });
+    if (Number.isInteger(Number(params.id))) {
+      dispatch({ type: 'FETCH_GET_REVIEWS', payload: params.id });
+    }
   }, []);
 
   return (

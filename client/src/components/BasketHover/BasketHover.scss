@@ -10,8 +10,8 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  right: 370px;
-  top: 40px;
+  right: 140px;
+  top: 0px;
   z-index: 1;
 
   .basket-hover-item {
@@ -21,6 +21,7 @@
 
     p {
       margin-left: 15px;
+      color: black;
     }
 
     img {
@@ -30,5 +31,10 @@
 
   .basket-hover-item:last-child {
     border-bottom: none;
+  }
+
+  h4,
+  span {
+    color: black;
   }
 }
