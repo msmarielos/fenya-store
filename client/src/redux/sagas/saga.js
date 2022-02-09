@@ -163,7 +163,10 @@ function* getListsAsync() {
 function* postOrderItemsAsync(action) {
   const newItem = yield call(fetchData, {
     url: process.env.REACT_APP_ORDER_URL,
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
     method: 'POST',
     body: JSON.stringify(action.payload),
   });

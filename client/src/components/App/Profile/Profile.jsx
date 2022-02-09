@@ -1,7 +1,14 @@
-import React from 'react';
-
 function Profile(props) {
-  return <h2>Profile</h2>;
+  function logout() {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
+  return (
+    <div>
+      <button onClick={logout}>Выйти</button>
+    </div>
+  );
 }
 
 export default Profile;
