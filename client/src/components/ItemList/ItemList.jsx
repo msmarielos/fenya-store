@@ -44,11 +44,7 @@ function ItemList() {
           items.map(item => (
             <li key={item.id}>
               <img
-                src={
-                  item.img.split('/')[0] === 'https:'
-                    ? item.img
-                    : `storage/${item.img}`
-                }
+                src={item.img}
                 alt=""
               />
               <p>{item.title}</p>

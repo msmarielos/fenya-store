@@ -41,11 +41,7 @@ export default function Item() {
         <div className="item-top">
           <div className="item-img">
             <img
-              src={
-                currentItem.img.split('/')[0] === 'https:'
-                  ? currentItem.img
-                  : `storage/${currentItem.img}`
-              }
+              src={currentItem.img}
               alt=""
             />
           </div>

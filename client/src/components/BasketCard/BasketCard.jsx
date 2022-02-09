@@ -35,11 +35,7 @@ function BasketCard({ item }) {
       <div className="first-row">
         <div className="image">
           <img
-            src={
-              item.img.split('/')[0] === 'https:'
-                ? item.img
-                : `storage/${item.img}`
-            }
+            src={item.img}
             alt="картика"
           />
         </div>

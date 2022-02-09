@@ -11,11 +11,7 @@ export default function BasketHover() {
         return (
           <div className="basket-hover-item">
             <img
-              src={
-                item.img.split('/')[0] === 'https:'
-                  ? item.img
-                  : `storage/${item.img}`
-              }
+              src={item.img}
               alt={item.title}
             />
             <p>{`${item.title.slice(0, 30)}...`}</p>

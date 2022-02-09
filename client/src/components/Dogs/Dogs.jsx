@@ -25,11 +25,7 @@ export default function Dogs() {
             <div className="category" key={item.id}>
               <Link to={`${window.location.pathname}/${item.url}`}>
                 <img
-                  src={
-                    item.img.split('/')[0] === 'https:'
-                      ? item.img
-                      : `storage/${item.img}`
-                  }
+                  src={item.img}
                   alt=""
                 />
               </Link>

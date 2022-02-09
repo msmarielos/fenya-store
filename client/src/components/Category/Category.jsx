@@ -68,11 +68,7 @@ export default function Category() {
           <div className="item-card" key={item.id}>
             <Link to={`${window.location.pathname}/${item.id}`}>
               <img
-                src={
-                  item.img.split('/')[0] === 'https:'
-                    ? item.img
-                    : `storage/${item.img}`
-                }
+                src={item.img}
                 alt=""
               />
             </Link>

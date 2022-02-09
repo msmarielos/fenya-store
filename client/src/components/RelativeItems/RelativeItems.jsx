@@ -21,11 +21,7 @@ export default function RelativeItems({ id }) {
         <div className="relative-item" key={item.id}>
           <Link to={`${url}/${item.id}`}>
             <img
-              src={
-                item.img.split('/')[0] === 'https:'
-                  ? item.img
-                  : `storage/${item.img}`
-              }
+              src={item.img}
               alt={item.title}
             />
           </Link>
