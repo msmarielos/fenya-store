@@ -6,6 +6,7 @@ import {
   ANIMAL_RESPONSE_SUCCESS,
   ANIMAL_RESPONSE_ERROR,
   ANIMAL_RESPONSE_PENDING,
+  ANIMAL_TO_PUBLIC,
 } from '../actionTypes/animalAT.js';
 
 export const addAnimalsAC = payload => {
@@ -54,5 +55,12 @@ export const pendingResponseAnimalAC = () => {
   return {
     type: ANIMAL_RESPONSE_PENDING,
     payload: null,
+  };
+};
+
+export const publicAnimalsAC = payload => {
+  return {
+    type: ANIMAL_TO_PUBLIC,
+    payload,
   };
 };
