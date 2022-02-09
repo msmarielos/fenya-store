@@ -10,12 +10,14 @@ export default function RelativeItems({ id }) {
   const url = window.location.pathname.split('/').slice(0, -1).join('/');
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_RELATIVE_ITEMS', payload: id });
-  }, []);
+    if (Number.isInteger(Number(id))) {
+      dispatch({ type: 'FETCH_RELATIVE_ITEMS', payload: id });
+    }
+  }, [dispatch, id]);
 
   return (
     <div className="relative-item-list">
-      {relativeItems.map(item => (
+      {relativeItems?.map(item => (
         <div className="relative-item" key={item.id}>
           <Link to={`${url}/${item.id}`}>
             <img src={item.img} alt={item.title} />

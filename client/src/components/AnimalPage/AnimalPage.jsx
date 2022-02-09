@@ -10,7 +10,7 @@ export default function AnimalPage() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ANIMAL', payload: params.id });
-  }, []);
+  }, [dispatch, params.id]);
 
   return (
     <>
@@ -37,16 +37,16 @@ export default function AnimalPage() {
       <div className="owner-info">
         <h4>Информация о владельце</h4>
         <p>
-          <strong>Имя</strong>: {currentAnimal?.User.name}
+          <strong>Имя</strong>: {currentAnimal?.User?.name}
         </p>
         <p>
           <strong>Город</strong>: {currentAnimal?.city}
         </p>
         <p>
-          <strong>Email</strong>: {currentAnimal?.User.email}
+          <strong>Email</strong>: {currentAnimal?.User?.email}
         </p>
         <p>
-          <strong>Телефон</strong>: {currentAnimal?.User.phone}
+          <strong>Телефон</strong>: {currentAnimal?.User?.phone}
         </p>
       </div>
     </>
