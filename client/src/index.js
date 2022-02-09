@@ -24,6 +24,7 @@ import BulletinBoard from './components/BulletinBoard/BulletinBoard';
 import AdminPage from './components/AdminPage/AdminPage';
 import SearchResults from './components/SearchResults/SearchResults';
 import AnimalsForm from './components/animalsForm/AnimalsForm';
+import BoardList from './components/BoardList/BoardList';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -52,6 +53,8 @@ ReactDOM.render(
             <Route path="items/add" element={<ItemForm />} />
             <Route path="items/:id" element={<ItemEditForm />} />
             <Route path="orders" element={<OrderList />} />
+            <Route path="animal/check" element={<BoardList />} />
+            <Route path="animal/addform" element={<AnimalsForm />} />
           </Route>
 
           <Route path="basket" element={<Basket />} />
