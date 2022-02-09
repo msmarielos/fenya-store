@@ -18,7 +18,6 @@ function TotalItemCard() {
   };
 
   const applyPromo = e => {
-    console.log(123);
     e.preventDefault();
     if (
       total &&
@@ -39,6 +38,7 @@ function TotalItemCard() {
       <form onSubmit={applyPromo}>
         {promo ? (
           <>
+            <p style={{ color: 'green', margin: 0 }}>Ваша скидка 10%</p>
             <input disabled type="text" name="promo" placeholder="Промокод" />
             <button disabled className="promo-btn" type="submit">
               Применить промокод

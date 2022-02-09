@@ -25,6 +25,8 @@ import AdminPage from './components/AdminPage/AdminPage';
 import SearchResults from './components/SearchResults/SearchResults';
 import AnimalsForm from './components/animalsForm/AnimalsForm';
 import AnimalPage from './components/AnimalPage/AnimalPage';
+import NotFound from './components/NotFound/NotFound';
+import BoardList from './components/BoardList/BoardList';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -53,6 +55,8 @@ ReactDOM.render(
             <Route path="items/add" element={<ItemForm />} />
             <Route path="items/:id" element={<ItemEditForm />} />
             <Route path="orders" element={<OrderList />} />
+            <Route path="animal/check" element={<BoardList />} />
+            <Route path="animal/addform" element={<AnimalsForm />} />
           </Route>
 
           <Route path="basket" element={<Basket />} />
@@ -63,6 +67,8 @@ ReactDOM.render(
           <Route path="items/:id" element={<Item />} />
           <Route path="search/results/:id" element={<Item />} />
           <Route path="addform" element={<AnimalsForm />} />
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,11 +1,16 @@
+/* eslint-disable camelcase */
 const router = require('express').Router();
 const { Review } = require('../db/models');
 const { Item } = require('../db/models');
 
 router.get('/:id', (req, res) => {
-  Review.findAll({ where: { item_id: req.params.id } }).then(reviews => {
-    res.json(reviews);
-  });
+  try {
+    Review.findAll({ where: { item_id: req.params.id } }).then(reviews => {
+      res.json(reviews);
+    });
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.post('/:id', async (req, res) => {

@@ -18,9 +18,11 @@ import { initListsAC } from '../actionCreators/listsAC';
 import {
   initAnimalsAC,
   addAnimalsAC,
+  deleteAnimalsAC,
   pendingResponseAnimalAC,
   successResponseAnimalAC,
   errorResponseAnimalAC,
+  publicAnimalsAC,
   initCurrentAnimalAC,
 } from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
@@ -53,7 +55,7 @@ function* loginUserAsync(action) {
     body: JSON.stringify(action.payload),
   });
   yield put(loginUserAC(user));
-  localStorage.setItem('token', JSON.stringify(user.token.accessToken));
+  localStorage.setItem('token', user.token.accessToken);
 }
 
 function* getItemsAsync(action) {
@@ -183,6 +185,23 @@ function* getAnimalsAsync(action) {
   yield put(initAnimalsAC(animals));
 }
 
+function* deleteAnimalAsync(action) {
+  yield put(pendingResponseAnimalAC());
+
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ANIMALS_URL}/${action.payload}`,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'DELETE',
+  });
+
+  if (response.success) {
+    yield put(successResponseAnimalAC());
+    yield put(deleteAnimalsAC(action.payload));
+  } else {
+    yield put(errorResponseAnimalAC());
+  }
+}
+
 function* getReviewsAsync(action) {
   const reviews = yield call(fetchData, {
     url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
@@ -222,6 +241,9 @@ function* postAnimalAsync(action) {
   yield put(pendingResponseAnimalAC());
   const response = yield call(fetchData, {
     url: process.env.REACT_APP_ANIMALS_URL,
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
     method: 'POST',
     body: action.payload,
   });
@@ -239,6 +261,21 @@ function* getRelativeItemsAsync(action) {
     url: `${process.env.REACT_APP_RELATIVE_ITEMS_URL}/${action.payload}`,
   });
   yield put(initRelativeItemsAC(relativeItems));
+}
+
+function* toPublicAnimalAsync(action) {
+  yield put(pendingResponseAC());
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ANIMALS_URL}/${action.payload}`,
+    method: 'PUT',
+  });
+
+  if (response.success) {
+    yield put(successResponseAnimalAC());
+    yield put(publicAnimalsAC());
+  } else {
+    yield put(errorResponseAnimalAC());
+  }
 }
 
 function* getCurrentAnimalsAsync(action) {
@@ -269,4 +306,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_SEARCH_LIST', getSearchListAsync);
   yield takeEvery('FETCH_POST_ANIMAL', postAnimalAsync);
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
+  yield takeEvery('FETCH_DELETE_ANIMAL', deleteAnimalAsync);
+  yield takeEvery('FETCH_CHECK_ANIMAL', toPublicAnimalAsync);
 }

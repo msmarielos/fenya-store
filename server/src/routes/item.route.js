@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const router = require('express').Router();
 const Sequelize = require('sequelize');
 const multer = require('multer');
@@ -7,62 +8,102 @@ const { storage } = require('../storage');
 const upload = multer({ storage });
 
 router.get('/food/all', (req, res) => {
-  Item.findAll({ where: { categoryType_id: [1, 4] } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: [1, 4] } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/cats/food', (req, res) => {
-  Item.findAll({ where: { categoryType_id: 1 } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: 1 } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/dogs/food', (req, res) => {
-  Item.findAll({ where: { categoryType_id: 4 } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: 4 } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/dogs/toys', (req, res) => {
-  Item.findAll({ where: { categoryType_id: 5 } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: 5 } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/cats/toys', (req, res) => {
-  Item.findAll({ where: { categoryType_id: 2 } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: 2 } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/toys/all', (req, res) => {
-  Item.findAll({ where: { categoryType_id: [5, 2] } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: [5, 2] } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/dogs/clothes', (req, res) => {
-  Item.findAll({ where: { categoryType_id: 3 } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: 3 } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/cats/clothes', (req, res) => {
-  Item.findAll({ where: { categoryType_id: 6 } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: 6 } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/clothes/all', (req, res) => {
-  Item.findAll({ where: { categoryType_id: [3, 6] } }).then(items =>
-    res.json(items)
-  );
+  try {
+    Item.findAll({ where: { categoryType_id: [3, 6] } }).then(items =>
+      res.json(items)
+    );
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/:itemId', (req, res) => {
-  const id = req.params.itemId;
-  Item.findOne({ where: { id } }).then(item => res.json(item));
+  try {
+    const id = req.params.itemId;
+    Item.findOne({ where: { id } }).then(item => res.json(item));
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.get('/', async (req, res) => {
@@ -86,17 +127,21 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/relative/:id', async (req, res) => {
-  const { id } = req.params;
-  const currentItem = await Item.findOne({ where: { id } });
-  const relativeItems = await Item.findAll({
-    where: {
-      categoryType_id: currentItem.categoryType_id,
-    },
-  });
-  const result = relativeItems
-    .filter(item => item.id !== Number(id))
-    .sort(() => Math.random() - 0.5);
-  res.json(result.slice(0, 5));
+  try {
+    const { id } = req.params;
+    const currentItem = await Item.findOne({ where: { id } });
+    const relativeItems = await Item.findAll({
+      where: {
+        categoryType_id: currentItem.categoryType_id,
+      },
+    });
+    const result = relativeItems
+      .filter(item => item.id !== Number(id))
+      .sort(() => Math.random() - 0.5);
+    res.json(result.slice(0, 5));
+  } catch (err) {
+    res.json({ err: err.message });
+  }
 });
 
 router.delete('/:id', (req, res) => {
@@ -126,7 +171,7 @@ router.post('/', upload.single('img'), async (req, res) => {
       price,
       categoryType_id: categoryType_id.id,
       rating: 0,
-      img: `http://localhost:4000/storage/${filename}`,
+      img: filename,
       amount,
     });
     res.json({ success: true, item });

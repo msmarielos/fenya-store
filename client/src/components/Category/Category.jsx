@@ -11,6 +11,7 @@ export default function Category() {
 
   const { pathname } = useLocation();
   const { items } = useSelector(state => state.items);
+  const { basketItems } = useSelector(state => state.basketItems);
 
   useEffect(() => {
     dispatch({
@@ -21,6 +22,10 @@ export default function Category() {
       },
     });
   }, [dispatch, pathname]);
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basketItems));
+  }, [basketItems]);
 
   const sortAsc = () => {
     dispatch(sortAscAC());

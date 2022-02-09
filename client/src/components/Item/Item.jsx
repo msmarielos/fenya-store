@@ -29,7 +29,9 @@ export default function Item() {
   }, [basketItems]);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
+    if (Number.isInteger(Number(params.id))) {
+      dispatch({ type: 'FETCH_GET_CURRENT_ITEM', payload: params.id });
+    }
   }, [dispatch, params.id]);
 
   return (

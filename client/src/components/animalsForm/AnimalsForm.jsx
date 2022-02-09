@@ -13,7 +13,6 @@ function AnimalsForm() {
   const animalResponseError = useSelector(
     state => state.animals.animalResponseError
   );
-  console.log(animalResponseSuccess, animalResponseError);
 
   const addAnimal = event => {
     event.preventDefault();

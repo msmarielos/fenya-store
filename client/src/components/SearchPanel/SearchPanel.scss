@@ -4,9 +4,15 @@
   justify-content: center;
   align-items: center;
   background-color: #000225;
+  position: relative;
   width: 100vw;
   height: 130px;
   color: white;
+
+  .basket-hover-parent {
+    position: relative;
+    width: 1200px;
+  }
 
   .logo {
     align-self: center;
