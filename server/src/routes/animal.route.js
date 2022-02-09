@@ -30,9 +30,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', upload.single('img'), async (req, res) => {
-  const {
-    name, title, description, age, type, city, breed,
-  } = req.body;
+  const { name, title, description, age, type, city, breed } = req.body;
   const { filename } = req.file;
   const { useId } = req;
   try {

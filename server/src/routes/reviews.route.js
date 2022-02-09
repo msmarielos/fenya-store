@@ -5,7 +5,7 @@ const { Item } = require('../db/models');
 
 router.get('/:id', (req, res) => {
   try {
-    Review.findAll({ where: { item_id: req.params.id } }).then((reviews) => {
+    Review.findAll({ where: { item_id: req.params.id } }).then(reviews => {
       res.json(reviews);
     });
   } catch (err) {
@@ -14,9 +14,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/:id', async (req, res) => {
-  const {
-    title, description, item_id, rating,
-  } = req.body;
+  const { title, description, item_id, rating } = req.body;
   const currentItem = await Item.findOne({ where: { id: item_id } });
   if (currentItem.rating > 5) {
     await currentItem.update({
