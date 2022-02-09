@@ -16,7 +16,9 @@ export default function MainPageAnimals() {
     <div className="animals-main-block">
       <div className="top-row">
         <h3>Объявления о пристройстве животных</h3>
-        <button className="empty-btn">Посмотреть все</button>
+        <Link to="/board">
+          <button className="empty-btn">Посмотреть все</button>
+        </Link>
       </div>
       <div className="animal-main-list">
         {animals.slice(0, 3).map(animal => (
