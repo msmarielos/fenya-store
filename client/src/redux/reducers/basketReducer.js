@@ -2,7 +2,6 @@ import {
   ADD_ITEM_BASKET,
   UPDATE_ITEM_BASKET,
   DELETE_ITEM_BASKET,
-  INIT_ITEMS_BASKET,
   CLEAR_BASKET,
   APPLY_PROMO,
 } from '../actionTypes/basketAT';

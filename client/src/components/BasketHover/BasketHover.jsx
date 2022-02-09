@@ -3,7 +3,6 @@ import './BasketHover.scss';
 
 export default function BasketHover() {
   const { basketItems } = useSelector(state => state.basketItems);
-  console.log(basketItems);
 
   return (
     <div className="basket-hover">
