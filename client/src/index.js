@@ -26,6 +26,7 @@ import SearchResults from './components/SearchResults/SearchResults';
 import AnimalsForm from './components/animalsForm/AnimalsForm';
 import AnimalPage from './components/AnimalPage/AnimalPage';
 import NotFound from './components/NotFound/NotFound';
+import BoardList from './components/BoardList/BoardList';
 
 ReactDOM.render(
   <Provider store={store}>
