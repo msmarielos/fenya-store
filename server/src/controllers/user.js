@@ -1,17 +1,13 @@
-async function getUserInfo(req, res) {
+const userService = require('../services/user');
+
+async function getUser(req, res) {
   try {
-    if (req.userId) {
-      res.status(200).json({
-        success: true,
-        message: 'Пользователь авторизован',
-        userId: req.userId,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        message: 'Пользователь не авторизован',
-      });
-    }
+    const { userId } = req;
+    const user = await userService.getUserById(userId);
+    res.status(200).json({
+      user,
+      message: 'Пользователь найден',
+    });
   } catch (e) {
     res.status(400).json({
       success: false,
@@ -20,4 +16,21 @@ async function getUserInfo(req, res) {
   }
 }
 
-module.exports = { getUserInfo };
+async function updateUser(req, res) {
+  try {
+    const { userId } = req;
+    await userService.updateUser(userId, req.body);
+    const user = await userService.getUserById(userId);
+    res.status(200).json({
+      user,
+      message: 'Данные обновлены',
+    });
+  } catch (e) {
+    res.status(400).json({
+      success: false,
+      message: e.message,
+    });
+  }
+}
+
+module.exports = { getUser, updateUser };

@@ -18,6 +18,7 @@ const orderRouter = require('./routes/order.router');
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const { isAuth } = require('./middlewares/isAuth');
+const { checkAdmin } = require('./middlewares/checkAdmin');
 const reviewRouter = require('./routes/reviews.route');
 const animalRouter = require('./routes/animal.route');
 
@@ -34,7 +35,7 @@ app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
 app.use('/order', isAuth, orderRouter);
 app.use('/api/auth', authRouter);
-app.use('/user', isAuth, userRouter);
+app.use('/api', isAuth, checkAdmin, userRouter);
 app.use('/reviews', reviewRouter);
 app.use('/animals', animalRouter);
 
