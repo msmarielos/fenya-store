@@ -87,7 +87,6 @@ export const itemReducer = (state = initialState, action) => {
 
     case UPDATE_ITEM:
       const updatedItem = action.payload;
-      console.log(updatedItem);
       return {
         ...state,
         items: state.items.map(el => {

@@ -35,21 +35,21 @@ export default function CarouselBlock() {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
-                  src="https://lifehacker.ru/wp-content/uploads/2020/03/Corgi_1583857179.jpg"
+                  src="/img/slider1.jpg"
                   className="d-block w-100"
                   alt="..."
                 />
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://fs.tonkosti.ru/sized/c1600x600/eu/df/eudf7ybhs8gsggkcg0osoog00.jpg"
+                  src="/img/slider2.jpg"
                   className="d-block w-100"
                   alt="..."
                 />
               </div>
               <div className="carousel-item">
                 <img
-                  src="https://www.m24.ru/b/d/nBkSUhL2hFYnnMe-Jr6BosSyyJ2gp8TrlnTclb7P73OHezeOWXiSxTZt4slI-BHBsdWR_G-JLsV0=xEJuxMcdCTKy-cWoH6YalA.jpg"
+                  src="/img/slider3.jpg"
                   className="d-block w-100"
                   alt="..."
                 />

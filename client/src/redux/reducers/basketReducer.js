@@ -2,10 +2,12 @@ import {
   ADD_ITEM_BASKET,
   UPDATE_ITEM_BASKET,
   DELETE_ITEM_BASKET,
-  INIT_ITEMS_BASKET,
+  CLEAR_BASKET,
+  APPLY_PROMO,
 } from '../actionTypes/basketAT';
 const initialState = {
   basketItems: JSON.parse(localStorage.getItem('basket')) ?? [],
+  promo: JSON.parse(localStorage.getItem('promo')) ?? false,
 };
 
 export const basketReducer = (state = initialState, action) => {
@@ -49,6 +51,22 @@ export const basketReducer = (state = initialState, action) => {
           basketItems: [...state.basketItems, action.payload],
         };
       }
+
+    case CLEAR_BASKET:
+      return {
+        ...state,
+        basketItems: [],
+      };
+
+    case APPLY_PROMO:
+      return {
+        ...state,
+        promo: true,
+        basketItems: state.basketItems.map(item => {
+          const price = item.price - (item.price * 10) / 100;
+          return { ...item, price };
+        }),
+      };
 
     default:
       return state;

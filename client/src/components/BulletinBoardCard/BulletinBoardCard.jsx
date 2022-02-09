@@ -1,26 +1,44 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import './BulletinBoardCard.scss';
 
 function BulletinBoardCard({ animal }) {
   return (
-    <div>
-      <h4>{animal.title}</h4>
-      <div>
-        <img src={animal.img} alt="Фото питомца" />
+    <div className="animal-card">
+      <div className="animal-img">
+        <Link to={`/board/animal/${animal.id}`}>
+          <img src={animal.img} alt="Фото питомца" />
+        </Link>
       </div>
-      <div>
-        <p>{animal.type} </p>
-        <p>породы: {animal.breed}</p>
-        <p>Кличка:{animal.name} </p>
-        <p>Возраст: {animal.age}</p>
-        <p>Описание:{animal.description}</p>
+      <div className="animal-info">
+        <Link to={`/board/animal/${animal.id}`}>
+          <h4>{animal.title}</h4>
+        </Link>
+
+        <p>
+          <strong>Порода</strong>: {animal.breed}
+        </p>
+        <p>
+          <strong>Кличка</strong>: {animal.name}
+        </p>
+        <p>
+          <strong>Возраст</strong>: {animal.age}
+        </p>
+        <Link to={`/board/animal/${animal.id}`}>Подробнее</Link>
       </div>
-      <div>
-        <h5>Информация о владельце</h5>
-        <p>Находиться в городе:{animal.city}</p>
-        <p>Имя: {animal.User.name} </p>
-        <p>Телефон: {animal.User.phone}</p>
-        <p>Дата размещения: {animal.updatedAt}</p>
-      </div>
+
+      {/* <h4>Информация о владельце</h4>
+      <p>
+        <strong>Город</strong>: {animal.city}
+      </p>
+      <p>
+        <strong>Имя</strong>: {animal.User.name}{' '}
+      </p>
+      <p>
+        <strong>Телефон</strong>: {animal.User.phone}
+      </p>
+      <p>
+        <strong>Дата размещения</strong>: {animal.updatedAt.slice(0, 10)}
+      </p> */}
     </div>
   );
 }

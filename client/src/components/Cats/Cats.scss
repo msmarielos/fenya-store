@@ -29,3 +29,21 @@
 h1 {
   text-align: center;
 }
+
+.header-dog {
+  margin: 20px 0 40px;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+  img {
+    width: 1200px;
+  }
+}

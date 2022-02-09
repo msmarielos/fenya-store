@@ -23,6 +23,7 @@ import {
   successResponseAnimalAC,
   errorResponseAnimalAC,
   publicAnimalsAC,
+  initCurrentAnimalAC,
 } from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
@@ -54,7 +55,7 @@ function* loginUserAsync(action) {
     body: JSON.stringify(action.payload),
   });
   yield put(loginUserAC(user));
-  localStorage.setItem('token', JSON.stringify(user.token.accessToken));
+  localStorage.setItem('token', user.token.accessToken);
 }
 
 function* getItemsAsync(action) {
@@ -240,6 +241,9 @@ function* postAnimalAsync(action) {
   yield put(pendingResponseAnimalAC());
   const response = yield call(fetchData, {
     url: process.env.REACT_APP_ANIMALS_URL,
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
     method: 'POST',
     body: action.payload,
   });
@@ -274,6 +278,13 @@ function* toPublicAnimalAsync(action) {
   }
 }
 
+function* getCurrentAnimalsAsync(action) {
+  const currentAnimal = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ANIMALS_URL}/${action.payload}`,
+  });
+  yield put(initCurrentAnimalAC(currentAnimal));
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -287,6 +298,7 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEM_LIST', getListItemsAsync);
   yield takeEvery('FETCH_LOGIN_USER', loginUserAsync);
   yield takeEvery('FETCH_GET_ANIMALS', getAnimalsAsync);
+  yield takeEvery('FETCH_GET_CURRENT_ANIMAL', getCurrentAnimalsAsync);
   yield takeEvery('FETCH_GET_REVIEWS', getReviewsAsync);
   yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);

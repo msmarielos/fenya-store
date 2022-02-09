@@ -21,7 +21,7 @@ function OrderForm(props) {
   return (
     <div>
       <h1>Оформление заказа</h1>
-      {total ? <p>Заказ на сумму {total} p.</p> : <p>Ваша корзина пуста.</p>}
+      {total ? <p>Заказ на сумму {total} ₽</p> : <p>Ваша корзина пуста.</p>}
 
       <form
         ref={orderForm}

@@ -6,8 +6,10 @@ import { useState, useEffect } from 'react';
 import { debounce } from '../../utils/debounce';
 import { useRef } from 'react';
 import { showModalAC } from '../../redux/actionCreators/modalAC';
+import BasketHover from '../BasketHover/BasketHover';
 
 export default function SearchPanel() {
+  const { show } = useSelector(state => state.modal);
   const [search, setSearch] = useState('');
 
   const { pathname } = useLocation();
@@ -75,11 +77,16 @@ export default function SearchPanel() {
   const { basketItems } = useSelector(state => state.basketItems);
 
   const showModal = () => {
-    dispatch(showModalAC());
+    basketItems.length && dispatch(showModalAC());
   };
 
   return (
     <div className="search-panel">
+      {show ? (
+        <div className="basket-hover-parent">
+          <BasketHover />
+        </div>
+      ) : null}
       <div className="search-container">
         <div className="logo">
           <Link to={'/'}>

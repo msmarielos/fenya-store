@@ -11,6 +11,7 @@ export default function Category() {
 
   const { pathname } = useLocation();
   const { items } = useSelector(state => state.items);
+  const { basketItems } = useSelector(state => state.basketItems);
 
   useEffect(() => {
     dispatch({
@@ -21,6 +22,10 @@ export default function Category() {
       },
     });
   }, [dispatch, pathname]);
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basketItems));
+  }, [basketItems]);
 
   const sortAsc = () => {
     dispatch(sortAscAC());
@@ -68,13 +73,16 @@ export default function Category() {
               {item.title}
             </Link>
             <div className="price-buy">
-              <p className="price">{item.price} p.</p>
-              <a
-                href={`${window.location.pathname}/${item.id}`}
-                onClick={addBacket}
-              >
-                Купить
-              </a>
+              <p className="price">{item.price} ₽</p>
+
+              <button className="empty-btn">
+                <a
+                  href={`${window.location.pathname}/${item.id}`}
+                  onClick={addBacket}
+                >
+                  Купить
+                </a>
+              </button>
             </div>
           </div>
         ))}
