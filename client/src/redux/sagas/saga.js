@@ -53,7 +53,7 @@ function* loginUserAsync(action) {
     body: JSON.stringify(action.payload),
   });
   yield put(loginUserAC(user));
-  localStorage.setItem('token', JSON.stringify(user.token.accessToken));
+  localStorage.setItem('token', user.token.accessToken);
 }
 
 function* getItemsAsync(action) {
@@ -222,6 +222,9 @@ function* postAnimalAsync(action) {
   yield put(pendingResponseAnimalAC());
   const response = yield call(fetchData, {
     url: process.env.REACT_APP_ANIMALS_URL,
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
     method: 'POST',
     body: action.payload,
   });
