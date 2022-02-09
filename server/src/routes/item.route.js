@@ -126,7 +126,7 @@ router.post('/', upload.single('img'), async (req, res) => {
       price,
       categoryType_id: categoryType_id.id,
       rating: 0,
-      img: `http://localhost:4000/storage/${filename}`,
+      img: filename,
       amount,
     });
     res.json({ success: true, item });
