@@ -18,9 +18,11 @@ import { initListsAC } from '../actionCreators/listsAC';
 import {
   initAnimalsAC,
   addAnimalsAC,
+  deleteAnimalsAC,
   pendingResponseAnimalAC,
   successResponseAnimalAC,
   errorResponseAnimalAC,
+  publicAnimalsAC,
 } from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
@@ -182,6 +184,23 @@ function* getAnimalsAsync(action) {
   yield put(initAnimalsAC(animals));
 }
 
+function* deleteAnimalAsync(action) {
+  yield put(pendingResponseAnimalAC());
+
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ANIMALS_URL}/${action.payload}`,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'DELETE',
+  });
+
+  if (response.success) {
+    yield put(successResponseAnimalAC());
+    yield put(deleteAnimalsAC(action.payload));
+  } else {
+    yield put(errorResponseAnimalAC());
+  }
+}
+
 function* getReviewsAsync(action) {
   const reviews = yield call(fetchData, {
     url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
@@ -240,6 +259,21 @@ function* getRelativeItemsAsync(action) {
   yield put(initRelativeItemsAC(relativeItems));
 }
 
+function* toPublicAnimalAsync(action) {
+  yield put(pendingResponseAC());
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ANIMALS_URL}/${action.payload}`,
+    method: 'PUT',
+  });
+
+  if (response.success) {
+    yield put(successResponseAnimalAC());
+    yield put(publicAnimalsAC());
+  } else {
+    yield put(errorResponseAnimalAC());
+  }
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -260,4 +294,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_GET_SEARCH_LIST', getSearchListAsync);
   yield takeEvery('FETCH_POST_ANIMAL', postAnimalAsync);
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
+  yield takeEvery('FETCH_DELETE_ANIMAL', deleteAnimalAsync);
+  yield takeEvery('FETCH_CHECK_ANIMAL', toPublicAnimalAsync);
 }
