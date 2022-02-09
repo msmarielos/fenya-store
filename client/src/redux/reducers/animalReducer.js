@@ -6,6 +6,7 @@ import {
   ANIMAL_RESPONSE_SUCCESS,
   ANIMAL_RESPONSE_ERROR,
   ANIMAL_RESPONSE_PENDING,
+  ANIMAL_TO_PUBLIC,
   INIT_CURRENT_ANIMAL,
 } from '../actionTypes/animalAT.js';
 const initialState = {
@@ -41,7 +42,7 @@ export const animalReducer = (state = initialState, action) => {
       return {
         ...state,
         animals: state.animals.filter(animal => {
-          return animal.id !== action.payload.id;
+          return animal.id !== Number(action.payload);
         }),
       };
 
@@ -67,6 +68,21 @@ export const animalReducer = (state = initialState, action) => {
         animalResponseSuccess: null,
         animalResponsePending: true,
         animalResponseError: null,
+      };
+
+    case ANIMAL_TO_PUBLIC:
+      return {
+        ...state,
+        animals: state.animals.map(el => {
+          if (el.id === Number(action.payload)) {
+            return {
+              ...el,
+              isChecked: true,
+            };
+          } else {
+            return el;
+          }
+        }),
       };
 
     case INIT_CURRENT_ANIMAL:
