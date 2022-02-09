@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 router.post('/', upload.single('img'), async (req, res) => {
   const { name, title, description, age, type, city, breed } = req.body;
   const { filename } = req.file;
-  const { useId } = req;
+  const { userId } = req;
   try {
     const animal = await Animal.create({
       name,
@@ -27,12 +27,28 @@ router.post('/', upload.single('img'), async (req, res) => {
       city,
       breed,
       img: filename,
-      user_id: useId,
+      user_id: 1,
     });
     res.json({ success: true, animal });
   } catch (error) {
     res.status(501).json({ success: false });
   }
+});
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  Animal.destroy({ where: { id } })
+    .then(data =>
+      data ? res.json({ success: true }) : res.status(404).json(data)
+    )
+    .catch(error => res.status(500).json({ success: false }));
+});
+
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+  Animal.update({ isChecked: true }, { where: { id } })
+    .then(data => res.json({ success: true }))
+    .catch(error => res.status(500).json({ success: false }));
 });
 
 module.exports = router;
