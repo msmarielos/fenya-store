@@ -54,7 +54,9 @@ export default function BoardList() {
           unpublishedAnimals.map(animal => (
             <li key={animal.id}>
               {animal.name}
-              <img src={`storage/${animal.img}`} />
+              <img src={animal.img.split('/')[0] === 'https:'
+                ? animal.img
+                : `/storage/${animal.img}`} />
               <button data-id={animal.id} onClick={putFetch}>
                 Опубликовать
               </button>
@@ -70,7 +72,9 @@ export default function BoardList() {
           publishedAnimals.map(animal => (
             <li key={animal.id}>
               {animal.name}
-              <img src={`storage/${animal.img}`} />
+              <img src={animal.img.split('/')[0] === 'https:'
+                ? animal.img
+                : `/storage/${animal.img}`} />
               <button data-id={animal.id} onClick={deleteFetch}>
                 Удалить
               </button>
