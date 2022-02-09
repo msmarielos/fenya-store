@@ -1,5 +1,6 @@
 import Advantages from '../Advantages/Advantages';
 import CarouselBlock from '../CarouselBlock/CarouselBlock';
+import MainPageAnimals from '../MainPageAnimals/MainPageAnimals';
 import TypesBlock from '../TypesBlock/TypesBlock';
 
 export default function Main() {
@@ -8,6 +9,7 @@ export default function Main() {
       <CarouselBlock />
       <TypesBlock />
       <Advantages />
+      <MainPageAnimals />
     </>
   );
 }
