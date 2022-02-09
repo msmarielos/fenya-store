@@ -38,7 +38,7 @@ function AnimalsForm() {
 
   return (
     <div className="add-item-admin">
-      <h3>Добавить питомца</h3>
+      <h1>Добавить питомца</h1>
       <form ref={animalForm} encType="multipart/form-data" onSubmit={addAnimal}>
         <input type="text" name="title" placeholder="Заголовок" required />
         <input type="text" name="description" placeholder="Описание" required />
@@ -47,6 +47,7 @@ function AnimalsForm() {
           type="number"
           name="age"
           placeholder="Возвраст питомца"
+          min={0}
           required
         />
         <input type="text" name="breed" placeholder="Порода" required />
