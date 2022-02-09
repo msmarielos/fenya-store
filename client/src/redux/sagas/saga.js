@@ -25,6 +25,7 @@ import {
 } from '../actionCreators/animalAC';
 import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
+import { initSearchListAC } from '../actionCreators/searchAC';
 
 async function fetchData({ url, method, headers, body }) {
   const response = await fetch(url, { method, headers, body });
@@ -65,10 +66,24 @@ function* getItemsAsync(action) {
 
 function* getListItemsAsync(action) {
   const items = yield call(fetchData, {
-    url: process.env.REACT_APP_ITEMS_URL,
+    url: `${process.env.REACT_APP_ITEMS_URL}`,
   });
 
   yield put(initListItemsAC(items));
+}
+
+function* getSearchListAsync(action) {
+  const search = new URLSearchParams();
+
+  if (action.payload.search) {
+    search.set('search', action.payload.search);
+  }
+
+  const items = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}?${search.toString()}`,
+  });
+
+  yield put(initSearchListAC(items));
 }
 
 function* getCurrentItemAsync(action) {
@@ -251,6 +266,7 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_POST_REVIEW', postReviewAsync);
   yield takeEvery('FETCH_GET_ORDER_LIST', getOrderListAsync);
   yield takeEvery('FETCH_DELETE_ORDER', deleteOrderAsync);
+  yield takeEvery('FETCH_GET_SEARCH_LIST', getSearchListAsync);
   yield takeEvery('FETCH_POST_ANIMAL', postAnimalAsync);
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
 }

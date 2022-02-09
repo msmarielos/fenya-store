@@ -22,11 +22,15 @@ async function login(data) {
 }
 
 async function createToken(data) {
-  const { email, id: userId } = data;
+  const { email, id: userId, isAdmin } = data;
   try {
-    const accessToken = jwt.sign({ email, userId }, process.env.ACCESS_TOKEN, {
-      expiresIn: process.env.EXPIRE_ACCESS_TOKEN,
-    });
+    const accessToken = jwt.sign(
+      { email, userId, isAdmin },
+      process.env.ACCESS_TOKEN,
+      {
+        expiresIn: process.env.EXPIRE_ACCESS_TOKEN,
+      }
+    );
     return { tokenType: 'Bearer', accessToken };
   } catch (e) {
     throw e;
