@@ -11,8 +11,6 @@ function Basket() {
     localStorage.setItem('basket', JSON.stringify(basketItems));
   }, [basketItems]);
 
-  console.log(basketItems, 'basketItems');
-
   return (
     <>
       <h1>Корзина</h1>

@@ -6,9 +6,11 @@ import {
   ANIMAL_RESPONSE_SUCCESS,
   ANIMAL_RESPONSE_ERROR,
   ANIMAL_RESPONSE_PENDING,
+  INIT_CURRENT_ANIMAL,
 } from '../actionTypes/animalAT.js';
 const initialState = {
   animals: [],
+  currentAnimal: null,
   animalResponseSuccess: null,
   animalResponsePending: null,
   animalResponseError: null,
@@ -30,10 +32,10 @@ export const animalReducer = (state = initialState, action) => {
           : [action.payload],
       };
 
-    // case UPDATE_ANIMAL:
-    //   return {
-    //     ...state,
-    //   };
+    case UPDATE_ANIMAL:
+      return {
+        ...state,
+      };
 
     case DELETE_ANIMAL:
       return {
@@ -65,6 +67,12 @@ export const animalReducer = (state = initialState, action) => {
         animalResponseSuccess: null,
         animalResponsePending: true,
         animalResponseError: null,
+      };
+
+    case INIT_CURRENT_ANIMAL:
+      return {
+        ...state,
+        currentAnimal: action.payload,
       };
 
     default:

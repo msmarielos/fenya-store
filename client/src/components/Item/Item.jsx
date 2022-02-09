@@ -51,7 +51,7 @@ export default function Item() {
               <p>Недостаточно оценок для формирования рейтинга</p>
             )}
 
-            <p className="item-price">{currentItem.price} p.</p>
+            <p className="item-price">{currentItem.price} ₽</p>
             <p className="in-stock">В наличии</p>
             <input
               className="item-counter"
