@@ -10,7 +10,7 @@ function BulletinBoardCard({ animal }) {
             src={
               animal.img.split('/')[0] === 'https:'
                 ? animal.img
-                : `storage/${animal.img}`
+                : `/storage/${animal.img}`
             }
             alt="Фото питомца"
           />
