@@ -24,10 +24,7 @@ export default function Dogs() {
           categories.map(item => (
             <div className="category" key={item.id}>
               <Link to={`${window.location.pathname}/${item.url}`}>
-                <img
-                  src={item.img}
-                  alt=""
-                />
+                <img src={item.img} alt="" />
               </Link>
 
               <Link to={`${window.location.pathname}/${item.url}`}>

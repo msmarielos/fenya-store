@@ -34,10 +34,7 @@ function BasketCard({ item }) {
     <div className="basket-card">
       <div className="first-row">
         <div className="image">
-          <img
-            src={item.img}
-            alt="картика"
-          />
+          <img src={item.img} alt="картика" />
         </div>
         <p className="item-title">{item.title}</p>
       </div>
