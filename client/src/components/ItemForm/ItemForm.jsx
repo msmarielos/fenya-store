@@ -45,28 +45,28 @@ function ItemForm() {
       <h3>Добавить товар</h3>
       <form ref={itemForm} encType="multipart/form-data" onSubmit={addItem}>
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="title"
           placeholder="Название товара"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="number"
           name="price"
           placeholder="Цена товара"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="description"
           placeholder="Описание товара"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="number"
           name="amount"
           placeholder="Количество товара"

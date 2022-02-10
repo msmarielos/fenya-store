@@ -56,7 +56,7 @@ export default function Item() {
             <p className="item-price">{currentItem.price} ₽</p>
             <p className="in-stock">В наличии</p>
             <input
-              autocomplete="off"
+              autoComplete="off"
               className="item-counter"
               type="number"
               defaultValue={1}

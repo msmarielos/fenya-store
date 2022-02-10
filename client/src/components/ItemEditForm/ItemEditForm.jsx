@@ -55,7 +55,7 @@ function ItemEditForm() {
         <label>
           Название:
           <input
-            autocomplete="off"
+            autoComplete="off"
             type="text"
             name="title"
             defaultValue={currentItem.title}
@@ -64,7 +64,7 @@ function ItemEditForm() {
         <label>
           Цена:
           <input
-            autocomplete="off"
+            autoComplete="off"
             type="number"
             name="price"
             defaultValue={currentItem.price}
@@ -73,7 +73,7 @@ function ItemEditForm() {
         <label>
           Описание:
           <textarea
-            autocomplete="off"
+            autoComplete="off"
             type="text"
             name="description"
             defaultValue={currentItem.description}
@@ -82,7 +82,7 @@ function ItemEditForm() {
         <label>
           Количество:
           <input
-            autocomplete="off"
+            autoComplete="off"
             type="number"
             name="amount"
             defaultValue={currentItem.amount}

@@ -47,7 +47,7 @@ function TotalItemCard() {
         ) : (
           <>
             <input
-              autocomplete="off"
+              autoComplete="off"
               type="text"
               name="promo"
               placeholder="Промокод"

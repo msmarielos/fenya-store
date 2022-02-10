@@ -42,7 +42,7 @@ export default function ReviewForm() {
           activeColor="#ffd700"
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="title"
           placeholder="Заголовок"

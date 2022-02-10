@@ -1,6 +1,8 @@
 import { CREATE_USER, LOGIN_USER } from '../actionTypes/userAT';
 
-const initialState = { user: [] };
+const initialState = {
+  user: [],
+};
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {

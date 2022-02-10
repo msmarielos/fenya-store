@@ -24,7 +24,7 @@ function Login(props) {
       <h1>Войти в личный кабинет</h1>
       <form onSubmit={formHandler} className="login-form">
         <input
-          autocomplete="off"
+          autoComplete="off"
           ref={emailInput}
           id="email"
           type="email"
@@ -33,7 +33,7 @@ function Login(props) {
         />
 
         <input
-          autocomplete="off"
+          autoComplete="off"
           ref={passwordInput}
           id="password"
           type="password"

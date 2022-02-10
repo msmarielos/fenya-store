@@ -41,28 +41,28 @@ function AnimalsForm() {
       <h1>Добавить питомца</h1>
       <form ref={animalForm} encType="multipart/form-data" onSubmit={addAnimal}>
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="title"
           placeholder="Заголовок"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="description"
           placeholder="Описание"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="name"
           placeholder="Имя питомца"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="number"
           name="age"
           placeholder="Возвраст питомца"
@@ -70,28 +70,28 @@ function AnimalsForm() {
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="breed"
           placeholder="Порода"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="type"
           placeholder="Введите собака или кошка"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="text"
           name="city"
           placeholder="Город"
           required
         />
         <input
-          autocomplete="off"
+          autoComplete="off"
           type="file"
           name="img"
           placeholder="Добавьте фото"
