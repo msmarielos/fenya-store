@@ -42,8 +42,14 @@ import {
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 import { initSearchListAC } from '../actionCreators/searchAC';
 
-async function fetchData({ url, method, headers, body }) {
-  const response = await fetch(url, { method, headers, body });
+async function fetchData({
+  url,
+  method,
+  headers,
+  body,
+  credentials = 'include',
+}) {
+  const response = await fetch(url, { method, headers, body, credentials });
   return await response.json();
 }
 
@@ -52,7 +58,6 @@ function* postUserAsync(action) {
     url: routesApi.reg,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
-    credentials: 'include',
     body: JSON.stringify(action.payload),
   });
   yield put(createUserAC(newUser));
