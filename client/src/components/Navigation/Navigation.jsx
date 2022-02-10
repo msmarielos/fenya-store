@@ -20,7 +20,7 @@ export default function Navigation() {
     <>
       <nav>
         <div className="container">
-          {user
+          {user?.success
             ? authNav.map(link => (
                 <NavLink
                   className={({ isActive }) =>
@@ -43,7 +43,7 @@ export default function Navigation() {
                   {link.title}
                 </NavLink>
               ))}
-          {user ? (
+          {user?.success ? (
             <NavLink to="/logout" onClick={logout}>
               Выход
             </NavLink>

@@ -54,9 +54,12 @@ function* loginUserAsync(action) {
     },
     body: JSON.stringify(action.payload),
   });
+
   yield put(loginUserAC(user));
-  localStorage.setItem('token', user.token.accessToken);
-  localStorage.setItem('user', JSON.stringify(user));
+  if (user.success) {
+    localStorage.setItem('token', user.token.accessToken);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 }
 
 function* getItemsAsync(action) {
