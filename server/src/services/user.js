@@ -3,7 +3,9 @@ const bcrypt = require('bcryptjs');
 const { User } = require('../db/models');
 
 async function createUser(data) {
-  const { name, email, phone, password } = data;
+  const {
+    name, email, phone, password,
+  } = data;
   const hashPassword = await bcrypt.hash(password, 10);
   const newUser = {
     name,
@@ -34,7 +36,9 @@ async function getUserById(id) {
 }
 
 async function updateUser(id, data) {
-  const { name, email, phone, password } = data;
+  const {
+    name, email, phone, password,
+  } = data;
   const user = await User.update(
     {
       name,
@@ -44,7 +48,7 @@ async function updateUser(id, data) {
     },
     {
       where: { id },
-    }
+    },
   );
   if (!user) {
     throw new Error('Данные не изменены');
