@@ -55,7 +55,7 @@ async function fetchData({
 
 function* postUserAsync(action) {
   const newUser = yield call(fetchData, {
-    url: routesApi.reg,
+    url: process.env.REACT_APP_REGISTER,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify(action.payload),
@@ -65,7 +65,7 @@ function* postUserAsync(action) {
 
 function* loginUserAsync(action) {
   const user = yield call(fetchData, {
-    url: routesApi.login,
+    url: process.env.REACT_APP_LOGIN,
     method: 'POST',
     headers: {
       'Content-Type': 'Application/json',
@@ -83,7 +83,7 @@ function* loginUserAsync(action) {
 
 function* putUserAsync(action) {
   const user = yield call(fetchData, {
-    url: routesApi.users,
+    url: process.env.REACT_APP_USERS,
     method: 'PUT',
     headers: {
       'Content-Type': 'Application/json',

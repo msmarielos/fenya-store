@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(
   cors({
     credentials: true,
-    origin: 'https://fenya-store.herokuapp.com/',
+    origin: 'https://fenya-store.herokuapp.com',
   }),
 );
 app.use(morgan('dev'));
