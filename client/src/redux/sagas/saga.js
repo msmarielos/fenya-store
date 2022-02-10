@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createUserAC, loginUserAC } from '../actionCreators/userAC';
+import { createUserAC, loginUserAC, initUserAnimalsAC, initUserOrderAC } from '../actionCreators/userAC';
 import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
@@ -288,6 +288,16 @@ function* getCurrentAnimalsAsync(action) {
   yield put(initCurrentAnimalAC(currentAnimal));
 }
 
+function* getUserAnimalsAsync() {
+  const userAnimals = yield call(fetchData, { url: routesApi.useranimals });
+  yield put(initUserAnimalsAC(userAnimals));
+}
+
+function* getUserOrdersAsync(action) {
+  const userOrder = yield call(fetchData, { url: routesApi.userorder });
+  yield put(initUserOrderAC(userOrder));
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -311,4 +321,6 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
   yield takeEvery('FETCH_DELETE_ANIMAL', deleteAnimalAsync);
   yield takeEvery('FETCH_CHECK_ANIMAL', toPublicAnimalAsync);
+  yield takeEvery('FETCH_GET_USER_ANIMALS', getUserAnimalsAsync);
+  yield takeEvery('FETCH_GET_USER_ORDER', getUserOrdersAsync);
 }
