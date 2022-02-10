@@ -11,13 +11,12 @@ function Login() {
 
   const emailInput = useRef();
   const passwordInput = useRef();
-  const navigate = useNavigate();
 
   const { user: isAuth } = useSelector(state => state.users);
 
   useEffect(() => {
     if (isAuth?.success) {
-      navigate('/');
+      navigate('/profile');
       info('Успешный вход');
     } else {
       error(isAuth?.message);
@@ -32,11 +31,7 @@ function Login() {
       password: passwordInput.current.value,
     };
 
-    if (user) {
-      dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
-      alert('Успешная авторизация');
-      navigate('/profile');
-    }
+    dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
   };
   return (
     <>

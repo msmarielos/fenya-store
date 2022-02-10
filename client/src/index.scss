@@ -41,11 +41,26 @@ a:hover {
 .empty-btn {
   height: 40px;
   width: 150px;
-  border: 1px solid #e84a5258;
+  border: 1px solid #e84a53;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0);
   color: #e84a53;
   transition: 0.2s;
+}
+
+.empty-btn-blue {
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid #0292eb;
+  background-color: rgba(255, 255, 255, 0);
+  color: #0292eb;
+  transition: 0.2s;
+}
+
+.empty-btn-blue:hover {
+  background-color: #1174b1;
+  color: white;
 }
 
 .empty-btn:hover {

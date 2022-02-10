@@ -64,7 +64,11 @@ export default function BoardList() {
               <button data-id={animal.id} onClick={putFetch}>
                 Опубликовать
               </button>
-              <button data-id={animal.id} onClick={deleteFetch}>
+              <button
+                className="empty-btn"
+                data-id={animal.id}
+                onClick={deleteFetch}
+              >
                 Удалить
               </button>
             </li>
@@ -83,7 +87,11 @@ export default function BoardList() {
                     : `/storage/${animal.img}`
                 }
               />
-              <button data-id={animal.id} onClick={deleteFetch}>
+              <button
+                className="empty-btn"
+                data-id={animal.id}
+                onClick={deleteFetch}
+              >
                 Удалить
               </button>
             </li>
