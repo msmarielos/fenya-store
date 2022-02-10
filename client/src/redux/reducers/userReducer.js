@@ -1,8 +1,9 @@
-import { CREATE_USER, LOGIN_USER, LOGOUT_USER } from '../actionTypes/userAT';
+import { CREATE_USER, LOGIN_USER, LOGOUT_USER, INIT_USER_ORDER, INIT_USER_ANIMALS  } from '../actionTypes/userAT';
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('user')) ?? null,
+  user: JSON.parse(localStorage.getItem('user')) ?? null, userItems: [], userAnimals: []
 };
+
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -26,6 +27,12 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: null,
       };
+
+    case INIT_USER_ORDER:
+      return { ...state, userItems: action.payload };
+
+    case INIT_USER_ANIMALS:
+      return { ...state, userAnimals: action.payload };
 
     default:
       return state;
