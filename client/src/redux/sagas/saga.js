@@ -1,5 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createUserAC, loginUserAC } from '../actionCreators/userAC';
+import {
+  createUserAC,
+  loginUserAC,
+  updateUserAC,
+} from '../actionCreators/userAC';
 import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
@@ -56,6 +60,19 @@ function* loginUserAsync(action) {
   });
   yield put(loginUserAC(user));
   localStorage.setItem('token', user.token.accessToken);
+}
+
+function* putUserAsync(action) {
+  const user = yield call(fetchData, {
+    url: routesApi.users,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(updateUserAC(user));
 }
 
 function* getItemsAsync(action) {
@@ -311,4 +328,5 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
   yield takeEvery('FETCH_DELETE_ANIMAL', deleteAnimalAsync);
   yield takeEvery('FETCH_CHECK_ANIMAL', toPublicAnimalAsync);
+  yield takeEvery('FETCH_PUT_PROFILE', putUserAsync);
 }

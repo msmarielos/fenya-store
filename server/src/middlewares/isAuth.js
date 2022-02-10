@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 async function isAuth(req, res, next) {
   try {
     const authHeader = req.get('Authorization'); // получаю из header токен, проверяю правильный ли токен
-    console.log(authHeader, 'Пытаюсь автризоваться');
     const token = authHeader.split(' ')[1];
     const { userId, email, isAdmin } = jwt.verify(
       token,

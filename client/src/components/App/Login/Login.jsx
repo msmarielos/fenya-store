@@ -12,7 +12,6 @@ function Login(props) {
 
   const formHandler = event => {
     event.preventDefault();
-
     const user = {
       email: emailInput.current.value,
       password: passwordInput.current.value,
