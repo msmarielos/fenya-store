@@ -37,7 +37,7 @@ export default function BoardList() {
   useEffect(() => {
     if (notInitialRender.current) {
       if (animalResponseSuccess) {
-        info('Объявление удалено!');
+        info('Успешно');
       } else if (animalResponseError) {
         error('Ошибка!');
       }

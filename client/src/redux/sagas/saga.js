@@ -1,5 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { createUserAC, loginUserAC, initUserAnimalsAC, initUserOrderAC } from '../actionCreators/userAC';
+import {
+  createUserAC,
+  loginUserAC,
+  updateUserAC,
+  initUserAnimalsAC, 
+  initUserOrderAC
+} from '../actionCreators/userAC';
 import { routesApi } from '../../utils/routesApi';
 import {
   initItemsAC,
@@ -25,7 +31,16 @@ import {
   publicAnimalsAC,
   initCurrentAnimalAC,
 } from '../actionCreators/animalAC';
-import { createReviewAC, initReviewsAC } from '../actionCreators/reviewsAC';
+import {
+  createReviewAC,
+  initReviewsAC,
+  setReviewsList,
+  errorResponseReviewAC,
+  successResponseReviewAC,
+  pendingResponseReviewAC,
+  publicReviewsAC,
+  deleteReviewsAC,
+} from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 import { initSearchListAC } from '../actionCreators/searchAC';
 
@@ -60,6 +75,19 @@ function* loginUserAsync(action) {
     localStorage.setItem('token', user.token.accessToken);
     localStorage.setItem('user', JSON.stringify(user));
   }
+}
+
+function* putUserAsync(action) {
+  const user = yield call(fetchData, {
+    url: routesApi.users,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+    body: JSON.stringify(action.payload),
+  });
+  yield put(updateUserAC(user));
 }
 
 function* getItemsAsync(action) {
@@ -217,11 +245,22 @@ function* getReviewsAsync(action) {
   yield put(initReviewsAC(reviews));
 }
 
+function* getReviewsListAsync(action) {
+  const reviews = yield call(fetchData, {
+    url: process.env.REACT_APP_REVIEWS_URL,
+  });
+
+  yield put(setReviewsList(reviews));
+}
+
 function* postReviewAsync(action) {
   const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload.item_id}`,
     method: 'POST',
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     body: JSON.stringify(action.payload),
   });
 
@@ -244,6 +283,7 @@ function* deleteOrderAsync(action) {
     yield put(errorResponseAC());
   }
 }
+
 function* postAnimalAsync(action) {
   yield put(pendingResponseAnimalAC());
   const response = yield call(fetchData, {
@@ -311,6 +351,38 @@ function* getUserOrdersAsync(action) {
   yield put(initUserOrderAC(userOrder));
 }
 
+function* deleteReviewAsync(action) {
+  yield put(pendingResponseReviewAC());
+
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
+    headers: { 'Content-Type': 'Application/json' },
+    method: 'DELETE',
+  });
+
+  if (response.success) {
+    yield put(successResponseReviewAC());
+    yield put(deleteReviewsAC(action.payload));
+  } else {
+    yield put(errorResponseReviewAC());
+  }
+}
+
+function* toPublicReviewAsync(action) {
+  yield put(pendingResponseReviewAC());
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload}`,
+    method: 'PUT',
+  });
+
+  if (response.success) {
+    yield put(successResponseReviewAC());
+    yield put(publicReviewsAC());
+  } else {
+    yield put(errorResponseReviewAC());
+  }
+}
+
 export function* globalWatcher() {
   yield takeEvery('FETCH_GET_ITEMS', getItemsAsync);
   yield takeEvery('FETCH_GET_CURRENT_ITEM', getCurrentItemAsync);
@@ -336,4 +408,8 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_CHECK_ANIMAL', toPublicAnimalAsync);
   yield takeEvery('FETCH_GET_USER_ANIMALS', getUserAnimalsAsync);
   yield takeEvery('FETCH_GET_USER_ORDER', getUserOrdersAsync);
+  yield takeEvery('FETCH_PUT_PROFILE', putUserAsync);
+  yield takeEvery('FETCH_GET_REVIEWS_LIST', getReviewsListAsync);
+  yield takeEvery('FETCH_DELETE_REVIEW', deleteReviewAsync);
+  yield takeEvery('FETCH_CHECK_REVIEW', toPublicReviewAsync);
 }

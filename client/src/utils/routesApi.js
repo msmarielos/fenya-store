@@ -6,4 +6,5 @@ export const routesApi = {
   profile: `${api}/api/profile`,
   useranimals: `${api}/api/useranimals`,
   userorder: `${api}/api/userorder`,
+  users: `${api}/api/users`,
 };
