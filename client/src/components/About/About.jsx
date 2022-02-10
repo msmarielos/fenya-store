@@ -9,7 +9,7 @@ export default function About() {
           src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa9d947164b8a8ac784f8f7fd27398ce48cd722015543ea46019da6c617cd3371&amp;source=constructor"
           width="500"
           height="320"
-          frameborder="0"
+          frameBorder="0"
         ></iframe>
         <p>
           Очень много разной интересной информации о нас. Очень много разной

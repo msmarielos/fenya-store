@@ -11,6 +11,7 @@ function Profile(props) {
     dispatch({ type: 'FETCH_GET_USER_ANIMALS' })
   }, [dispatch])
 
+
   return (
     <div>
     </div>

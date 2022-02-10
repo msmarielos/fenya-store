@@ -1,4 +1,5 @@
-import { CREATE_USER, LOGIN_USER, INIT_USER_ORDER, INIT_USER_ANIMALS } from '../actionTypes/userAT';
+import { CREATE_USER, LOGIN_USER, LOGOUT_USER, INIT_USER_ORDER, INIT_USER_ANIMALS } from '../actionTypes/userAT';
+
 
 export const createUserAC = payload => {
   return {
@@ -24,6 +25,12 @@ export const initUserOrderAC = payload => {
 export const initUserAnimalsAC = payload => {
   return {
     type: INIT_USER_ANIMALS,
+  };
+};
+
+export const logoutUserAC = payload => {
+  return {
+    type: LOGOUT_USER,
     payload,
   };
 };

@@ -46,7 +46,12 @@ function TotalItemCard() {
           </>
         ) : (
           <>
-            <input type="text" name="promo" placeholder="Промокод" />
+            <input
+              autoComplete="off"
+              type="text"
+              name="promo"
+              placeholder="Промокод"
+            />
             <button className="promo-btn" type="submit">
               Применить промокод
             </button>
