@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 const router = require('express').Router();
 const { Review, Item, User } = require('../db/models');
-const { isAuth } = require('../middlewares/isAuth');
 
 router.get('/:id', (req, res) => {
   try {

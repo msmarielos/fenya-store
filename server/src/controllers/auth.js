@@ -9,6 +9,7 @@ async function signUp(req, res) {
       success: true,
       message: 'Регистрация прошла успешно',
       token,
+      // user,
     });
   } catch (e) {
     res.status(400).json({
