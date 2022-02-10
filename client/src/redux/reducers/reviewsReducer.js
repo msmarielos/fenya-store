@@ -1,6 +1,13 @@
-import { CREATE_REVIEW, GET_REVIEWS, SET_REVIEWS_LIST, REVIEW_RESPONSE_SUCCESS,
+import {
+  CREATE_REVIEW,
+  GET_REVIEWS,
+  SET_REVIEWS_LIST,
+  REVIEW_RESPONSE_SUCCESS,
   REVIEW_RESPONSE_ERROR,
-  REVIEW_RESPONSE_PENDING, REVIEW_TO_PUBLIC, DELETE_REVIEW } from '../actionTypes/reviewsAT';
+  REVIEW_RESPONSE_PENDING,
+  REVIEW_TO_PUBLIC,
+  DELETE_REVIEW,
+} from '../actionTypes/reviewsAT';
 
 const initialState = {
   reviews: [],
@@ -28,8 +35,8 @@ export const reviewsReducer = (state = initialState, action) => {
         ...state,
         reviews: action.payload,
       };
-    
-      case REVIEW_RESPONSE_SUCCESS:
+
+    case REVIEW_RESPONSE_SUCCESS:
       return {
         ...state,
         reviewResponseSuccess: true,
@@ -53,29 +60,29 @@ export const reviewsReducer = (state = initialState, action) => {
         reviewResponseError: null,
       };
 
-      case REVIEW_TO_PUBLIC:
-        return {
-          ...state,
-          reviews: state.reviews.map(el => {
-            if (el.id === Number(action.payload)) {
-              return {
-                ...el,
-                isChecked: true,
-              };
-            } else {
-              return el;
-            }
-          }),
-        };
+    case REVIEW_TO_PUBLIC:
+      return {
+        ...state,
+        reviews: state.reviews.map(el => {
+          if (el.id === Number(action.payload)) {
+            return {
+              ...el,
+              isChecked: true,
+            };
+          } else {
+            return el;
+          }
+        }),
+      };
 
-      case DELETE_REVIEW:
-          return {
-            ...state,
-            reviews: state.reviews.filter(review => {
-              return review.id !== Number(action.payload);
-            }),
-          };
-    
+    case DELETE_REVIEW:
+      return {
+        ...state,
+        reviews: state.reviews.filter(review => {
+          return review.id !== Number(action.payload);
+        }),
+      };
+
     default:
       return state;
   }

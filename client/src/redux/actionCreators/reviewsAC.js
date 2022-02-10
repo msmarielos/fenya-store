@@ -1,4 +1,13 @@
-import { CREATE_REVIEW, GET_REVIEWS, SET_REVIEWS_LIST, REVIEW_RESPONSE_SUCCESS, REVIEW_RESPONSE_ERROR, REVIEW_RESPONSE_PENDING, REVIEW_TO_PUBLIC, DELETE_REVIEW } from '../actionTypes/reviewsAT';
+import {
+  CREATE_REVIEW,
+  GET_REVIEWS,
+  SET_REVIEWS_LIST,
+  REVIEW_RESPONSE_SUCCESS,
+  REVIEW_RESPONSE_ERROR,
+  REVIEW_RESPONSE_PENDING,
+  REVIEW_TO_PUBLIC,
+  DELETE_REVIEW,
+} from '../actionTypes/reviewsAT';
 
 export const initReviewsAC = payload => {
   return {
@@ -17,9 +26,9 @@ export const createReviewAC = payload => {
 export const setReviewsList = payload => {
   return {
     type: SET_REVIEWS_LIST,
-    payload
-  }
-}
+    payload,
+  };
+};
 
 export const errorResponseReviewAC = payload => {
   return {

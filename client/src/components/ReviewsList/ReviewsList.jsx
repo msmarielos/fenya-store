@@ -9,7 +9,7 @@ export default function ReviewsList() {
   const params = useParams();
 
   const { reviews } = useSelector(state => state.reviews);
-  const publishedReviews = reviews.filter(review => review.isChecked === true)
+  const publishedReviews = reviews.filter(review => review.isChecked === true);
 
   useEffect(() => {
     if (Number.isInteger(Number(params.id))) {

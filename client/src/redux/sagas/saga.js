@@ -25,7 +25,16 @@ import {
   publicAnimalsAC,
   initCurrentAnimalAC,
 } from '../actionCreators/animalAC';
-import { createReviewAC, initReviewsAC, setReviewsList, errorResponseReviewAC, successResponseReviewAC, pendingResponseReviewAC, publicReviewsAC, deleteReviewsAC } from '../actionCreators/reviewsAC';
+import {
+  createReviewAC,
+  initReviewsAC,
+  setReviewsList,
+  errorResponseReviewAC,
+  successResponseReviewAC,
+  pendingResponseReviewAC,
+  publicReviewsAC,
+  deleteReviewsAC,
+} from '../actionCreators/reviewsAC';
 import { initOrderListAC, deleteOrderAC } from '../actionCreators/ordersAC';
 import { initSearchListAC } from '../actionCreators/searchAC';
 
@@ -222,9 +231,10 @@ function* postReviewAsync(action) {
   const newReview = yield call(fetchData, {
     url: `${process.env.REACT_APP_REVIEWS_URL}/${action.payload.item_id}`,
     method: 'POST',
-    headers: { 'Content-Type': 'Application/json', 
-    Authorization: 'Bearer' + localStorage.getItem('token'),
-   },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     body: JSON.stringify(action.payload),
   });
 

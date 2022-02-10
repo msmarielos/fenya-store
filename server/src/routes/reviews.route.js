@@ -27,7 +27,7 @@ router.post('/:id', async (req, res) => {
   const { title, description, item_id, rating } = req.body;
   const currentItem = await Item.findOne({ where: { id: item_id } });
   const { userId } = req;
-  console.log(userId)
+  console.log(userId);
   if (currentItem.rating > 5) {
     await currentItem.update({
       rating: 5,
