@@ -6,7 +6,7 @@
   background-color: #000225;
   position: relative;
   width: 100vw;
-  height: 130px;
+  height: 150px;
   color: white;
 
   .basket-hover-parent {
@@ -107,8 +107,9 @@
   width: 1200px;
   margin-top: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.427);
-  padding: 0 0 5px 0;
+  padding: 0 0 15px 0;
   position: relative;
+  margin-bottom: 5px;
 
   .basket-counter {
     width: 25px;

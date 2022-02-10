@@ -9,6 +9,7 @@ export default function ReviewsList() {
   const params = useParams();
 
   const { reviews } = useSelector(state => state.reviews);
+  const publishedReviews = reviews.filter(review => review.isChecked === true);
 
   useEffect(() => {
     if (Number.isInteger(Number(params.id))) {
@@ -18,8 +19,8 @@ export default function ReviewsList() {
 
   return (
     <>
-      {reviews.length ? (
-        reviews.map(item => <ReviewCard key={item.id} item={item} />)
+      {publishedReviews.length ? (
+        publishedReviews.map(item => <ReviewCard key={item.id} item={item} />)
       ) : (
         <p>Отзывов пока нет</p>
       )}

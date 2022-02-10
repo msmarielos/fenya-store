@@ -37,7 +37,7 @@ export default function BoardList() {
   useEffect(() => {
     if (notInitialRender.current) {
       if (animalResponseSuccess) {
-        info('Объявление удалено!');
+        info('Успешно');
       } else if (animalResponseError) {
         error('Ошибка!');
       }
@@ -54,11 +54,21 @@ export default function BoardList() {
           unpublishedAnimals.map(animal => (
             <li key={animal.id}>
               {animal.name}
-              <img src={`storage/${animal.img}`} />
+              <img
+                src={
+                  animal.img.split('/')[0] === 'https:'
+                    ? animal.img
+                    : `/storage/${animal.img}`
+                }
+              />
               <button data-id={animal.id} onClick={putFetch}>
                 Опубликовать
               </button>
-              <button data-id={animal.id} onClick={deleteFetch}>
+              <button
+                className="empty-btn"
+                data-id={animal.id}
+                onClick={deleteFetch}
+              >
                 Удалить
               </button>
             </li>
@@ -70,8 +80,18 @@ export default function BoardList() {
           publishedAnimals.map(animal => (
             <li key={animal.id}>
               {animal.name}
-              <img src={`storage/${animal.img}`} />
-              <button data-id={animal.id} onClick={deleteFetch}>
+              <img
+                src={
+                  animal.img.split('/')[0] === 'https:'
+                    ? animal.img
+                    : `/storage/${animal.img}`
+                }
+              />
+              <button
+                className="empty-btn"
+                data-id={animal.id}
+                onClick={deleteFetch}
+              >
                 Удалить
               </button>
             </li>

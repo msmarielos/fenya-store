@@ -1,6 +1,8 @@
-import { CREATE_USER, LOGIN_USER, UPDATE_USER } from '../actionTypes/userAT';
+import { CREATE_USER, LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '../actionTypes/userAT';
 
-const initialState = { user: [] };
+const initialState = {
+  user: JSON.parse(localStorage.getItem('user')) ?? null,
+};
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,6 +23,12 @@ export const userReducer = (state = initialState, action) => {
 
     case UPDATE_USER:
       return { ...state, user: action.payload };
+
+    case LOGOUT_USER:
+      return {
+        ...state,
+        user: null,
+      };
 
     default:
       return state;

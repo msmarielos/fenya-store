@@ -43,12 +43,24 @@ function ItemList() {
         {items?.length &&
           items.map(item => (
             <li key={item.id}>
-              <img src={item.img} alt="" />
+              <img
+                src={
+                  item.img.split('/')[0] === 'https:'
+                    ? item.img
+                    : `/storage/${item.img}`
+                }
+                alt=""
+              />
               <p>{item.title}</p>
               <Link to={`/admin/items/${item.id}`}>
-                <button>Редактировать</button>
+                <button className="empty-btn-blue">Редактировать</button>
               </Link>
-              <button key={item.id} data-id={item.id} onClick={deleteFetch}>
+              <button
+                className="empty-btn"
+                key={item.id}
+                data-id={item.id}
+                onClick={deleteFetch}
+              >
                 Удалить
               </button>
             </li>

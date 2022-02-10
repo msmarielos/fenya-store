@@ -1,4 +1,4 @@
-import { CREATE_USER, LOGIN_USER, UPDATE_USER } from '../actionTypes/userAT';
+import { CREATE_USER, LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '../actionTypes/userAT';
 
 export const createUserAC = payload => {
   return {
@@ -17,6 +17,13 @@ export const loginUserAC = payload => {
 export const updateUserAC = payload => {
   return {
     type: UPDATE_USER,
+    payload,
+  };
+};
+
+export const logoutUserAC = payload => {
+  return {
+    type: LOGOUT_USER,
     payload,
   };
 };

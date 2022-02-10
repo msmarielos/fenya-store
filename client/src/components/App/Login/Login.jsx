@@ -1,14 +1,27 @@
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { info, error } from '../../../utils/toast';
+
 import './Login.scss';
 
-function Login(props) {
+function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const emailInput = useRef();
   const passwordInput = useRef();
-  const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const { user: isAuth } = useSelector(state => state.users);
+
+  useEffect(() => {
+    if (isAuth?.success) {
+      navigate('/profile');
+      info('Успешный вход');
+    } else {
+      error(isAuth?.message);
+    }
+  }, [dispatch, isAuth, navigate]);
 
   const formHandler = event => {
     event.preventDefault();
@@ -17,17 +30,14 @@ function Login(props) {
       password: passwordInput.current.value,
     };
 
-    if (user) {
-      dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
-      alert('Успешная авторизация');
-      navigate('/profile');
-    }
+    dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
   };
   return (
     <>
       <h1>Войти в личный кабинет</h1>
       <form onSubmit={formHandler} className="login-form">
         <input
+          autoComplete="off"
           ref={emailInput}
           id="email"
           type="email"
@@ -36,6 +46,7 @@ function Login(props) {
         />
 
         <input
+          autoComplete="off"
           ref={passwordInput}
           id="password"
           type="password"

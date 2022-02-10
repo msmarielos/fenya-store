@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { error, info } from '../../../utils/toast';
 
 export function Registration() {
   const navigate = useNavigate();
@@ -25,9 +26,10 @@ export function Registration() {
 
     if (passwordInput.current.value === confirmPasswordInput.current.value) {
       dispatch({ type: 'FETCH_CREATE_USER', payload: newUser });
-      navigate('/login');
+      info('Вы успешно зарегистрированы');
+      navigate('/');
     } else {
-      alert('Пароли не совпадают');
+      error('Пароли не совпадают');
     }
   };
 
@@ -37,6 +39,7 @@ export function Registration() {
       <form onSubmit={formHandler} className="login-form">
         <div>
           <input
+            autoComplete="off"
             ref={nameInput}
             id="name"
             type="text"
@@ -47,6 +50,7 @@ export function Registration() {
         </div>
         <div>
           <input
+            autoComplete="off"
             ref={emailInput}
             id="email"
             type="email"
@@ -56,6 +60,7 @@ export function Registration() {
         </div>
         <div>
           <input
+            autoComplete="off"
             ref={phoneInput}
             id="phone"
             type="text"
