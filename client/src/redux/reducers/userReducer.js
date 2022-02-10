@@ -1,4 +1,9 @@
-import { CREATE_USER, LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '../actionTypes/userAT';
+import {
+  CREATE_USER,
+  LOGIN_USER,
+  LOGOUT_USER,
+  UPDATE_USER,
+} from '../actionTypes/userAT';
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) ?? null,
