@@ -53,9 +53,14 @@ function ItemList() {
               />
               <p>{item.title}</p>
               <Link to={`/admin/items/${item.id}`}>
-                <button>Редактировать</button>
+                <button className="empty-btn-blue">Редактировать</button>
               </Link>
-              <button key={item.id} data-id={item.id} onClick={deleteFetch}>
+              <button
+                className="empty-btn"
+                key={item.id}
+                data-id={item.id}
+                onClick={deleteFetch}
+              >
                 Удалить
               </button>
             </li>
