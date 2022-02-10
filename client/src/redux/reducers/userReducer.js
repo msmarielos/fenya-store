@@ -1,7 +1,7 @@
 import { CREATE_USER, LOGIN_USER } from '../actionTypes/userAT';
 
 const initialState = {
-  user: [],
+  user: JSON.parse(localStorage.getItem('user')) ?? null,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -19,7 +19,7 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case LOGIN_USER:
-      return { ...state, user: state.user };
+      return { ...state, user: action.payload };
 
     default:
       return state;
