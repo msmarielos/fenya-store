@@ -6,6 +6,7 @@ import './BulletinBoard.scss';
 
 function BulletinBoard() {
   const { animals } = useSelector(state => state.animals);
+  const publishedAnimals = animals.filter(animal => animal.isChecked === true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,8 +20,8 @@ function BulletinBoard() {
         <button className="regular-btn">Подать объявление</button>
       </Link>
       <div className="animals-board">
-        {animals.length &&
-          animals.map(animal => (
+        {publishedAnimals.length &&
+          publishedAnimals.map(animal => (
             <BulletinBoardCard key={animal.id} animal={animal} />
           ))}
       </div>

@@ -7,6 +7,7 @@ export default function MainPageAnimals() {
   const dispatch = useDispatch();
 
   const { animals } = useSelector(state => state.animals);
+  const publishedAnimals = animals.filter(animal => animal.isChecked === true);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_ANIMALS' });
@@ -21,7 +22,7 @@ export default function MainPageAnimals() {
         </Link>
       </div>
       <div className="animal-main-list">
-        {animals.slice(0, 3).map(animal => (
+        {publishedAnimals.slice(0, 3).map(animal => (
           <Link key={animal.id} to={`/board/animal/${animal.id}`}>
             <div className="animal-main-card">
               <img src={animal.img} alt={animal.title} />
