@@ -4,6 +4,7 @@ const { OrderItem, Order, Item } = require('../db/models');
 router.post('/', async (req, res) => {
   const order = req.body;
   const { userId } = req;
+  console.log(userId, '>>>>>>>>>>>>userId');
 
   const newOrder = await Order.create({
     user_id: userId,

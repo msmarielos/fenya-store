@@ -3,10 +3,14 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USER,
+  INIT_USER_ORDER,
+  INIT_USER_ANIMALS,
 } from '../actionTypes/userAT';
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) ?? null,
+  userItems: [],
+  userAnimals: [],
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -34,6 +38,13 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         user: null,
       };
+
+    case INIT_USER_ORDER:
+      return { ...state, userItems: action.payload };
+
+    case INIT_USER_ANIMALS:
+      console.log(action.payload, 'action.payload');
+      return { ...state, userAnimals: action.payload };
 
     default:
       return state;

@@ -1,15 +1,25 @@
-import { useRef } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import OrederUserCard from '../../OrederUserCard/OrederUserCard';
+import { useRef } from 'react';
 
 function Profile(props) {
+  const { userItems } = useSelector(state => state.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GET_USER_ANIMALS' });
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GET_USER_ORDER' });
+  }, [dispatch]);
+
   const nameInput = useRef();
   const emailInput = useRef();
   const phoneInput = useRef();
 
-  const dispatch = useDispatch();
-
   const userFields = useSelector(state => state.users?.user?.user);
-  console.log(userFields);
 
   const updateProfile = event => {
     event.preventDefault();
@@ -24,8 +34,22 @@ function Profile(props) {
       dispatch({ type: 'FETCH_PUT_PROFILE', payload: user });
     }
   };
+
   return (
     <>
+      <div>
+        <h1>Личный кабинет</h1>
+        <h3>Ваши заказы</h3>
+        {userItems.userOrder ? (
+          userItems.userOrder?.map((item, index) => {
+            return (
+              <OrederUserCard key={item.id} item={item} number={index + 1} />
+            );
+          })
+        ) : (
+          <p>Заказов нет</p>
+        )}
+      </div>
       <h1>Изменить профиль</h1>
       <form onSubmit={updateProfile} className="login-form">
         <div>

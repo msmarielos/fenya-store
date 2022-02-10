@@ -3,6 +3,8 @@ import {
   createUserAC,
   loginUserAC,
   updateUserAC,
+  initUserAnimalsAC,
+  initUserOrderAC,
 } from '../actionCreators/userAC';
 import { routesApi } from '../../utils/routesApi';
 import {
@@ -330,6 +332,27 @@ function* getCurrentAnimalsAsync(action) {
   yield put(initCurrentAnimalAC(currentAnimal));
 }
 
+function* getUserAnimalsAsync() {
+  const userAnimals = yield call(fetchData, {
+    url: routesApi.useranimals,
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  });
+
+  yield put(initUserAnimalsAC(userAnimals));
+}
+
+function* getUserOrdersAsync(action) {
+  const userOrder = yield call(fetchData, {
+    url: routesApi.userorder,
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  });
+  yield put(initUserOrderAC(userOrder));
+}
+
 function* deleteReviewAsync(action) {
   yield put(pendingResponseReviewAC());
 
@@ -385,6 +408,8 @@ export function* globalWatcher() {
   yield takeEvery('FETCH_RELATIVE_ITEMS', getRelativeItemsAsync);
   yield takeEvery('FETCH_DELETE_ANIMAL', deleteAnimalAsync);
   yield takeEvery('FETCH_CHECK_ANIMAL', toPublicAnimalAsync);
+  yield takeEvery('FETCH_GET_USER_ANIMALS', getUserAnimalsAsync);
+  yield takeEvery('FETCH_GET_USER_ORDER', getUserOrdersAsync);
   yield takeEvery('FETCH_PUT_PROFILE', putUserAsync);
   yield takeEvery('FETCH_GET_REVIEWS_LIST', getReviewsListAsync);
   yield takeEvery('FETCH_DELETE_REVIEW', deleteReviewAsync);

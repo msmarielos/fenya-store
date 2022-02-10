@@ -12,7 +12,6 @@ export default function Category() {
   const { pathname } = useLocation();
   const { items } = useSelector(state => state.items);
   const { basketItems } = useSelector(state => state.basketItems);
-
   useEffect(() => {
     dispatch({
       type: 'FETCH_GET_ITEMS',
