@@ -1,6 +1,6 @@
 /* eslint-disable no-return-await */
 const bcrypt = require('bcryptjs');
-const { User, Animal, OrderItem, Order } = require('../db/models');
+const { User, Animal, OrderItem, Order, Item } = require('../db/models');
 
 async function createUser(data) {
   const { name, email, phone, password } = data;
@@ -55,6 +55,7 @@ async function getUseOrder(id) {
     include: [
       {
         model: OrderItem,
+        include: [Item],
       },
     ],
   });

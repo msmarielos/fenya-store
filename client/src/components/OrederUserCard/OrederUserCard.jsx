@@ -1,15 +1,15 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-function OrederUserCard({ item }) {
+function OrederUserCard({ item, number }) {
 
-  console.log(item, 'item')
   return (
     <div>
+      <p>Заказ номер: {number}</p>
       <ul>
-       {item.OrderItems.map((el) => <li><p>Товар {el.item_id}</p><p>Количество: {el.count}</p></li>)}
+       {item.OrderItems.map((el) => <li><p>Товар: {el.Item.title}</p><p>Количество: {el.count}</p></li>)}
       </ul>
-
-       
+      <p>Общая сумма: {item.OrderItems.reduce((acc, num) => acc + num.Item.price * num.count, 0)}</p>
     </div>
   );
 }

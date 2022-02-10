@@ -7,6 +7,7 @@ function Profile(props) {
   const { userAnimals, userItems  } = useSelector(state => state.users)
   const dispatch = useDispatch()
   
+  console.log(userItems , 'userItems')
   
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_USER_ANIMALS' })
@@ -21,8 +22,8 @@ function Profile(props) {
     <div>
       <h1>Личный кабинет</h1>
       <h3>Ваши заказы</h3>
-      {userItems.userOrder ? userItems.userOrder?.map((item) => {
-        return <OrederUserCard key={item.id} item={item} />
+      {userItems.userOrder ? userItems.userOrder?.map((item, index) => {
+        return <OrederUserCard key={item.id} item={item} number={index + 1} />
       }) : <p>Заказов нет</p> }
 
     </div>
