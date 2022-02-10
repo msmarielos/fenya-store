@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import OrederUserCard from '../../OrederUserCard/OrederUserCard';
 
 function Profile(props) {
 
@@ -15,9 +16,10 @@ function Profile(props) {
     dispatch({ type: 'FETCH_GET_USER_ORDER' })
   }, [dispatch])
 
-console.log(userItems, 'userItems')
   return (
     <div>
+      {userItems.length ? userItems.map()}
+      < OrederUserCard  />
     </div>
   );
 }

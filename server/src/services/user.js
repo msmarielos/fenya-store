@@ -48,13 +48,13 @@ async function getUserAnimals(id) {
 
 async function getUseOrder(id) {
   console.log('id', id);
-  const userOrder = await OrderItem.findAll({
+  const userOrder = await Order.findAll({
+    where: {
+      user_id: id,
+    },
     include: [
       {
-        model: Order,
-        where: {
-          user_id: id,
-        },
+        model: OrderItem,
       },
     ],
   });
