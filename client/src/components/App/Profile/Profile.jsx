@@ -4,11 +4,9 @@ import OrederUserCard from '../../OrederUserCard/OrederUserCard';
 
 function Profile(props) {
 
-  const { userAnimals, userItems  } = useSelector(state => state.users)
+  const { userItems  } = useSelector(state => state.users)
   const dispatch = useDispatch()
-  
-  console.log(userItems , 'userItems')
-  
+    
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_USER_ANIMALS' })
   }, [dispatch])
@@ -17,7 +15,6 @@ function Profile(props) {
     dispatch({ type: 'FETCH_GET_USER_ORDER' })
   }, [dispatch])
 
-  console.log(userItems.userOrder?.length, 'userItems')
   return (
     <div>
       <h1>Личный кабинет</h1>
