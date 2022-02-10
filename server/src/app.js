@@ -33,10 +33,11 @@ app.use(express.json());
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
+// TODO: `чтоб заказ мог делать только авторизованный`
 app.use('/order', isAuth, orderRouter);
 app.use('/api/auth', authRouter);
 app.use('/api', isAuth, userRouter);
-
+// TODO: `сделать чтоб заказ добавлял только авторизованный`
 app.use('/reviews', reviewRouter);
 app.use('/animals', animalRouter);
 
