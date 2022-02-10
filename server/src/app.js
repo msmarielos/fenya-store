@@ -24,7 +24,12 @@ const animalRouter = require('./routes/animal.route');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: 'https://fenya-store.herokuapp.com/',
+  }),
+);
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
