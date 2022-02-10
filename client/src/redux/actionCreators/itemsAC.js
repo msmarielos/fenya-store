@@ -5,8 +5,6 @@ import {
   INIT_ITEMS,
   INIT_CATEGORIES,
   INIT_CURRENT_ITEM,
-  SORT_ITEMS_ASC,
-  SORT_ITEMS_DESC,
   INIT_ITEM_LIST,
   ITEM_RESPONSE_SUCCESS,
   ITEM_RESPONSE_PENDING,
@@ -52,20 +50,6 @@ export const initCurrentItemAC = payload => {
 export const initCategoriesAC = payload => {
   return {
     type: INIT_CATEGORIES,
-    payload,
-  };
-};
-
-export const sortAscAC = payload => {
-  return {
-    type: SORT_ITEMS_ASC,
-    payload,
-  };
-};
-
-export const sortDescAC = payload => {
-  return {
-    type: SORT_ITEMS_DESC,
     payload,
   };
 };

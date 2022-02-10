@@ -2,8 +2,6 @@ import {
   ADD_ITEM,
   INIT_CURRENT_ITEM,
   INIT_ITEMS,
-  SORT_ITEMS_ASC,
-  SORT_ITEMS_DESC,
   INIT_ITEM_LIST,
   DELETE_ITEM,
   UPDATE_ITEM,
@@ -12,27 +10,40 @@ import {
   ITEM_RESPONSE_ERROR,
   INIT_RELATIVE_ITEMS,
 } from '../actionTypes/itemsAT';
+
 const initialState = {
   items: [],
   relativeItems: [],
   currentItem: {},
+
   itemResponseSuccess: null,
   itemResponsePending: null,
   itemResponseError: null,
+
+  offset: 0,
+  totalCount: 0,
 };
 
 export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
-      const newItem = action.payload;
+      const newItem = action.payload.item;
 
       return {
         ...state,
-        items: state.items ? [...state.items, newItem] : [newItem],
+        items: state.items ? [...state.items, newItem] : [newItem]
       };
 
-    case INIT_ITEMS:
-      return { ...state, items: action.payload };
+    case INIT_ITEMS: {
+      const { items, offset, totalCount } = action.payload;
+
+      return {
+        ...state,
+        items,
+        offset,
+        totalCount
+      };
+    }
 
     case INIT_ITEM_LIST:
       return { ...state, items: action.payload };
@@ -71,18 +82,6 @@ export const itemReducer = (state = initialState, action) => {
       return {
         ...state,
         currentItem: action.payload,
-      };
-
-    case SORT_ITEMS_ASC:
-      return {
-        ...state,
-        items: state.items.sort((a, b) => (a.price > b.price ? -1 : 1)),
-      };
-
-    case SORT_ITEMS_DESC:
-      return {
-        ...state,
-        items: state.items.sort((a, b) => (a.price > b.price ? 1 : -1)),
       };
 
     case UPDATE_ITEM:
