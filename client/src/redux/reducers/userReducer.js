@@ -3,14 +3,15 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USER,
-  INIT_USER_ORDER, 
-  INIT_USER_ANIMALS
+  INIT_USER_ORDER,
+  INIT_USER_ANIMALS,
 } from '../actionTypes/userAT';
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('user')) ?? null, userItems: [], userAnimals: []
+  user: JSON.parse(localStorage.getItem('user')) ?? null,
+  userItems: [],
+  userAnimals: [],
 };
-
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -42,7 +43,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, userItems: action.payload };
 
     case INIT_USER_ANIMALS:
-      console.log(action.payload, 'action.payload')
+      console.log(action.payload, 'action.payload');
       return { ...state, userAnimals: action.payload };
 
     default:

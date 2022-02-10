@@ -76,7 +76,7 @@ async function updateUser(id, data) {
     },
     {
       where: { id },
-    },
+    }
   );
   if (!user) {
     throw new Error('Данные не изменены');
@@ -85,4 +85,10 @@ async function updateUser(id, data) {
   }
 }
 
-module.exports = { createUser, getUserById, updateUser, getUserAnimals, getUseOrder };
+module.exports = {
+  createUser,
+  getUserById,
+  updateUser,
+  getUserAnimals,
+  getUseOrder,
+};

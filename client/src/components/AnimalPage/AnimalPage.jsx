@@ -11,15 +11,20 @@ export default function AnimalPage() {
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ANIMAL', payload: params.id });
   }, [dispatch, params.id]);
-console.log(currentAnimal, 'currentAnimal')
+  console.log(currentAnimal, 'currentAnimal');
   return (
     <>
       <h1>{currentAnimal?.title}</h1>
       <div className="animal-single-card">
         <div className="animal-card-photo">
-          <img src={currentAnimal?.img.split('/')[0] === 'https:'
-                  ? currentAnimal?.img
-                  : `/storage/${currentAnimal?.img}`} alt="" />
+          <img
+            src={
+              currentAnimal?.img.split('/')[0] === 'https:'
+                ? currentAnimal?.img
+                : `/storage/${currentAnimal?.img}`
+            }
+            alt=""
+          />
         </div>
         <div className="animal-card-description">
           <p>

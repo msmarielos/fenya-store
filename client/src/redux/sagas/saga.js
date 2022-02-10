@@ -3,8 +3,8 @@ import {
   createUserAC,
   loginUserAC,
   updateUserAC,
-  initUserAnimalsAC, 
-  initUserOrderAC
+  initUserAnimalsAC,
+  initUserOrderAC,
 } from '../actionCreators/userAC';
 import { routesApi } from '../../utils/routesApi';
 import {
@@ -333,20 +333,22 @@ function* getCurrentAnimalsAsync(action) {
 }
 
 function* getUserAnimalsAsync() {
-  const userAnimals = yield call(fetchData, { url: routesApi.useranimals,
+  const userAnimals = yield call(fetchData, {
+    url: routesApi.useranimals,
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
-    }
+    },
   });
- 
+
   yield put(initUserAnimalsAC(userAnimals));
 }
 
 function* getUserOrdersAsync(action) {
-  const userOrder = yield call(fetchData, { url: routesApi.userorder,
+  const userOrder = yield call(fetchData, {
+    url: routesApi.userorder,
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
-    }
+    },
   });
   yield put(initUserOrderAC(userOrder));
 }

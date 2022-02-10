@@ -3,8 +3,8 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPDATE_USER,
-  INIT_USER_ORDER, 
-  INIT_USER_ANIMALS
+  INIT_USER_ORDER,
+  INIT_USER_ANIMALS,
 } from '../actionTypes/userAT';
 
 export const createUserAC = payload => {
@@ -24,7 +24,7 @@ export const loginUserAC = payload => {
 export const initUserOrderAC = payload => {
   return {
     type: INIT_USER_ORDER,
-        payload,
+    payload,
   };
 };
 
