@@ -49,4 +49,20 @@ async function getAnimals(req, res) {
   }
 }
 
-module.exports = { getUser, updateUser, getAnimals };
+async function getOrder(req, res) {
+  try {
+    const { userId } = req;
+    console.log(userId, 'userId');
+    const userOrder = await userService.getUseOrder(userId);
+    res.status(200).json({
+      userOrder,
+    });
+  } catch (e) {
+    res.status(400).json({
+      success: false,
+      message: e.message,
+    });
+  }
+}
+
+module.exports = { getUser, updateUser, getAnimals, getOrder };

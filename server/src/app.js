@@ -18,7 +18,6 @@ const orderRouter = require('./routes/order.router');
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const { isAuth } = require('./middlewares/isAuth');
-const { checkAdmin } = require('./middlewares/checkAdmin');
 const reviewRouter = require('./routes/reviews.route');
 const animalRouter = require('./routes/animal.route');
 
