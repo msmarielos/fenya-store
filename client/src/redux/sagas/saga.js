@@ -52,6 +52,7 @@ function* postUserAsync(action) {
     url: routesApi.reg,
     method: 'POST',
     headers: { 'Content-Type': 'Application/json' },
+    credentials: 'include',
     body: JSON.stringify(action.payload),
   });
   yield put(createUserAC(newUser));
