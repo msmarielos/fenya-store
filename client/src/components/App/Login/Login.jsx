@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { info, error } from '../../../utils/toast';
+
 import './Login.scss';
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
 
   const emailInput = useRef();
   const passwordInput = useRef();
+  const navigate = useNavigate();
 
   const { user: isAuth } = useSelector(state => state.users);
 
@@ -30,9 +32,12 @@ function Login() {
       password: passwordInput.current.value,
     };
 
-    dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
+    if (user) {
+      dispatch({ type: 'FETCH_LOGIN_USER', payload: user });
+      alert('Успешная авторизация');
+      navigate('/profile');
+    }
   };
-
   return (
     <>
       <h1>Войти в личный кабинет</h1>

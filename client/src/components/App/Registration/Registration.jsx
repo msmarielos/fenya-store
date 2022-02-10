@@ -43,7 +43,7 @@ export function Registration() {
             ref={nameInput}
             id="name"
             type="text"
-            placeholder="Логин"
+            placeholder="Имя"
             required
             autoFocus
           />
@@ -75,7 +75,7 @@ export function Registration() {
             type="password"
             placeholder="Пароль"
             required
-            minLength="2"
+            minLength="8"
           />
         </div>
         <div>
