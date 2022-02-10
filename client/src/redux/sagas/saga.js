@@ -137,8 +137,6 @@ function* getListItemsAsync(action) {
   yield put(initListItemsAC(response.items));
 }
 
-
-
 function* getCurrentItemAsync(action) {
   const item = yield call(fetchData, {
     url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload}`,

@@ -8,7 +8,7 @@ import './Category.scss';
 export default function Category() {
   const SORT_TYPES = {
     asc: 'asc',
-    desc: 'desc'
+    desc: 'desc',
   };
   const perPage = 12;
 
@@ -17,7 +17,9 @@ export default function Category() {
 
   const { items } = useSelector(state => state.items);
   const totalCount = useSelector(state => state.items.totalCount);
-  const currentPage = useSelector(state => Math.floor(state.items.offset / perPage));
+  const currentPage = useSelector(state =>
+    Math.floor(state.items.offset / perPage)
+  );
 
   const [sort, setSort] = useState(SORT_TYPES.asc);
   const [offset, setOffset] = useState(0);
@@ -25,12 +27,13 @@ export default function Category() {
   const { basketItems } = useSelector(state => state.basketItems);
   useEffect(() => {
     const segments = pathname.split('/').filter(Boolean);
-    const payload = segments.length === 1
-      ? { category: segments[0] }
-      : {
-        type: segments[0],
-        category: segments[1]
-      };
+    const payload =
+      segments.length === 1
+        ? { category: segments[0] }
+        : {
+            type: segments[0],
+            category: segments[1],
+          };
 
     dispatch({
       type: 'FETCH_GET_ITEMS',
@@ -39,7 +42,7 @@ export default function Category() {
         sort,
         limit: perPage,
         offset,
-      }
+      },
     });
   }, [dispatch, pathname, sort, offset]);
 
@@ -58,36 +61,44 @@ export default function Category() {
   };
 
   function setPage(pageNumber) {
-   setOffset((pageNumber - 1) * perPage);
+    setOffset((pageNumber - 1) * perPage);
   }
 
   function renderTitle() {
-    return (<>
-      {pathname === '/cats/toys' && <h1>Игрушки для кошек</h1>}
-      {pathname === '/cats/food' && <h1>Еда для кошек</h1>}
-      {pathname === '/cats/clothes' && <h1>Одежда и аксессуары для кошек</h1>}
-      {pathname === '/dogs/toys' && <h1>Игрушки для собак</h1>}
-      {pathname === '/dogs/food' && <h1>Еда для собак</h1>}
-      {pathname === '/dogs/clothes' && <h1>Одежда и аксессуары для собак</h1>}
-      {pathname === '/toys' && <h1>Игрушки для животных</h1>}
-      {pathname === '/food' && <h1>Еда для животных</h1>}
-      {pathname === '/clothes' && <h1>Одежда и аксессуары для животных</h1>}</>
-    )
+    return (
+      <>
+        {pathname === '/cats/toys' && <h1>Игрушки для кошек</h1>}
+        {pathname === '/cats/food' && <h1>Еда для кошек</h1>}
+        {pathname === '/cats/clothes' && <h1>Одежда и аксессуары для кошек</h1>}
+        {pathname === '/dogs/toys' && <h1>Игрушки для собак</h1>}
+        {pathname === '/dogs/food' && <h1>Еда для собак</h1>}
+        {pathname === '/dogs/clothes' && <h1>Одежда и аксессуары для собак</h1>}
+        {pathname === '/toys' && <h1>Игрушки для животных</h1>}
+        {pathname === '/food' && <h1>Еда для животных</h1>}
+        {pathname === '/clothes' && <h1>Одежда и аксессуары для животных</h1>}
+      </>
+    );
   }
 
   function renderPagination() {
     const totalPageCount = Math.ceil(totalCount / perPage);
     const pages = new Array(totalPageCount).fill().map((_, idx) => idx + 1);
 
-    return pages.map((page, idx) => <button className="empty-btn-page" key={idx} onClick={() => setPage(page)}>{page}</button>)
+    return pages.map((page, idx) => (
+      <button
+        className="empty-btn-page"
+        key={idx}
+        onClick={() => setPage(page)}
+      >
+        {page}
+      </button>
+    ));
   }
 
   return (
     <>
       {renderTitle()}
-      <div className='pages'>
-      {renderPagination()}
-      </div>
+      <div className="pages">{renderPagination()}</div>
 
       <div className="sort-block">
         <p>Отсортировать по цене:</p>

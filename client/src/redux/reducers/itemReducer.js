@@ -31,7 +31,7 @@ export const itemReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        items: state.items ? [...state.items, newItem] : [newItem]
+        items: state.items ? [...state.items, newItem] : [newItem],
       };
 
     case INIT_ITEMS: {
@@ -41,7 +41,7 @@ export const itemReducer = (state = initialState, action) => {
         ...state,
         items,
         offset,
-        totalCount
+        totalCount,
       };
     }
 

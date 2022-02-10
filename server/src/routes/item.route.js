@@ -13,10 +13,10 @@ function getCategoryTypeId({ type, category }) {
       switch (category) {
         case 'food':
           return 1;
-          case 'toys':
-            return 2;
-          case 'clothes':
-            return 3;
+        case 'toys':
+          return 2;
+        case 'clothes':
+          return 3;
       }
     } else {
       switch (category) {
@@ -42,7 +42,6 @@ function getCategoryTypeId({ type, category }) {
   return undefined;
 }
 
-
 router.get('/:itemId', (req, res) => {
   try {
     const id = req.params.itemId;
@@ -67,14 +66,12 @@ router.get('/', async (req, res) => {
   }
 
   if (sort) {
-    options.order = sort === 'asc'
-      ? [['price', 'ASC']]
-      : [['price', 'DESC']];
+    options.order = sort === 'asc' ? [['price', 'ASC']] : [['price', 'DESC']];
   }
 
   if (search) {
     where.title = {
-      [Sequelize.Op.iLike]: `%${req.query.search}%`
+      [Sequelize.Op.iLike]: `%${req.query.search}%`,
     };
   }
 
@@ -83,18 +80,20 @@ router.get('/', async (req, res) => {
   }
 
   try {
-    const { count: totalCount, rows: items } = await Item.findAndCountAll({ ...options, where });
+    const { count: totalCount, rows: items } = await Item.findAndCountAll({
+      ...options,
+      where,
+    });
 
     res.json({
       offset: parseInt(offset) + parseInt(limit),
       totalCount,
-      items
+      items,
     });
   } catch (error) {
     res.status(500).json({ success: false });
   }
 });
-
 
 router.get('/relative/:id', async (req, res) => {
   try {
