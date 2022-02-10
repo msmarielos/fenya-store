@@ -91,33 +91,50 @@ function* putUserAsync(action) {
 }
 
 function* getItemsAsync(action) {
-  const items = yield call(fetchData, {
-    url: `${process.env.REACT_APP_ITEMS_URL}/${action.payload.type}/${action.payload.category}`,
+  const { type, category, sort, limit, offset = 0 } = action.payload;
+  const query = new URLSearchParams({ offset });
+
+  if (type) {
+    query.set('type', type);
+  }
+
+  if (category) {
+    query.set('category', category);
+  }
+
+  if (sort) {
+    query.set('sort', sort);
+  }
+
+  if (limit) {
+    query.set('limit', limit);
+  }
+
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}?${query.toString()}`,
   });
 
-  yield put(initItemsAC(items));
-}
-
-function* getListItemsAsync(action) {
-  const items = yield call(fetchData, {
-    url: `${process.env.REACT_APP_ITEMS_URL}`,
-  });
-
-  yield put(initListItemsAC(items));
+  yield put(initItemsAC(response));
 }
 
 function* getSearchListAsync(action) {
-  const search = new URLSearchParams();
+  const { search } = action.payload;
 
-  if (action.payload.search) {
-    search.set('search', action.payload.search);
-  }
+  const query = new URLSearchParams({ search });
 
-  const items = yield call(fetchData, {
-    url: `${process.env.REACT_APP_ITEMS_URL}?${search.toString()}`,
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}?${query.toString()}`,
   });
 
-  yield put(initSearchListAC(items));
+  yield put(initSearchListAC(response.items));
+}
+
+function* getListItemsAsync(action) {
+  const response = yield call(fetchData, {
+    url: `${process.env.REACT_APP_ITEMS_URL}`,
+  });
+
+  yield put(initListItemsAC(response.items));
 }
 
 function* getCurrentItemAsync(action) {
