@@ -40,25 +40,63 @@ function AnimalsForm() {
     <div className="add-item-admin">
       <h1>Добавить питомца</h1>
       <form ref={animalForm} encType="multipart/form-data" onSubmit={addAnimal}>
-        <input type="text" name="title" placeholder="Заголовок" required />
-        <input type="text" name="description" placeholder="Описание" required />
-        <input type="text" name="name" placeholder="Имя питомца" required />
         <input
+          autocomplete="off"
+          type="text"
+          name="title"
+          placeholder="Заголовок"
+          required
+        />
+        <input
+          autocomplete="off"
+          type="text"
+          name="description"
+          placeholder="Описание"
+          required
+        />
+        <input
+          autocomplete="off"
+          type="text"
+          name="name"
+          placeholder="Имя питомца"
+          required
+        />
+        <input
+          autocomplete="off"
           type="number"
           name="age"
           placeholder="Возвраст питомца"
           min={0}
           required
         />
-        <input type="text" name="breed" placeholder="Порода" required />
         <input
+          autocomplete="off"
+          type="text"
+          name="breed"
+          placeholder="Порода"
+          required
+        />
+        <input
+          autocomplete="off"
           type="text"
           name="type"
           placeholder="Введите собака или кошка"
           required
         />
-        <input type="text" name="city" placeholder="Город" required />
-        <input type="file" name="img" placeholder="Добавьте фото" required />
+        <input
+          autocomplete="off"
+          type="text"
+          name="city"
+          placeholder="Город"
+          required
+        />
+        <input
+          autocomplete="off"
+          type="file"
+          name="img"
+          placeholder="Добавьте фото"
+          required
+        />
         <button type="submit" className="regular-btn admin-btn">
           Добавить
         </button>

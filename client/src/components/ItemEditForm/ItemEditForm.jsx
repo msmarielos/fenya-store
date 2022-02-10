@@ -54,15 +54,26 @@ function ItemEditForm() {
       <form onSubmit={editItem} ref={editForm} encType="multipart/form-data">
         <label>
           Название:
-          <input type="text" name="title" defaultValue={currentItem.title} />
+          <input
+            autocomplete="off"
+            type="text"
+            name="title"
+            defaultValue={currentItem.title}
+          />
         </label>
         <label>
           Цена:
-          <input type="number" name="price" defaultValue={currentItem.price} />
+          <input
+            autocomplete="off"
+            type="number"
+            name="price"
+            defaultValue={currentItem.price}
+          />
         </label>
         <label>
           Описание:
           <textarea
+            autocomplete="off"
             type="text"
             name="description"
             defaultValue={currentItem.description}
@@ -71,6 +82,7 @@ function ItemEditForm() {
         <label>
           Количество:
           <input
+            autocomplete="off"
             type="number"
             name="amount"
             defaultValue={currentItem.amount}

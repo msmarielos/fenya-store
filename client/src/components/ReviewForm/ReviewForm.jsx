@@ -41,7 +41,13 @@ export default function ReviewForm() {
           size={24}
           activeColor="#ffd700"
         />
-        <input type="text" name="title" placeholder="Заголовок" required />
+        <input
+          autocomplete="off"
+          type="text"
+          name="title"
+          placeholder="Заголовок"
+          required
+        />
         <textarea
           name="description"
           resizable="false"

@@ -37,6 +37,7 @@ export function Registration() {
       <form onSubmit={formHandler} className="login-form">
         <div>
           <input
+            autocomplete="off"
             ref={nameInput}
             id="name"
             type="text"
@@ -47,6 +48,7 @@ export function Registration() {
         </div>
         <div>
           <input
+            autocomplete="off"
             ref={emailInput}
             id="email"
             type="email"
@@ -56,6 +58,7 @@ export function Registration() {
         </div>
         <div>
           <input
+            autocomplete="off"
             ref={phoneInput}
             id="phone"
             type="text"

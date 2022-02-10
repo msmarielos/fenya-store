@@ -30,12 +30,14 @@ function OrderForm(props) {
         className="order-form"
       >
         <input
+          autocomplete="off"
           placeholder="Введите ваш телефон"
           name="phone"
           type="text"
           required
         />
         <input
+          autocomplete="off"
           placeholder="Введите ваше имя"
           name="name"
           type="text"

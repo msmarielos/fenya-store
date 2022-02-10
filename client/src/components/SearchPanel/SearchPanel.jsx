@@ -97,6 +97,7 @@ export default function SearchPanel() {
         <div className="search">
           <form onSubmit={handleForm}>
             <input
+              autocomplete="off"
               ref={inputRef}
               value={search}
               className="search-input"
