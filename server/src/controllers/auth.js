@@ -25,7 +25,7 @@ async function signIn(req, res) {
       success: true,
       message: 'Авторизация прошла успешно',
       token,
-      // user,
+      // user,/
     });
   } catch (e) {
     res.status(404).json({
