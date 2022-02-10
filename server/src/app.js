@@ -30,13 +30,6 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../client/build/index.html'));
-  });
-}
-
 app.use('/items', itemRouter);
 app.use('/categories', categoryRouter);
 app.use('/lists', listsRouter);
@@ -45,6 +38,13 @@ app.use('/api/auth', authRouter);
 app.use('/api', isAuth, checkAdmin, userRouter);
 app.use('/reviews', reviewRouter);
 app.use('/animals', animalRouter);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.info('The server is up and running on', PORT);
