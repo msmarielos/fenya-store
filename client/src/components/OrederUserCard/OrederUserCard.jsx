@@ -1,6 +1,6 @@
 import React from 'react';
 
-function OrederUserCard(props) {
+function OrederUserCard({ item }) {
 
   
   return (
