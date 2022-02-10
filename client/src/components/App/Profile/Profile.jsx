@@ -8,7 +8,7 @@ function Profile(props) {
 
   const dispatch = useDispatch();
 
-  const userFields = useSelector(state => state.users?.user);
+  const userFields = useSelector(state => state.users?.user?.user);
   console.log(userFields);
 
   const updateProfile = event => {
@@ -33,7 +33,7 @@ function Profile(props) {
             ref={nameInput}
             id="name"
             type="text"
-            value={userFields?.name}
+            defaultValue={userFields?.name}
             placeholder="Имя"
             autocomplete="off"
             autoFocus
@@ -44,7 +44,7 @@ function Profile(props) {
             ref={emailInput}
             id="email"
             type="email"
-            value={userFields?.email}
+            defaultValue={userFields?.email}
             placeholder="Email"
             autocomplete="off"
           />
@@ -54,7 +54,7 @@ function Profile(props) {
             ref={phoneInput}
             id="phone"
             type="text"
-            value={userFields?.phone}
+            defaultValue={userFields?.phone}
             placeholder="Телефон"
             autocomplete="off"
           />

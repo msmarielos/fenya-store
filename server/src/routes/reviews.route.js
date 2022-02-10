@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 const router = require('express').Router();
 const { Review, Item, User } = require('../db/models');
+const { isAuth } = require('../middlewares/isAuth');
 
 router.get('/:id', (req, res) => {
   try {
@@ -27,7 +28,6 @@ router.post('/:id', async (req, res) => {
   const { title, description, item_id, rating } = req.body;
   const currentItem = await Item.findOne({ where: { id: item_id } });
   const { userId } = req;
-  console.log(userId);
   if (currentItem.rating > 5) {
     await currentItem.update({
       rating: 5,
@@ -42,7 +42,7 @@ router.post('/:id', async (req, res) => {
     description,
     item_id,
     rating,
-    user_id: 1,
+    user_id: userId,
     isChecked: false,
   });
   res.json(newReview);
