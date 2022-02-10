@@ -16,17 +16,17 @@ function Profile(props) {
     dispatch({ type: 'FETCH_GET_USER_ORDER' })
   }, [dispatch])
 
-  console.log(userItems, 'userItems')
+  console.log(userItems.userOrder?.length, 'userItems')
   return (
     <div>
       <h1>Личный кабинет</h1>
       <h3>Ваши заказы</h3>
-      {userItems.length ? userItems.map((item) => {
+      {userItems.userOrder ? userItems.userOrder?.map((item) => {
         return <OrederUserCard key={item.id} item={item} />
       }) : <p>Заказов нет</p> }
-    
+
     </div>
   );
-}
+} 
 
 export default Profile;
