@@ -56,13 +56,6 @@ router.delete('/:id', (req, res) => {
     .catch(error => res.status(500).json({ success: false }));
 });
 
-router.put('/:id', (req, res) => {
-  const { id } = req.params;
-  Review.update({ isChecked: true }, { where: { id } })
-    .then(data => res.json({ success: true, id }))
-    .catch(error => res.status(500).json({ success: false }));
-});
-
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   try {
