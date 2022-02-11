@@ -28,6 +28,7 @@ export default function ReviewForm() {
         title: title.value,
         item_id: itemId,
         rating: rate,
+        user_id: user.user.id,
       },
     });
   };
