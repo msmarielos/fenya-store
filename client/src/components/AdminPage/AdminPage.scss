@@ -31,10 +31,10 @@
     margin: 5px;
     padding: 5px 10px;
     display: flex;
+    justify-content: flex-end;
     width: 200px;
     border: 1px solid rgb(203, 203, 203);
     flex-direction: column;
-    margin-top: auto;
 
     button {
       width: 150px;
@@ -45,6 +45,7 @@
 
     a {
       align-self: center;
+      margin-top: auto;
     }
   }
 }

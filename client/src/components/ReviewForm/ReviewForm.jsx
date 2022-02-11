@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
+import { info } from '../../utils/toast';
 import './ReviewForm.scss';
 
 export default function ReviewForm() {
   const params = useParams();
   const dispatch = useDispatch();
+
+  const { user } = useSelector(state => state.users);
 
   const [rating, setRating] = useState(5);
 
@@ -26,35 +29,43 @@ export default function ReviewForm() {
         title: title.value,
         item_id: itemId,
         rating: rate,
+        user_id: user.user.id,
       },
     });
+    info('Отзыв создан и отправлен на модерацию');
   };
 
   return (
     <>
       <form className="review-form" onSubmit={createReview}>
-        <h5>Оставьте свой отзыв</h5>
-        <ReactStars
-          count={5}
-          value={5}
-          onChange={ratingChanged}
-          size={24}
-          activeColor="#ffd700"
-        />
-        <input
-          autoComplete="off"
-          type="text"
-          name="title"
-          placeholder="Заголовок"
-          required
-        />
-        <textarea
-          name="description"
-          resizable="false"
-          type="text"
-          placeholder="Подробное описание"
-        />
-        <button className="regular-btn">Оставить отзыв</button>
+        {user?.success ? (
+          <>
+            <h5>Оставьте свой отзыв</h5>
+            <ReactStars
+              count={5}
+              value={5}
+              onChange={ratingChanged}
+              size={24}
+              activeColor="#ffd700"
+            />
+            <input
+              autoComplete="off"
+              type="text"
+              name="title"
+              placeholder="Заголовок"
+              required
+            />
+            <textarea
+              name="description"
+              resizable="false"
+              type="text"
+              placeholder="Подробное описание"
+            />
+            <button className="regular-btn">Оставить отзыв</button>
+          </>
+        ) : (
+          <p>Авторизуйтесь, чтобы оставлять отзывы</p>
+        )}
       </form>
     </>
   );

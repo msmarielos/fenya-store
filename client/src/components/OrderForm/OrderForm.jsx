@@ -1,8 +1,11 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { info } from '../../utils/toast';
 import './OrderForm.scss';
 
 function OrderForm(props) {
+  const navigate = useNavigate();
   const { basketItems } = useSelector(state => state.basketItems);
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
   const orderItem = basketItems.map(item => {
@@ -16,6 +19,8 @@ function OrderForm(props) {
     event.preventDefault();
 
     dispatch({ type: 'FETCH_POST_ORDER_ITEMS', payload: orderItem });
+    navigate('/');
+    info('Ваш заказ оформлен');
   };
 
   return (

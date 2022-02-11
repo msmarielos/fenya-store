@@ -41,7 +41,6 @@ app.use('/lists', listsRouter);
 app.use('/order', isAuth, orderRouter);
 app.use('/api/auth', authRouter);
 app.use('/api', isAuth, userRouter);
-
 app.use('/reviews', reviewRouter);
 app.use('/animals', animalRouter);
 

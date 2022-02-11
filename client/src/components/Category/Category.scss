@@ -79,3 +79,20 @@
     color: #e84a53;
   }
 }
+
+.empty-btn-page {
+  border: none;
+  background-color: #fff;
+  margin: 0 10px;
+}
+
+.empty-btn-page:hover {
+  color: rgb(206, 75, 45);
+}
+
+.pages {
+  margin: 20px 0;
+  span {
+    margin: 0 10px;
+  }
+}

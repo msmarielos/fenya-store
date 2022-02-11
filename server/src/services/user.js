@@ -1,6 +1,6 @@
 /* eslint-disable no-return-await */
 const bcrypt = require('bcryptjs');
-const { User } = require('../db/models');
+const { User, Animal, OrderItem, Order, Item } = require('../db/models');
 
 async function createUser(data) {
   const {
@@ -35,6 +35,36 @@ async function getUserById(id) {
   return user;
 }
 
+async function getUserAnimals(id) {
+  const userAnimals = await Animal.findAll({
+    where: {
+      user_id: id,
+    },
+  });
+  if (!userAnimals) {
+    throw new Error('id неверный');
+  }
+  return userAnimals;
+}
+
+async function getUseOrder(id) {
+  const userOrder = await Order.findAll({
+    where: {
+      user_id: id,
+    },
+    include: [
+      {
+        model: OrderItem,
+        include: [Item],
+      },
+    ],
+  });
+  if (!userOrder) {
+    throw new Error('id неверный');
+  }
+  return userOrder;
+}
+
 async function updateUser(id, data) {
   const {
     name, email, phone, password,
@@ -57,4 +87,10 @@ async function updateUser(id, data) {
   }
 }
 
-module.exports = { createUser, getUserById, updateUser };
+module.exports = {
+  createUser,
+  getUserById,
+  updateUser,
+  getUserAnimals,
+  getUseOrder,
+};
