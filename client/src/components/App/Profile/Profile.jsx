@@ -59,7 +59,7 @@ function Profile(props) {
             type="text"
             defaultValue={userFields?.name}
             placeholder="Имя"
-            autocomplete="off"
+            autoComplete="off"
             autoFocus
           />
         </div>
@@ -70,7 +70,7 @@ function Profile(props) {
             type="email"
             defaultValue={userFields?.email}
             placeholder="Email"
-            autocomplete="off"
+            autoComplete="off"
           />
         </div>
         <div>
@@ -80,7 +80,7 @@ function Profile(props) {
             type="text"
             defaultValue={userFields?.phone}
             placeholder="Телефон"
-            autocomplete="off"
+            autoComplete="off"
           />
         </div>
         <button onClick={updateProfile}>Сохранить изменения</button>

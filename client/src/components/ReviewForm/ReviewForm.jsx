@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
+import { info } from '../../utils/toast';
 import './ReviewForm.scss';
 
 export default function ReviewForm() {
@@ -31,6 +32,7 @@ export default function ReviewForm() {
         user_id: user.user.id,
       },
     });
+    info('Отзыв создан и отправлен на модерацию');
   };
 
   return (
