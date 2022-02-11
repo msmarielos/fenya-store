@@ -4,7 +4,7 @@ const { Review, Item, User } = require('../db/models');
 
 router.get('/:id', (req, res) => {
   try {
-    Review.findAll({ where: { item_id: req.params.id } }).then(reviews => {
+    Review.findAll({ where: { item_id: req.params.id } }).then((reviews) => {
       res.json(reviews);
     });
   } catch (err) {
@@ -24,9 +24,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/:id', async (req, res) => {
-  const { title, description, item_id, rating } = req.body;
+  const {
+    title, description, user_id, item_id, rating,
+  } = req.body;
   const currentItem = await Item.findOne({ where: { id: item_id } });
-  const { userId } = req;
+  // const { user_id } = req;
   if (currentItem.rating > 5) {
     await currentItem.update({
       rating: 5,
@@ -41,7 +43,7 @@ router.post('/:id', async (req, res) => {
     description,
     item_id,
     rating,
-    user_id: userId,
+    user_id,
     isChecked: false,
   });
   res.json(newReview);
@@ -50,17 +52,15 @@ router.post('/:id', async (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Review.destroy({ where: { id } })
-    .then(data =>
-      data ? res.json({ success: true }) : res.status(404).json(data)
-    )
-    .catch(error => res.status(500).json({ success: false }));
+    .then((data) => (data ? res.json({ success: true }) : res.status(404).json(data)))
+    .catch((error) => res.status(500).json({ success: false }));
 });
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   Review.update({ isChecked: true }, { where: { id } })
-    .then(data => res.json({ success: true }))
-    .catch(error => res.status(500).json({ success: false }));
+    .then((data) => res.json({ success: true }))
+    .catch((error) => res.status(500).json({ success: false }));
 });
 
 module.exports = router;
