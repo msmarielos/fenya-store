@@ -14,7 +14,7 @@ export default function OrderList() {
     dispatch({ type: 'FETCH_DELETE_ORDER', payload: id });
   };
 
-  console.log(orders,'orders')
+  console.log(orders, 'orders');
   return (
     <ul>
       {orders?.length ? (
