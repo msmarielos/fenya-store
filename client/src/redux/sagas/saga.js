@@ -224,6 +224,10 @@ function* postOrderItemsAsync(action) {
 function* getOrderListAsync(action) {
   const orders = yield call(fetchData, {
     url: process.env.REACT_APP_ORDER_URL,
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
   });
 
   yield put(initOrderListAC(orders));
@@ -289,7 +293,10 @@ function* deleteOrderAsync(action) {
 
   const response = yield call(fetchData, {
     url: `${process.env.REACT_APP_ORDER_URL}/${action.payload}`,
-    headers: { 'Content-Type': 'Application/json' },
+    headers: {
+      'Content-Type': 'Application/json',
+      Authorization: 'Bearer' + localStorage.getItem('token'),
+    },
     method: 'DELETE',
   });
 
