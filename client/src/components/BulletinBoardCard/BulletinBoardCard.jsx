@@ -32,20 +32,6 @@ function BulletinBoardCard({ animal }) {
         </p>
         <Link to={`/board/animal/${animal.id}`}>Подробнее</Link>
       </div>
-
-      {/* <h4>Информация о владельце</h4>
-      <p>
-        <strong>Город</strong>: {animal.city}
-      </p>
-      <p>
-        <strong>Имя</strong>: {animal.User.name}{' '}
-      </p>
-      <p>
-        <strong>Телефон</strong>: {animal.User.phone}
-      </p>
-      <p>
-        <strong>Дата размещения</strong>: {animal.updatedAt.slice(0, 10)}
-      </p> */}
     </div>
   );
 }

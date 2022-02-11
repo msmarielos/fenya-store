@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OrederUserCard from '../../OrederUserCard/OrederUserCard';
 import { useRef } from 'react';
+import { info } from '../../../utils/toast';
 import './Profile.scss';
 
 function Profile(props) {
@@ -34,6 +35,8 @@ function Profile(props) {
     if (user) {
       dispatch({ type: 'FETCH_PUT_PROFILE', payload: user });
     }
+
+    info('Информация отредактирована');
   };
 
   return (

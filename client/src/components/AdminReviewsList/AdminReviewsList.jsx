@@ -58,7 +58,11 @@ export default function AdminReviewsList() {
               <p>{review.description}</p>
               <p>{review.rating}</p>
               <p>{review.User.name}</p>
-              <button data-id={review.id} onClick={putFetch}>
+              <button
+                className="empty-btn-blue"
+                data-id={review.id}
+                onClick={putFetch}
+              >
                 Опубликовать
               </button>
               <button data-id={review.id} onClick={deleteFetch}>
