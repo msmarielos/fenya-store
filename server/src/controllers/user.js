@@ -36,7 +36,6 @@ async function updateUser(req, res) {
 async function getAnimals(req, res) {
   try {
     const { userId } = req;
-    console.log(userId, 'userId');
     const userAnimals = await userService.getUserAnimals(userId);
     res.status(200).json({
       userAnimals,
@@ -52,7 +51,6 @@ async function getAnimals(req, res) {
 async function getOrder(req, res) {
   try {
     const { userId } = req;
-    console.log(userId, 'userId');
     const userOrder = await userService.getUseOrder(userId);
     res.status(200).json({
       userOrder,

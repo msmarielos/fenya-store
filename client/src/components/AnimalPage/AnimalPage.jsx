@@ -11,7 +11,6 @@ export default function AnimalPage() {
   useEffect(() => {
     dispatch({ type: 'FETCH_GET_CURRENT_ANIMAL', payload: params.id });
   }, [dispatch, params.id]);
-  console.log(currentAnimal, 'currentAnimal');
   return (
     <>
       <h1>{currentAnimal?.title}</h1>

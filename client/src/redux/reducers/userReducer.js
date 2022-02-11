@@ -43,7 +43,6 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, userItems: action.payload };
 
     case INIT_USER_ANIMALS:
-      console.log(action.payload, 'action.payload');
       return { ...state, userAnimals: action.payload };
 
     default:

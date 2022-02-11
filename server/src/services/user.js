@@ -34,7 +34,6 @@ async function getUserById(id) {
 }
 
 async function getUserAnimals(id) {
-  console.log('id', id);
   const userAnimals = await Animal.findAll({
     where: {
       user_id: id,
@@ -47,7 +46,6 @@ async function getUserAnimals(id) {
 }
 
 async function getUseOrder(id) {
-  console.log('id', id);
   const userOrder = await Order.findAll({
     where: {
       user_id: id,
