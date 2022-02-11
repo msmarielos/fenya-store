@@ -85,20 +85,26 @@ export default function Category() {
     const pages = new Array(totalPageCount).fill().map((_, idx) => idx + 1);
 
     return pages.map((page, idx) => (
-      <button
-        className="empty-btn-page"
-        key={idx}
-        onClick={() => setPage(page)}
-      >
-        {page}
-      </button>
+      <>
+        <button
+          className="empty-btn-page"
+          key={idx}
+          onClick={() => setPage(page)}
+        >
+          {page}
+        </button>
+      </>
     ));
   }
 
   return (
     <>
       {renderTitle()}
-      <div className="pages">{renderPagination()}</div>
+      <div className="pages">
+        <span>{'<'}</span>
+        {renderPagination()}
+        <span>{'>'}</span>
+      </div>
 
       <div className="sort-block">
         <p>Отсортировать по цене:</p>
@@ -136,6 +142,11 @@ export default function Category() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="pages">
+        <span>{'<'}</span>
+        {renderPagination()}
+        <span>{'>'}</span>
       </div>
     </>
   );

@@ -6,6 +6,8 @@ import './BulletinBoard.scss';
 
 function BulletinBoard() {
   const { animals } = useSelector(state => state.animals);
+  const { user } = useSelector(state => state.users);
+
   const publishedAnimals = animals.filter(animal => animal.isChecked === true);
   const dispatch = useDispatch();
 
@@ -17,7 +19,9 @@ function BulletinBoard() {
     <div className="animals-block">
       <h1>Доска объявлений</h1>
       <Link to="/addform">
-        <button className="regular-btn">Подать объявление</button>
+        {user?.success ? (
+          <button className="regular-btn">Подать объявление</button>
+        ) : null}
       </Link>
       <div className="animals-board">
         {publishedAnimals.length &&
