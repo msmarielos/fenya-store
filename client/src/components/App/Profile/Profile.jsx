@@ -2,9 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OrederUserCard from '../../OrederUserCard/OrederUserCard';
 import { useRef } from 'react';
+import './Profile.scss';
 
 function Profile(props) {
   const { userItems } = useSelector(state => state.users);
+  const { user } = useSelector(state => state.users);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +38,7 @@ function Profile(props) {
     }
   };
 
-  return (
+  return user.success ? (
     <>
       <div>
         <h1>Личный кабинет</h1>
@@ -51,7 +54,7 @@ function Profile(props) {
         )}
       </div>
       <h1>Изменить профиль</h1>
-      <form onSubmit={updateProfile} className="login-form">
+      <form onSubmit={updateProfile} className="login-form profile-form">
         <div>
           <input
             ref={nameInput}
@@ -83,10 +86,12 @@ function Profile(props) {
             autoComplete="off"
           />
         </div>
-        <button onClick={updateProfile}>Сохранить изменения</button>
+        <button onClick={updateProfile} className="regular-btn">
+          Сохранить изменения
+        </button>
       </form>
     </>
-  );
+  ) : null;
 }
 
 export default Profile;

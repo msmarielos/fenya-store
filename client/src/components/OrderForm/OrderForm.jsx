@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { clearBasketAC } from '../../redux/actionCreators/basketAC';
 import './OrderForm.scss';
 
-function OrderForm(props) {
+function OrderForm() {
   const { basketItems } = useSelector(state => state.basketItems);
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
   const orderItem = basketItems.map(item => {
@@ -16,12 +17,19 @@ function OrderForm(props) {
     event.preventDefault();
 
     dispatch({ type: 'FETCH_POST_ORDER_ITEMS', payload: orderItem });
+    dispatch(clearBasketAC());
   };
 
   return (
     <div>
       <h1>Оформление заказа</h1>
-      {total ? <p>Заказ на сумму {total} ₽</p> : <p>Ваша корзина пуста.</p>}
+      {total ? (
+        <p>
+          Заказ на сумму <strong>{total}</strong> ₽
+        </p>
+      ) : (
+        <p>Ваша корзина пуста.</p>
+      )}
 
       <form
         ref={orderForm}
