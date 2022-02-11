@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { clearBasketAC } from '../../redux/actionCreators/basketAC';
 import { info } from '../../utils/toast';
 import './OrderForm.scss';
 
-function OrderForm(props) {
+function OrderForm() {
   const navigate = useNavigate();
   const { basketItems } = useSelector(state => state.basketItems);
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
@@ -21,6 +22,7 @@ function OrderForm(props) {
     dispatch({ type: 'FETCH_POST_ORDER_ITEMS', payload: orderItem });
     navigate('/');
     info('Ваш заказ оформлен');
+    dispatch(clearBasketAC());
   };
 
   return (
