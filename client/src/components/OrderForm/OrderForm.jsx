@@ -24,6 +24,7 @@ function OrderForm() {
     navigate('/');
     info('Ваш заказ оформлен');
     dispatch(clearBasketAC());
+    localStorage.clear('basket');
   };
 
   return (
