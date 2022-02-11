@@ -51,7 +51,7 @@ function Profile(props) {
             );
           })
         ) : (
-          <p>Заказов нет</p>
+          <p className="no-orders">Заказов нет</p>
         )}
       </div>
       <h1>Изменить профиль</h1>

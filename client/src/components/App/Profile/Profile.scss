@@ -1,9 +1,15 @@
 .profile {
+  display: flex;
+  flex-direction: column;
   .regular-btn {
     width: 200px;
   }
 
   h3 {
+    text-align: center;
+  }
+
+  .no-orders {
     text-align: center;
   }
 }
