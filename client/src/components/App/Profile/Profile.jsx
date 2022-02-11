@@ -7,6 +7,8 @@ import './Profile.scss';
 
 function Profile(props) {
   const { userItems } = useSelector(state => state.users);
+  const { user } = useSelector(state => state.users);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +41,7 @@ function Profile(props) {
     info('Информация отредактирована');
   };
 
-  return (
+  return user.success ? (
     <div className="profile">
       <div>
         <h1>Личный кабинет</h1>
@@ -55,7 +57,7 @@ function Profile(props) {
         )}
       </div>
       <h1>Изменить профиль</h1>
-      <form onSubmit={updateProfile} className="login-form">
+      <form onSubmit={updateProfile} className="login-form profile-form">
         <div>
           <input
             ref={nameInput}
@@ -87,12 +89,12 @@ function Profile(props) {
             autoComplete="off"
           />
         </div>
-        <button className="regular-btn" onClick={updateProfile}>
+        <button onClick={updateProfile} className="regular-btn">
           Сохранить изменения
         </button>
       </form>
     </div>
-  );
+  ) : null;
 }
 
 export default Profile;

@@ -7,6 +7,7 @@ import './OrderForm.scss';
 
 function OrderForm() {
   const navigate = useNavigate();
+
   const { basketItems } = useSelector(state => state.basketItems);
   const total = basketItems.reduce((sum, el) => sum + el.price * el.count, 0);
   const orderItem = basketItems.map(item => {
@@ -28,7 +29,13 @@ function OrderForm() {
   return (
     <div>
       <h1>Оформление заказа</h1>
-      {total ? <p>Заказ на сумму {total} ₽</p> : <p>Ваша корзина пуста.</p>}
+      {total ? (
+        <p>
+          Заказ на сумму <strong>{total}</strong> ₽
+        </p>
+      ) : (
+        <p>Ваша корзина пуста.</p>
+      )}
 
       <form
         ref={orderForm}
