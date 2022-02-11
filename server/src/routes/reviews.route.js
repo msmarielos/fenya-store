@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   Review.update({ isChecked: true }, { where: { id } })
-    .then((data) => res.json({ success: true }))
+    .then((data) => res.json({ success: true, id }))
     .catch((error) => res.status(500).json({ success: false }));
 });
 
