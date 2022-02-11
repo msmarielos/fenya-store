@@ -59,8 +59,18 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   Review.update({ isChecked: true }, { where: { id } })
-    .then(data => res.json({ success: true }))
+    .then(data => res.json({ success: true, id }))
     .catch(error => res.status(500).json({ success: false }));
+});
+
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const review = await Review.update({ isChecked: true }, { where: { id } })
+    res.json({ success: true, id });
+  } catch (error) {
+    res.status(501).json({ success: false });
+  }
 });
 
 module.exports = router;
