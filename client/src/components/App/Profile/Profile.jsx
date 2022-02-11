@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OrederUserCard from '../../OrederUserCard/OrederUserCard';
 import { useRef } from 'react';
+import './Profile.scss';
 
 function Profile(props) {
   const { userItems } = useSelector(state => state.users);
@@ -36,11 +37,11 @@ function Profile(props) {
   };
 
   return (
-    <>
+    <div className="profile">
       <div>
         <h1>Личный кабинет</h1>
         <h3>Ваши заказы</h3>
-        {userItems.userOrder ? (
+        {userItems?.userOrder?.length ? (
           userItems.userOrder?.map((item, index) => {
             return (
               <OrederUserCard key={item.id} item={item} number={index + 1} />
@@ -83,9 +84,11 @@ function Profile(props) {
             autoComplete="off"
           />
         </div>
-        <button onClick={updateProfile}>Сохранить изменения</button>
+        <button className="regular-btn" onClick={updateProfile}>
+          Сохранить изменения
+        </button>
       </form>
-    </>
+    </div>
   );
 }
 

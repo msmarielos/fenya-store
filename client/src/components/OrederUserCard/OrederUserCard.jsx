@@ -1,8 +1,8 @@
-import React from 'react';
+import './OrderUserCard.scss';
 
 function OrederUserCard({ item, number }) {
   return (
-    <div>
+    <div className="user-order-card">
       <p>Заказ номер: {number}</p>
       <ul>
         {item.OrderItems.map(el => (
@@ -22,10 +22,13 @@ function OrederUserCard({ item, number }) {
       </ul>
       <p>
         Общая сумма:{' '}
-        {item.OrderItems.reduce(
-          (acc, num) => acc + num.Item.price * num.count,
-          0
-        )}
+        <strong>
+          {item.OrderItems.reduce(
+            (acc, num) => acc + num.Item.price * num.count,
+            0
+          )}{' '}
+          ₽
+        </strong>
       </p>
     </div>
   );
