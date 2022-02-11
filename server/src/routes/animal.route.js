@@ -62,11 +62,14 @@ router.delete('/:id', (req, res) => {
     .catch(error => res.status(500).json({ success: false }));
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  Animal.update({ isChecked: true }, { where: { id } })
-    .then(data => res.json({ success: true }))
-    .catch(error => res.status(500).json({ success: false }));
+  try {
+    const animal = await Animal.update({ isChecked: true }, { where: { id } });
+    res.json({ success: true, id });
+  } catch (error) {
+    res.status(501).json({ success: false });
+  }
 });
 
 module.exports = router;

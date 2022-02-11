@@ -343,7 +343,7 @@ function* toPublicAnimalAsync(action) {
 
   if (response.success) {
     yield put(successResponseAnimalAC());
-    yield put(publicAnimalsAC());
+    yield put(publicAnimalsAC(response.id));
   } else {
     yield put(errorResponseAnimalAC());
   }
@@ -403,7 +403,7 @@ function* toPublicReviewAsync(action) {
 
   if (response.success) {
     yield put(successResponseReviewAC());
-    yield put(publicReviewsAC());
+    yield put(publicReviewsAC(response.id));
   } else {
     yield put(errorResponseReviewAC());
   }
