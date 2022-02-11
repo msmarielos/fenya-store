@@ -4,8 +4,10 @@ import OrederUserCard from '../../OrederUserCard/OrederUserCard';
 import { useRef } from 'react';
 import { info } from '../../../utils/toast';
 import './Profile.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Profile(props) {
+  const navigate = useNavigate();
   const { userItems } = useSelector(state => state.users);
   const { user } = useSelector(state => state.users);
 
@@ -94,7 +96,9 @@ function Profile(props) {
         </button>
       </form>
     </div>
-  ) : null;
+  ) : (
+    navigate('/')
+  );
 }
 
 export default Profile;

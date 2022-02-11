@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import AdminNav from '../AdminNav/AdminNav';
 import './AdminPage.scss';
 
 export default function AdminPage() {
+  const navigate = useNavigate();
   const { user } = useSelector(state => state.users);
 
   return user.user.isAdmin ? (
@@ -15,5 +16,7 @@ export default function AdminPage() {
         <Outlet />
       </div>
     </div>
-  ) : null;
+  ) : (
+    navigate('/')
+  );
 }
