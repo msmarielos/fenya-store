@@ -65,7 +65,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const animal = await Animal.update({ isChecked: true }, { where: { id } })
+    const animal = await Animal.update({ isChecked: true }, { where: { id } });
     res.json({ success: true, id });
   } catch (error) {
     res.status(501).json({ success: false });

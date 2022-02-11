@@ -71,7 +71,6 @@ export const animalReducer = (state = initialState, action) => {
       };
 
     case ANIMAL_TO_PUBLIC:
-
       return {
         ...state,
         animals: state.animals.map(el => {
