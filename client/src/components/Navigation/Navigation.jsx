@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutUserAC } from '../../redux/actionCreators/userAC';
 import { unAuthNav } from '../../utils/navLinks';
 import { authNav } from '../../utils/navLinks';
@@ -7,6 +7,7 @@ import './Navigation.scss';
 
 export default function Navigation() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector(state => state.users);
 
   const logout = e => {
@@ -14,6 +15,7 @@ export default function Navigation() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     dispatch(logoutUserAC());
+    navigate('/');
   };
 
   return (
